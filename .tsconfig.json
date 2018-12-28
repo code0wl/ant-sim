@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "allowJs": true,
-        "baseUrl": ".",
+        "baseUrl": "./src",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": ["dom", "es2017"],
@@ -16,9 +16,9 @@
         "target": "es5"
     },
     "paths": {
-        "client/*": ["src/client/*"],
-        "server/*": ["src/server/*"],
-        "shared/*": ["src/shared/*"]
+        "game/*": ["src/game/*"],
+        "actors/*": ["src/actors/*"],
+        "common/*": ["src/common/*"]
     },
     "typeRoots": [
         "./node_modules/@types",

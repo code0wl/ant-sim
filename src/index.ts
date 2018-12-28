@@ -1,11 +1,15 @@
 declare const cc: any;
 
+import { Game } from "./game/game";
+
+const game = new Game(window.innerWidth, window.innerHeight);
+
 window.onload = function() {
     cc.game.onStart = function() {
         //load resources
         cc.LoaderScene.preload(
             ["HelloWorld.png"],
-            function() {
+            () => {
                 var MyScene = cc.Scene.extend({
                     onEnter: function() {
                         this._super();
