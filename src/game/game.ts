@@ -20,10 +20,17 @@ export class Game {
                     const MyScene = cc.Scene.extend({
                         onEnter: function() {
                             this._super();
-                            const sprite = cc.Sprite.create("HelloWorld.png");
-                            sprite.setPosition(width / 2, height / 2);
-                            sprite.setScale(0.8);
-                            this.addChild(sprite, 0);
+                            const colorLayer = new cc.LayerColor(
+                                cc.color(80, 220, 100, 200),
+                                width,
+                                height
+                            );
+                            colorLayer.ignoreAnchorPointForPosition(false);
+
+                            colorLayer.x = width / 2;
+                            colorLayer.y = height / 2;
+
+                            this.addChild(colorLayer);
                         },
                     });
                     cc.director.runScene(new MyScene());
