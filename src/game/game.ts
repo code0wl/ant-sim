@@ -3,20 +3,25 @@ declare const cc: any;
 export class Game {
     public canvas: HTMLCanvasElement;
 
-    constructor(width, height, id) {
-        this.generateWorld(width, height);
+    constructor(
+        private width: number,
+        private height: number,
+        private id: string
+    ) {
+        this.generateWorld();
+        this.start(this.width, this.height);
+    }
 
-        cc.game.onStart = function() {
-            //load resources
+    private start(width, height) {
+        cc.game.onStart = () => {
             cc.LoaderScene.preload(
                 ["HelloWorld.png"],
                 () => {
-                    var MyScene = cc.Scene.extend({
+                    const MyScene = cc.Scene.extend({
                         onEnter: function() {
                             this._super();
-                            var size = cc.director.getWinSize();
-                            var sprite = cc.Sprite.create("HelloWorld.png");
-                            sprite.setPosition(size.width / 2, size.height / 2);
+                            const sprite = cc.Sprite.create("HelloWorld.png");
+                            sprite.setPosition(width / 2, height / 2);
                             sprite.setScale(0.8);
                             this.addChild(sprite, 0);
                         },
@@ -26,14 +31,14 @@ export class Game {
                 this
             );
         };
-        cc.game.run(id);
+        cc.game.run(this.id);
     }
 
-    private generateWorld(width, height, id) {
+    private generateWorld() {
         this.canvas = document.createElement("canvas");
-        this.canvas.width = width;
-        this.canvas.height = height;
-        this.canvas.id = id;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.id = this.id;
         document.body.appendChild(this.canvas);
     }
 
