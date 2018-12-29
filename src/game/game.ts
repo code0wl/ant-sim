@@ -13,11 +13,15 @@ export class Game {
         private id: string,
         size: number
     ) {
-        this.generateWorld();
+        this.bootstrapGame();
+        this.grid = new Grid(size);
+    }
+
+    private bootstrapGame() {
+        this.createCanvas();
         this.gameInstance = cc.game;
         this.gameInstance.onStart = () => this.start(this.width, this.height);
         this.gameInstance.run(this.id);
-        this.grid = new Grid(size);
     }
 
     private start(width: number, height: number) {
@@ -43,7 +47,8 @@ export class Game {
         );
     }
 
-    private generateWorld() {
+    private createCanvas() {
+        this.removeCanvas();
         this.canvas = document.createElement("canvas");
         this.canvas.width = this.width;
         this.canvas.height = this.height;
@@ -51,8 +56,9 @@ export class Game {
         document.body.appendChild(this.canvas);
     }
 
-    public removeWorld() {
+    public removeCanvas() {
         const currentCanvas = document.querySelector("canvas");
+        if (!currentCanvas) return;
         document.removeChild(currentCanvas);
     }
 }
