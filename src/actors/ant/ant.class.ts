@@ -6,7 +6,7 @@ export class Ant extends Animal {
 
     constructor() {
         super();
-        console.log('ant ')
+        console.log("ant");
     }
 
     public move(x, y) {}

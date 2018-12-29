@@ -1,5 +1,3 @@
 import { Game } from "./game/game";
 
-declare const cc: any;
-
-const game = new Game(window.innerWidth, window.innerHeight, "gameCanvas");
+const game = new Game(window.innerWidth, window.innerHeight, "gameCanvas", 100);

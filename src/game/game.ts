@@ -1,15 +1,20 @@
+import { Grid } from "./grid";
+
 declare const cc: any;
 
 export class Game {
     public canvas: HTMLCanvasElement;
+    public grid: Grid;
 
     constructor(
         private width: number,
         private height: number,
-        private id: string
+        private id: string,
+        size: number
     ) {
         this.generateWorld();
         this.start(this.width, this.height);
+        this.grid = new Grid(size);
     }
 
     private start(width, height) {
