@@ -4,21 +4,26 @@ import { Coordinates } from "common/model";
 declare const cc: any;
 
 export class Ant extends Animal {
-    readonly graphic: any;
     readonly currentLocation: Coordinates;
-
     public isAlive = true;
     public isMoving = false;
+    private graphic: any;
 
-    constructor() {
+    constructor(game: any) {
         super();
         this.graphic = new cc.SpriteFrame(
-            "assets/HelloWorld.png",
+            "spritesheets/__black_ant_idle.png",
+            cc.rect(0, 0, 90, 128)
+        );
+        console.log(game);
+    }
+
+    public move() {
+        this.graphic = new cc.SpriteFrame(
+            "spritesheets/__black_ant_walk.png",
             cc.rect(0, 0, 90, 128)
         );
     }
-
-    public move() {}
 
     public eat() {}
 

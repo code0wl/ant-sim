@@ -26,7 +26,15 @@ export class Game {
 
     private start(width: number, height: number) {
         cc.LoaderScene.preload(
-            ["HelloWorld.png"],
+            [
+                "spritesheets/__black_ant_dead.png",
+                "spritesheets/__black_ant_idle.png",
+                "spritesheets/__black_ant_walk.png",
+                "spritesheets/__red_ant_dead.png",
+                "spritesheets/__red_ant_idle.png",
+                "spritesheets/__red_ant_walk.png",
+            ],
+
             () => {
                 const MyScene = cc.Scene.extend({
                     onEnter: function() {
