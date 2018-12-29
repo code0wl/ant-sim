@@ -8,22 +8,25 @@ export class Ant extends Animal {
     public isAlive = true;
     public isMoving = false;
     private graphic: any;
+    private layer: any;
 
-    constructor(game: any) {
+    constructor(private height: number, private width: number) {
         super();
-        this.graphic = new cc.SpriteFrame(
-            "spritesheets/__black_ant_idle.png",
-            cc.rect(0, 0, 90, 128)
+
+        this.graphic = new cc.Sprite.create(
+            "spritesheets/__black_ant_idle.png"
         );
-        console.log(game);
+
+        this.graphic
+            .setAnchorPoint(cc.p(0.5, 0.5))
+            .setPosition(cc.p(this.height / 2, this.width / 2));
+
+        this.layer = new cc.Layer.extend({
+            ctor: function() {},
+        });
     }
 
-    public move() {
-        this.graphic = new cc.SpriteFrame(
-            "spritesheets/__black_ant_walk.png",
-            cc.rect(0, 0, 90, 128)
-        );
-    }
+    public move() {}
 
     public eat() {}
 

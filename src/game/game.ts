@@ -6,6 +6,7 @@ export class Game {
     public canvas: HTMLCanvasElement;
     public grid: Grid;
     public gameInstance: any;
+    public scene: any;
 
     constructor(
         private width: number,
@@ -34,22 +35,21 @@ export class Game {
                 "spritesheets/__red_ant_idle.png",
                 "spritesheets/__red_ant_walk.png",
             ],
-
             () => {
-                const MyScene = cc.Scene.extend({
+                this.scene = cc.Scene.extend({
                     onEnter: function() {
                         this._super();
 
-                        const backgroundLayer = new cc.LayerColor(
-                            cc.color(80, 220, 100, 200),
-                            width,
-                            height
+                        this.addChild(
+                            new cc.LayerColor(
+                                cc.color(80, 220, 100, 200),
+                                width,
+                                height
+                            )
                         );
-
-                        this.addChild(backgroundLayer);
                     },
                 });
-                cc.director.runScene(new MyScene());
+                cc.director.runScene(new this.scene());
             },
             this
         );

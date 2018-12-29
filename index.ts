@@ -1,8 +1,8 @@
 import { Ant } from "actors/ant/ant.class";
 import { Game } from "game/game";
 
+console.log(cc)
+
 const game = new Game(window.innerWidth, window.innerHeight, "gameCanvas", 100);
 
-const gameRef = game.gameInstance;
-
-new Ant(gameRef);
+new Ant(window.innerWidth, window.innerHeight);
