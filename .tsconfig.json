@@ -20,16 +20,7 @@
         "actors/*": ["src/actors/*"],
         "common/*": ["src/common/*"]
     },
-    "typeRoots": [
-        "./node_modules/@types",
-        "./node_modules/phaser-ce/typescript/"
-    ],
-    "files": [
-        "src/server/server.ts",
-        "src/shared/events.model.ts",
-        "src/shared/models.ts",
-        "main.ts"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "exclude": ["node_modules", "*.spec.ts"],
     "awesomeTypescriptLoaderOptions": {
         "transpileOnly": true

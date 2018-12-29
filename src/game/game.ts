@@ -25,17 +25,14 @@ export class Game {
                     const MyScene = cc.Scene.extend({
                         onEnter: function() {
                             this._super();
-                            const colorLayer = new cc.LayerColor(
+
+                            const backgroundLayer = new cc.LayerColor(
                                 cc.color(80, 220, 100, 200),
                                 width,
                                 height
                             );
-                            colorLayer.ignoreAnchorPointForPosition(false);
 
-                            colorLayer.x = width / 2;
-                            colorLayer.y = height / 2;
-
-                            this.addChild(colorLayer);
+                            this.addChild(backgroundLayer);
                         },
                     });
                     cc.director.runScene(new MyScene());
