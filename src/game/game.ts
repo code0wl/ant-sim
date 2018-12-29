@@ -5,6 +5,7 @@ declare const cc: any;
 export class Game {
     public canvas: HTMLCanvasElement;
     public grid: Grid;
+    public gameInstance: any;
 
     constructor(
         private width: number,
@@ -13,34 +14,33 @@ export class Game {
         size: number
     ) {
         this.generateWorld();
-        this.start(this.width, this.height);
+        this.gameInstance = cc.game;
+        this.gameInstance.onStart = () => this.start(this.width, this.height);
+        this.gameInstance.run(this.id);
         this.grid = new Grid(size);
     }
 
     private start(width: number, height: number) {
-        cc.game.onStart = () => {
-            cc.LoaderScene.preload(
-                ["HelloWorld.png"],
-                () => {
-                    const MyScene = cc.Scene.extend({
-                        onEnter: function() {
-                            this._super();
+        cc.LoaderScene.preload(
+            ["HelloWorld.png"],
+            () => {
+                const MyScene = cc.Scene.extend({
+                    onEnter: function() {
+                        this._super();
 
-                            const backgroundLayer = new cc.LayerColor(
-                                cc.color(80, 220, 100, 200),
-                                width,
-                                height
-                            );
+                        const backgroundLayer = new cc.LayerColor(
+                            cc.color(80, 220, 100, 200),
+                            width,
+                            height
+                        );
 
-                            this.addChild(backgroundLayer);
-                        },
-                    });
-                    cc.director.runScene(new MyScene());
-                },
-                this
-            );
-        };
-        cc.game.run(this.id);
+                        this.addChild(backgroundLayer);
+                    },
+                });
+                cc.director.runScene(new MyScene());
+            },
+            this
+        );
     }
 
     private generateWorld() {
