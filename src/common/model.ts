@@ -4,3 +4,8 @@ export interface IAnimal {
     isAlive: boolean;
     isMoving(): boolean;
 }
+
+export interface Coordinates {
+    longitude: number;
+    latitude: number;
+}

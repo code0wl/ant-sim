@@ -1,5 +1,5 @@
 export interface IAnt {
-    carry(Item);
+    carry(item: Item): void;
 }
 
 export type Item = "wood" | "food" | "enemy";

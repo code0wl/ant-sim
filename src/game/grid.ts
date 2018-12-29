@@ -5,9 +5,9 @@ export class Grid {
         this.renderGrid(size);
     }
 
-    private renderGrid(cells) {
-        for (const cell of cells) {
-            console.log(cell);
+    private renderGrid(cells: number) {
+        for (let i = 0; i < cells; i++) {
+            console.log(i);
         }
     }
 

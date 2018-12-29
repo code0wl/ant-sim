@@ -1,6 +1,8 @@
-import { Animal } from "../common/animal.class";
+import { Animal } from "common/animal.class";
+import { Coordinates } from "common/model";
 
 export class Ant extends Animal {
+    readonly currentLocation: Coordinates;
     public isAlive = true;
     public isMoving = false;
 
@@ -9,11 +11,13 @@ export class Ant extends Animal {
         console.log("ant");
     }
 
-    public move(x, y) {}
+    public move() {}
 
     public eat() {}
 
     public fight() {}
 
-    private getCoordinates() {}
+    public getLocation() {
+        return this.currentLocation;
+    }
 }

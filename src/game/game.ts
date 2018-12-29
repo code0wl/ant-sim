@@ -1,4 +1,4 @@
-import { Grid } from "./grid";
+import { Grid } from "game/grid";
 
 declare const cc: any;
 
@@ -17,7 +17,7 @@ export class Game {
         this.grid = new Grid(size);
     }
 
-    private start(width, height) {
+    private start(width: number, height: number) {
         cc.game.onStart = () => {
             cc.LoaderScene.preload(
                 ["HelloWorld.png"],

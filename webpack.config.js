@@ -1,9 +1,11 @@
 const path = require("path");
+const tsconfig = require("./tsconfig.json");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 
 module.exports = {
-    entry: "./src/index.ts",
+    entry: "./index.ts",
     mode: "development",
     output: {
         path: path.resolve(__dirname, "public"),
@@ -11,6 +13,7 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".js"],
+        plugins: [new TsConfigPathsPlugin()],
     },
     devServer: {
         contentBase: "./public/index.html",
@@ -32,6 +35,7 @@ module.exports = {
                     path.resolve(__dirname, "typings"),
                     path.resolve(__dirname, "node_modules"),
                 ],
+                options: tsconfig,
             },
             {
                 test: /\.spec.ts$/,
