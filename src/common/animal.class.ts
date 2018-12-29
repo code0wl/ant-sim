@@ -1,11 +1,11 @@
-import { IAnimal } from "./model";
+import { IAnimal, Coordinates } from "common/model";
 
 export abstract class Animal implements IAnimal {
-    public abstract isAlive;
+    public abstract isAlive: boolean;
 
-    public abstract isMoving;
+    public abstract isMoving: boolean;
 
-    public abstract move(x, y);
+    public abstract move({ longitude, latitude }: Coordinates): void;
 
-    public abstract eat();
+    public abstract eat(): void;
 }

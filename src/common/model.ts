@@ -1,8 +1,8 @@
 export interface IAnimal {
-    move(x: number, y: number): void;
+    move({ longitude, latitude }: Coordinates): void;
     eat(): void;
     isAlive: boolean;
-    isMoving(): boolean;
+    isMoving: boolean;
 }
 
 export interface Coordinates {
