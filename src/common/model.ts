@@ -5,6 +5,8 @@ export interface IAnimal {
     isMoving: boolean;
 }
 
+export type Colony = "red" | "black";
+
 export interface Coordinates {
     longitude: number;
     latitude: number;
