@@ -1,6 +1,6 @@
 import { Ant } from "actors/ant/ant.class";
 import { Game } from "game/game";
 
-const game = new Game(window.innerWidth, window.innerHeight, "gameCanvas", 100);
+const game = new Game(window.innerWidth, window.innerHeight, 100);
 
-new Ant(window.innerWidth, window.innerHeight);
+new Ant(game.app);
