@@ -3,6 +3,7 @@ import { Engine, Loader, Color, Texture } from "excalibur";
 import { Resources } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
 import { AntFarm } from "game/antfarm.class";
+import { Nest } from "props/nest.class";
 
 export class Game extends Engine {
     public grid: Grid;
@@ -36,8 +37,9 @@ export class Game extends Engine {
 
     private bootstrapGame() {
         const antFarm = new AntFarm();
+        const nest = new Nest(this.canvas)
 
-        for (const i = 0; i < this.colonySize; i++) {
+        for (let i = 0; i < this.colonySize; i++) {
             const ant = new Ant();
             antFarm.add(ant);
         }

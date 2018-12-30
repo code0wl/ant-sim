@@ -1,1 +1,9 @@
-export class Plant {}
+import { Actor } from "excalibur";
+import { Resources } from "common/resources";
+
+export class Puddle extends Actor {
+    constructor() {
+        super();
+        this.addDrawing(Resources.blackAntIdle);
+    }
+}
