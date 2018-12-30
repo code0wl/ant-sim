@@ -6,6 +6,8 @@ import {
     Texture,
     DisplayMode,
     Color,
+    Actor,
+    Vector,
 } from "excalibur";
 import { Ant } from "actors/ant/ant.class";
 
@@ -14,27 +16,42 @@ export class Game {
     public app: ex.Engine;
 
     constructor(size: number) {
+        this.app = new Engine({
+            backgroundColor: Color.fromHex("#50c878"),
+        });
+
         this.bootstrapGame();
         this.grid = new Grid(size);
     }
-
-    public animations(): any {
-        const blackIdleTexture = new Texture(
-            "spritesheets/__black_ant_idle-239x303.png"
-        );
-        return {
-            blackIdleTexture,
-            blackIdleAnimation: new SpriteSheet(blackIdleTexture, 5, 4, 48, 76),
-        };
-    }
     public bootstrapGame() {
-        this.app = new Engine({
-            backgroundColor: Color.fromHex("#50c878"),
-            displayMode: DisplayMode.FullScreen,
-        });
-        const loader = new Loader([this.animations().blackIdleTexture]);
+        const blackIdleTexture = new Texture(
+            "spritesheets/__black_ant_idle-71x90.png"
+        );
+        const blackIdleAnimation = new SpriteSheet(
+            blackIdleTexture,
+            5,
+            3,
+            14,
+            22.6
+        );
+
+        const loader = new Loader([blackIdleTexture]);
+
         this.app.start(loader).then(() => {
-            new Ant(this);
+            var player = new Actor();
+
+            var playerIdleAnimation = blackIdleAnimation.getAnimationForAll(
+                this.app,
+                30
+            );
+
+            player.pos = new Vector(
+                window.innerWidth / 2,
+                window.innerHeight / 2
+            );
+
+            player.addDrawing("idle", playerIdleAnimation);
+            this.app.add(player);
         });
     }
 }

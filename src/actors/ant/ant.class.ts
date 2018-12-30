@@ -10,17 +10,9 @@ export class Ant extends Animal {
 
     constructor(private game: Game, type?: Colony) {
         super();
-
-        this.idle();
     }
 
-    public idle() {
-        const player = new Actor();
-        player.addDrawing("idle", this.game.animations().blackIdleAnimation);
-        player.pos = new Vector(window.innerWidth / 2, window.innerHeight / 2);
-        console.log(this.game.app)
-        this.game.app.add(player);
-    }
+    public idle() {}
 
     public move() {}
 
