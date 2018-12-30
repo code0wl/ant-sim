@@ -1,6 +1,5 @@
 import { Animal } from "common/animal.class";
 import { Coordinates, Colony } from "common/model";
-import { Actor, SpriteSheet, Texture, Loader, Vector } from "excalibur";
 import { Game } from "game/game";
 
 export class Ant extends Animal {
@@ -10,6 +9,11 @@ export class Ant extends Animal {
 
     constructor(private game: Game, type?: Colony) {
         super();
+
+        this.setWidth(25);
+        this.setHeight(25);
+        this.x = 150;
+        this.y = 150;
     }
 
     public idle() {}
