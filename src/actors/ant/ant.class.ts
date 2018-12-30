@@ -1,8 +1,6 @@
 import { Animal } from "common/animal.class";
 import { Coordinates } from "common/model";
 
-declare const cc: any;
-
 export class Ant extends Animal {
     readonly currentLocation: Coordinates;
     public isAlive = true;
