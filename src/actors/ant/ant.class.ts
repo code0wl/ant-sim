@@ -1,22 +1,16 @@
 import { Animal } from "common/animal.class";
-import { Coordinates, Colony } from "common/model";
-import { Game } from "game/game";
+import { Coordinates } from "common/model";
+import { Resources } from "common/resources";
 
 export class Ant extends Animal {
     readonly currentLocation: Coordinates;
     public isAlive = true;
     public isMoving = false;
 
-    constructor(private game: Game, type?: Colony) {
+    constructor() {
         super();
-
-        this.setWidth(25);
-        this.setHeight(25);
-        this.x = 150;
-        this.y = 150;
+        this.addDrawing(Resources.blackAntIdle);
     }
-
-    public idle() {}
 
     public move() {}
 
