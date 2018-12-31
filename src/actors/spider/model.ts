@@ -1,5 +1,7 @@
-export interface IAnt {
+import { IAnimal } from "common/model";
+
+export interface ISpider {
     carry(item: Item): void;
 }
 
-export type Item = "wood" | "food" | "enemy";
+export type Item = IAnimal;

@@ -3,6 +3,7 @@ import { Engine, Loader, Color } from "excalibur";
 import { Resources } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
 import { AntFarm } from "game/antfarm.class";
+import { Spider } from "actors/spider/spider.class";
 
 export class Game extends Engine {
     public grid: Grid;
@@ -31,6 +32,9 @@ export class Game extends Engine {
             const ant = new Ant(this);
             antFarm.add(ant);
         }
+
+        const spider = new Spider(this);
+        antFarm.add(spider);
 
         this.add("antFarm", antFarm);
 

@@ -1,7 +1,7 @@
 import { Animal } from "common/animal.class";
 import { Coordinates } from "common/model";
 import { Resources } from "common/resources";
-import { SpriteSheet, Vector } from "excalibur";
+import { SpriteSheet, Vector, Engine } from "excalibur";
 import { Game } from "game/game";
 import { longitude, latitude } from "common/util/center";
 
@@ -10,20 +10,12 @@ export class Ant extends Animal {
     public isAlive = true;
     public isMoving = false;
 
-    constructor(private game: Game) {
+    constructor(private engine: Game) {
         super();
 
         this.pos = new Vector(longitude, latitude);
 
-        this.scale = new Vector(.03, .03);
-
-        const antSheetIdle = new SpriteSheet(
-            Resources.blackAntIdle,
-            5,
-            4,
-            540,
-            765
-        );
+        this.scale = new Vector(0.03, 0.03);
 
         const antSheetWalking = new SpriteSheet(
             Resources.blackAntWalking,
@@ -33,10 +25,8 @@ export class Ant extends Animal {
             765
         );
 
-        const animationIdle = antSheetIdle.getAnimationForAll(this.game, 10);
-        
         const animationWalking = antSheetWalking.getAnimationForAll(
-            this.game,
+            this.engine,
             10
         );
 
