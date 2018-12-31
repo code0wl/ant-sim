@@ -27,20 +27,20 @@ export class Ant extends Animal {
 
         const antSheetWalking = new SpriteSheet(
             Resources.blackAntWalking,
-            4,
-            4,
-            200,
-            550
+            5,
+            3,
+            540,
+            765
         );
 
         const animationIdle = antSheetIdle.getAnimationForAll(this.game, 10);
         
         const animationWalking = antSheetWalking.getAnimationForAll(
             this.game,
-            900
+            10
         );
 
-        this.addDrawing("walk", animationIdle);
+        this.addDrawing("walk", animationWalking);
     }
 
     public move() {}

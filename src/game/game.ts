@@ -19,12 +19,7 @@ export class Game extends Engine {
     }
 
     public preloadGame() {
-        this.loader = new Loader([Resources.blackAntIdle]);
-
-        Object.entries(Resources)
-            .filter(resource => typeof resource === "string")
-            .map((resource: any) => this.loader.addResource(resource));
-
+        this.loader = new Loader(Object.values(Resources));
         this.bootstrapGame();
     }
 
