@@ -50,6 +50,6 @@ export class AntFactory {
 
                 break;
         }
-        ant.addDrawing("spiderWalkin", animationWalking);
+        ant.addDrawing("antWalking", animationWalking);
     }
 }

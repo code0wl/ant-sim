@@ -11,10 +11,10 @@ export class Ant extends Animal {
 
     constructor(public gameInstance: Game, public type: antType) {
         super();
-
+    }
+    public onInitialize() {
         new AntFactory(this);
     }
-
     public move() {}
 
     public eat() {}
