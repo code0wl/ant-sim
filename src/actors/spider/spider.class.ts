@@ -1,6 +1,5 @@
 import { Animal } from "common/animal.class";
 import { Coordinates } from "common/model";
-import { Vector, Actor } from "excalibur";
 import { Game } from "game/game";
 import { IAnt } from "actors/ant/model";
 import { spiderType } from "actors/spider/model";
@@ -14,11 +13,12 @@ export class Spider extends Animal {
     public invaders: IAnt[];
     public spider: SpiderFactory;
 
-    constructor(game: Game, type: spiderType) {
+    constructor(public gameInstance: Game, public type: spiderType) {
         super();
-        new SpiderFactory(this, game, type);
+    }
 
-        console.log(this);
+    public onInitialize() {
+        new SpiderFactory(this);
     }
 
     public move() {

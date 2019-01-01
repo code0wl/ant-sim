@@ -1,33 +1,18 @@
 import { Animal } from "common/animal.class";
 import { Coordinates } from "common/model";
-import { Resources } from "common/resources";
-import { SpriteSheet, Vector, Engine } from "excalibur";
 import { Game } from "game/game";
-import { longitude, latitude } from "common/util/center";
+import { AntFactory } from "actors/ant/ant.factory";
+import { antType } from "actors/ant/model";
 
 export class Ant extends Animal {
     readonly currentLocation: Coordinates;
     public isAlive = true;
     public isMoving = false;
 
-    constructor(engine: Game) {
+    constructor(public gameInstance: Game, public type: antType) {
         super();
 
-        this.pos = new Vector(longitude, latitude);
-
-        this.scale = new Vector(0.03, 0.03);
-
-        const antSheetWalking = new SpriteSheet(
-            Resources.blackAntWalking,
-            5,
-            3,
-            540,
-            765
-        );
-
-        const animationWalking = antSheetWalking.getAnimationForAll(engine, 10);
-
-        this.addDrawing("walk", animationWalking);
+        new AntFactory(this);
     }
 
     public move() {}

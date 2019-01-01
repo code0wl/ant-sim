@@ -1,17 +1,21 @@
 import { spiderType } from "actors/spider/model";
-import { Actor, Vector, SpriteSheet } from "excalibur";
+import { Vector, SpriteSheet } from "excalibur";
 import { Resources } from "common/resources";
-import { Game } from "game/game";
+import { Spider } from "actors/spider/spider.class";
 
 export class SpiderFactory {
-    constructor(actor: Actor, game: Game, type: spiderType) {
-        switch (type) {
+
+    constructor(spider: Spider) {
+        let spiderSheetWalking;
+        let animationWalking;
+
+        switch (spider.type) {
             case spiderType.extra:
-                actor.scale = new Vector(0.4, 0.4);
+                spider.scale = new Vector(0.45, 0.45);
 
-                actor.pos = new Vector(150, 150);
+                spider.pos = new Vector(150, 150);
 
-                const spiderSheetWalking = new SpriteSheet(
+                spiderSheetWalking = new SpriteSheet(
                     Resources.spiderExtraWalk,
                     5,
                     2,
@@ -19,20 +23,19 @@ export class SpiderFactory {
                     800
                 );
 
-                const animationWalking = spiderSheetWalking.getAnimationForAll(
-                    game,
+                animationWalking = spiderSheetWalking.getAnimationForAll(
+                    spider.gameInstance,
                     150
                 );
 
-                actor.addDrawing("bigSpiderWalk", animationWalking);
                 break;
 
             case spiderType.small:
-                actor.scale = new Vector(0.15, 0.15);
+                spider.scale = new Vector(0.15, 0.15);
 
-                actor.pos = new Vector(500, 150);
+                spider.pos = new Vector(500, 150);
 
-                const spiderSheetWalking = new SpriteSheet(
+                spiderSheetWalking = new SpriteSheet(
                     Resources.spiderSmallWalk,
                     5,
                     2,
@@ -40,20 +43,18 @@ export class SpiderFactory {
                     800
                 );
 
-                const animationWalking = spiderSheetWalking.getAnimationForAll(
-                    game,
+                animationWalking = spiderSheetWalking.getAnimationForAll(
+                    spider.gameInstance,
                     30
                 );
-
-                actor.addDrawing("smallSpiderWalk", animationWalking);
                 break;
 
             case spiderType.medium:
-                actor.scale = new Vector(0.25, 0.25);
+                spider.scale = new Vector(0.25, 0.25);
 
-                actor.pos = new Vector(150, 500);
+                spider.pos = new Vector(150, 500);
 
-                const spiderSheetWalking = new SpriteSheet(
+                spiderSheetWalking = new SpriteSheet(
                     Resources.spiderMediumWalk,
                     5,
                     2,
@@ -61,20 +62,18 @@ export class SpiderFactory {
                     800
                 );
 
-                const animationWalking = spiderSheetWalking.getAnimationForAll(
-                    game,
+                animationWalking = spiderSheetWalking.getAnimationForAll(
+                    spider.gameInstance,
                     60
                 );
-
-                actor.addDrawing("mediumSpiderWalk", animationWalking);
                 break;
 
             case spiderType.larger:
-                actor.scale = new Vector(0.35, 0.35);
+                spider.scale = new Vector(0.35, 0.35);
 
-                actor.pos = new Vector(500, 500);
+                spider.pos = new Vector(500, 500);
 
-                const spiderSheetWalking = new SpriteSheet(
+                spiderSheetWalking = new SpriteSheet(
                     Resources.spiderLargerWalk,
                     5,
                     2,
@@ -82,13 +81,12 @@ export class SpiderFactory {
                     740
                 );
 
-                const animationWalking = spiderSheetWalking.getAnimationForAll(
-                    game,
-                    120
+                animationWalking = spiderSheetWalking.getAnimationForAll(
+                    spider.gameInstance,
+                    110
                 );
-
-                actor.addDrawing("mediumSpiderWalk", animationWalking);
                 break;
         }
+        spider.addDrawing("spiderWalkin", animationWalking);
     }
 }
