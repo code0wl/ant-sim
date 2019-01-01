@@ -11,7 +11,7 @@ export class AntFactory {
 
         switch (ant.type) {
             case antType.red:
-                ant.scale = new Vector(0.05, 0.05);
+                ant.scale = new Vector(0.03, 0.03);
 
                 ant.pos = new Vector(longitude, latitude);
 
@@ -25,15 +25,15 @@ export class AntFactory {
 
                 animationWalking = antSheetWalking.getAnimationForAll(
                     ant.gameInstance,
-                    150
+                    30
                 );
 
                 break;
 
             case antType.black:
-                ant.scale = new Vector(0.45, 0.45);
+                ant.scale = new Vector(0.03, 0.03);
 
-                ant.pos = new Vector(150, 150);
+                ant.pos = new Vector(longitude + 50, latitude);
 
                 antSheetWalking = new SpriteSheet(
                     Resources.blackAntWalking,
@@ -45,7 +45,7 @@ export class AntFactory {
 
                 animationWalking = antSheetWalking.getAnimationForAll(
                     ant.gameInstance,
-                    150
+                    30
                 );
 
                 break;
