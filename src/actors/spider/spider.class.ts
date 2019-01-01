@@ -1,37 +1,24 @@
 import { Animal } from "common/animal.class";
 import { Coordinates } from "common/model";
-import { Resources } from "common/resources";
-import { SpriteSheet, Vector } from "excalibur";
+import { Vector, Actor } from "excalibur";
 import { Game } from "game/game";
+import { IAnt } from "actors/ant/model";
+import { spiderType } from "actors/spider/model";
+import { SpiderFactory } from "actors/spider/spider.factory";
 
 export class Spider extends Animal {
-    readonly currentLocation: Coordinates;
+    public readonly currentLocation: Coordinates;
+
     public isAlive = true;
     public isMoving = false;
+    public invaders: IAnt[];
+    public spider: SpiderFactory;
 
-    constructor(private game: Game) {
+    constructor(game: Game, type: spiderType) {
         super();
+        new SpiderFactory(this, game, type);
 
-        this.pos = new Vector(150, 150);
-
-        this.scale = new Vector(0.3, 0.3);
-
-        const spiderSheetWalking = new SpriteSheet(
-            Resources.spiderBigWalk,
-            5,
-            2,
-            920,
-            800
-        );
-
-        const animationWalking = spiderSheetWalking.getAnimationForAll(
-            this.game,
-            30
-        );
-
-        this.addDrawing("bigSpiderWalk", animationWalking);
-
-        console.log("adding spider");
+        console.log(this);
     }
 
     public move() {

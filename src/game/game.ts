@@ -4,6 +4,7 @@ import { Resources } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
 import { AntFarm } from "game/antfarm.class";
 import { Spider } from "actors/spider/spider.class";
+import { spiderType } from "actors/spider/model";
 
 export class Game extends Engine {
     public grid: Grid;
@@ -33,8 +34,17 @@ export class Game extends Engine {
             antFarm.add(ant);
         }
 
-        const spider = new Spider(this);
-        antFarm.add(spider);
+        const spider = new Spider(this, spiderType.extra);
+
+        const spiderSmall = new Spider(this, spiderType.small);
+
+        const spiderMedium = new Spider(this, spiderType.medium);
+
+        const spiderLarger = new Spider(this, spiderType.larger);
+
+        [spider, spiderSmall, spiderMedium, spiderLarger].forEach(spider => {
+            antFarm.add(spider);
+        });
 
         this.add("antFarm", antFarm);
 

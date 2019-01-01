@@ -10,7 +10,7 @@ export class Ant extends Animal {
     public isAlive = true;
     public isMoving = false;
 
-    constructor(private engine: Game) {
+    constructor(engine: Game) {
         super();
 
         this.pos = new Vector(longitude, latitude);
@@ -25,10 +25,7 @@ export class Ant extends Animal {
             765
         );
 
-        const animationWalking = antSheetWalking.getAnimationForAll(
-            this.engine,
-            10
-        );
+        const animationWalking = antSheetWalking.getAnimationForAll(engine, 10);
 
         this.addDrawing("walk", animationWalking);
     }
