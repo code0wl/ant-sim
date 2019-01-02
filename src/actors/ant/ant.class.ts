@@ -13,6 +13,7 @@ export class Ant extends Animal {
     constructor(public type: antType) {
         super();
     }
+    
     public onInitialize(engine: Engine) {
         const ant = new AntFactory(this, engine);
         this.addDrawing("antWalking", ant as IDrawable);

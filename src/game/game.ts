@@ -43,13 +43,13 @@ export class Game extends Engine {
             antFarm.add(ant);
         }
 
-        const spider = new Spider(this, spiderType.extra);
+        const spider = new Spider(spiderType.extra);
 
-        const spiderSmall = new Spider(this, spiderType.small);
+        const spiderSmall = new Spider(spiderType.small);
 
-        const spiderMedium = new Spider(this, spiderType.medium);
+        const spiderMedium = new Spider(spiderType.medium);
 
-        const spiderLarger = new Spider(this, spiderType.larger);
+        const spiderLarger = new Spider(spiderType.larger);
 
         [spider, spiderSmall, spiderMedium, spiderLarger].forEach(spider => {
             antFarm.add(spider);
