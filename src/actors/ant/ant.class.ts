@@ -1,6 +1,5 @@
 import { Animal } from "common/animal.class";
 import { Coordinates } from "common/model";
-import { Game } from "game/game";
 import { AntFactory } from "actors/ant/ant.factory";
 import { antType } from "actors/ant/model";
 import { Engine, IDrawable } from "excalibur";
@@ -13,13 +12,15 @@ export class Ant extends Animal {
     constructor(public type: antType) {
         super();
     }
-    
+
     public onInitialize(engine: Engine) {
         const ant = new AntFactory(this, engine);
         this.addDrawing("antWalking", ant as IDrawable);
     }
 
-    public move() {}
+    public move() {
+        this.isMoving = !this.isMoving;
+    }
 
     public eat() {}
 

@@ -1,15 +1,38 @@
 import { Texture, SpriteSheet } from "excalibur";
 
-export const Resources = {
-    blackAntIdle: new Texture("spritesheets/__black_ant_idle.png"),
-    blackAntWalking: new Texture("spritesheets/__black_ant_walk.png"),
-
-    redAntIdle: new Texture("spritesheets/__red_ant_idle.png"),
-    redAntWalking: new Texture("spritesheets/__red_ant_walk.png"),
-
+const spiderSmall = {
     spiderSmallWalk: new Texture(
         "Spiders_Characters_Spritesheets/spider4/spritesheets/sheet_spider_walk.png"
     ),
+    spiderSmallIdle: new Texture(
+        "Spiders_Characters_Spritesheets/spider4/spritesheets/sheet_spider_idle.png"
+    ),
+    spiderSmallHit: new Texture(
+        "Spiders_Characters_Spritesheets/spider4/spritesheets/sheet_spider_hit.png"
+    ),
+    spiderSmallDie: new Texture(
+        "Spiders_Characters_Spritesheets/spider4/spritesheets/sheet_spider_die.png"
+    ),
+    spiderSmallAttack: new Texture(
+        "Spiders_Characters_Spritesheets/spider4/spritesheets/sheet_spider_attack.png"
+    ),
+};
+
+const blackAnt = {
+    blackAntIdle: new Texture("spritesheets/__black_ant_idle.png"),
+    blackAntWalking: new Texture("spritesheets/__black_ant_walk.png"),
+};
+
+const redAnt = {
+    redAntIdle: new Texture("spritesheets/__red_ant_idle.png"),
+    redAntWalking: new Texture("spritesheets/__red_ant_walk.png"),
+};
+
+export const Resources = {
+    ...blackAnt,
+    ...redAnt,
+    ...spiderSmall,
+
     spiderMediumWalk: new Texture(
         "Spiders_Characters_Spritesheets/spider3/spritesheets/sheet_spider_walk.png"
     ),
@@ -21,7 +44,7 @@ export const Resources = {
     ),
 };
 
-export const SpriteSheetResources = {
+export const SpriteSheetResourcesMoving = {
     spiderSheetWalkingExtra: new SpriteSheet(
         Resources.spiderExtraWalk,
         5,
@@ -66,9 +89,13 @@ export const SpriteSheetResources = {
     ),
 };
 
-// const animations = {
-//     antRedWalking: SpriteSheetResources.antSheetWalkingRed.getAnimationForAll(
-//         ant.gameInstance,
-//         30
-//     ),
-// };
+export const SpriteSheetResourcesIdle = {
+    antSheetWalkingBlack: new SpriteSheet(
+        Resources.blackAntIdle,
+        5,
+        3,
+        540,
+        765
+    ),
+    antSheetWalkingRed: new SpriteSheet(Resources.redAntIdle, 5, 3, 540, 765),
+};

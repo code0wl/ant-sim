@@ -8,7 +8,6 @@ export class AntLion extends Animal {
 
     constructor() {
         super();
-        console.log("ant-lion");
     }
 
     public move() {}

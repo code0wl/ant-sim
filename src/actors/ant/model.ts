@@ -5,7 +5,6 @@ export interface IAnt {
 export enum antType {
     red,
     black,
-    yellow,
 }
 
 export type Item = "wood" | "food" | "enemy";

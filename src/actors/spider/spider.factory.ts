@@ -1,6 +1,6 @@
 import { spiderType } from "actors/spider/model";
 import { Vector, Engine } from "excalibur";
-import { SpriteSheetResources } from "common/resources";
+import { SpriteSheetResourcesMoving } from "common/resources";
 import { Spider } from "actors/spider/spider.class";
 
 export class SpiderFactory {
@@ -11,7 +11,7 @@ export class SpiderFactory {
 
                 spider.pos = new Vector(150, 150);
 
-                return SpriteSheetResources.spiderSheetWalkingExtra.getAnimationForAll(
+                return SpriteSheetResourcesMoving.spiderSheetWalkingExtra.getAnimationForAll(
                     engine,
                     150
                 );
@@ -21,7 +21,7 @@ export class SpiderFactory {
 
                 spider.pos = new Vector(500, 150);
 
-                return SpriteSheetResources.spiderSheetWalkingSmall.getAnimationForAll(
+                return SpriteSheetResourcesMoving.spiderSheetWalkingSmall.getAnimationForAll(
                     engine,
                     30
                 );
@@ -31,7 +31,7 @@ export class SpiderFactory {
 
                 spider.pos = new Vector(150, 500);
 
-                return SpriteSheetResources.spiderSheetWalkingMedium.getAnimationForAll(
+                return SpriteSheetResourcesMoving.spiderSheetWalkingMedium.getAnimationForAll(
                     engine,
                     60
                 );
@@ -41,7 +41,7 @@ export class SpiderFactory {
 
                 spider.pos = new Vector(500, 500);
 
-                return SpriteSheetResources.spiderSheetWalkingLarger.getAnimationForAll(
+                return SpriteSheetResourcesMoving.spiderSheetWalkingLarger.getAnimationForAll(
                     engine,
                     110
                 );

@@ -1,5 +1,5 @@
 import { Vector, Engine } from "excalibur";
-import { SpriteSheetResources } from "common/resources";
+import { SpriteSheetResourcesMoving } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
 import { antType } from "actors/ant/model";
 import { longitude, latitude } from "common/util/center";
@@ -17,7 +17,7 @@ export class AntFactory {
             case antType.red:
                 ant.pos = new Vector(longitude, latitude);
 
-                return SpriteSheetResources.antSheetWalkingRed.getAnimationForAll(
+                return SpriteSheetResourcesMoving.antSheetWalkingRed.getAnimationForAll(
                     engine,
                     fps
                 );
@@ -25,7 +25,7 @@ export class AntFactory {
             case antType.black:
                 ant.pos = new Vector(longitude + 50, latitude);
 
-                return SpriteSheetResources.antSheetWalkingBlack.getAnimationForAll(
+                return SpriteSheetResourcesMoving.antSheetWalkingBlack.getAnimationForAll(
                     engine,
                     fps
                 );
