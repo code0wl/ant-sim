@@ -13,8 +13,10 @@ export class Ant extends Animal {
         super();
     }
     public onInitialize() {
-        new AntFactory(this);
+        const ant = new AntFactory(this);
+        this.addDrawing("antWalking", ant);
     }
+
     public move() {}
 
     public eat() {}

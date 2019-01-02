@@ -21,6 +21,10 @@ export class Game extends Engine {
         this.grid = new Grid(this.mapSize);
     }
 
+    public get game() {
+        return this;
+    }
+
     public preloadGame() {
         this.loader = new Loader(Object.values(Resources));
         this.bootstrapGame();

@@ -65,3 +65,10 @@ export const SpriteSheetResources = {
         765
     ),
 };
+
+// const animations = {
+//     antRedWalking: SpriteSheetResources.antSheetWalkingRed.getAnimationForAll(
+//         ant.gameInstance,
+//         30
+//     ),
+// };
