@@ -1,12 +1,11 @@
-import { Vector, SpriteSheet } from "excalibur";
-import { Resources } from "common/resources";
+import { Vector } from "excalibur";
+import { SpriteSheetResources } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
 import { antType } from "actors/ant/model";
 import { longitude, latitude } from "common/util/center";
 
 export class AntFactory {
     constructor(ant: Ant) {
-        let antSheetWalking;
         let animationWalking;
 
         switch (ant.type) {
@@ -15,15 +14,7 @@ export class AntFactory {
 
                 ant.pos = new Vector(longitude, latitude);
 
-                antSheetWalking = new SpriteSheet(
-                    Resources.redAntWalking,
-                    5,
-                    3,
-                    540,
-                    765
-                );
-
-                animationWalking = antSheetWalking.getAnimationForAll(
+                animationWalking = SpriteSheetResources.antSheetWalkingRed.getAnimationForAll(
                     ant.gameInstance,
                     30
                 );
@@ -35,15 +26,7 @@ export class AntFactory {
 
                 ant.pos = new Vector(longitude + 50, latitude);
 
-                antSheetWalking = new SpriteSheet(
-                    Resources.blackAntWalking,
-                    5,
-                    3,
-                    540,
-                    765
-                );
-
-                animationWalking = antSheetWalking.getAnimationForAll(
+                animationWalking = SpriteSheetResources.antSheetWalkingBlack.getAnimationForAll(
                     ant.gameInstance,
                     30
                 );

@@ -1,4 +1,4 @@
-import { Texture } from "excalibur";
+import { Texture, SpriteSheet } from "excalibur";
 
 export const Resources = {
     blackAntIdle: new Texture("spritesheets/__black_ant_idle.png"),
@@ -18,5 +18,50 @@ export const Resources = {
     ),
     spiderExtraWalk: new Texture(
         "Spiders_Characters_Spritesheets/spider1/spritesheets/sheet_spider_walk.png"
+    ),
+};
+
+export const SpriteSheetResources = {
+    spiderSheetWalkingExtra: new SpriteSheet(
+        Resources.spiderExtraWalk,
+        5,
+        2,
+        920,
+        800
+    ),
+    spiderSheetWalkingSmall: new SpriteSheet(
+        Resources.spiderSmallWalk,
+        5,
+        2,
+        920,
+        800
+    ),
+    spiderSheetWalkingMedium: new SpriteSheet(
+        Resources.spiderMediumWalk,
+        5,
+        2,
+        920,
+        800
+    ),
+    spiderSheetWalkingLarger: new SpriteSheet(
+        Resources.spiderLargerWalk,
+        5,
+        2,
+        880,
+        740
+    ),
+    antSheetWalkingBlack: new SpriteSheet(
+        Resources.blackAntWalking,
+        5,
+        3,
+        540,
+        765
+    ),
+    antSheetWalkingRed: new SpriteSheet(
+        Resources.redAntWalking,
+        5,
+        3,
+        540,
+        765
     ),
 };

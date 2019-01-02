@@ -10,7 +10,8 @@ export class Spider extends Animal {
 
     public isAlive = true;
     public isMoving = false;
-    public invaders: IAnt[];
+
+    public attackers: IAnt[];
     public spider: SpiderFactory;
 
     constructor(public gameInstance: Game, public type: spiderType) {
