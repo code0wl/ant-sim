@@ -27,7 +27,7 @@ export class Spider extends Animal {
 
         animationLoader(spiderAnimation, this);
 
-        this.idle();
+        this.move();
     }
 
     public move() {
@@ -41,6 +41,11 @@ export class Spider extends Animal {
     }
 
     public eat() {}
+
+    public die() {
+        this.isMoving = false;
+        this.setDrawing("dead");
+    }
 
     public fight() {}
 

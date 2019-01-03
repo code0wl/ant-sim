@@ -75,11 +75,13 @@ const spiderLarge = {
 const blackAnt = {
     blackAntIdle: new Texture("spritesheets/__black_ant_idle.png"),
     blackAntWalking: new Texture("spritesheets/__black_ant_walk.png"),
+    blackAntDead: new Texture("spritesheets/__black_ant_dead.png"),
 };
 
 const redAnt = {
     redAntIdle: new Texture("spritesheets/__red_ant_idle.png"),
     redAntWalking: new Texture("spritesheets/__red_ant_walk.png"),
+    blackRedDead: new Texture("spritesheets/__red_ant_dead.png"),
 };
 
 export const Resources = {
@@ -103,22 +105,22 @@ export const SpriteSheetResourcesMoving = {
         Resources.spiderSmallWalk,
         5,
         2,
-        923,
+        930,
         815
     ),
     spiderSheetWalkingMedium: new SpriteSheet(
         Resources.spiderMediumWalk,
         5,
         2,
-        923,
-        815
+        918,
+        781
     ),
     spiderSheetWalkingLarger: new SpriteSheet(
         Resources.spiderLargerWalk,
         5,
         2,
-        880,
-        740
+        882.5,
+        756
     ),
     antSheetWalkingBlack: new SpriteSheet(
         Resources.blackAntWalking,
@@ -157,14 +159,14 @@ export const SpriteSheetResourcesIdle = {
         Resources.spiderMediumIdle,
         5,
         2,
-        923,
-        815
+        918,
+        781
     ),
     spiderSheetIdleLarger: new SpriteSheet(
         Resources.spiderLargerIdle,
         5,
         2,
-        880,
-        740
+        882.5,
+        756
     ),
 };
