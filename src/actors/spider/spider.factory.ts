@@ -27,7 +27,7 @@ export class SpiderFactory {
                             this.engine,
                             150
                         ),
-                        idle: SpriteSheetResourcesMoving.spiderSheetWalkingExtra.getAnimationForAll(
+                        idle: SpriteSheetResourcesIdle.spiderSheetIdleExtra.getAnimationForAll(
                             this.engine,
                             150
                         ),
@@ -36,7 +36,6 @@ export class SpiderFactory {
 
             case spiderType.small:
                 this.spider.scale = new Vector(0.15, 0.15);
-
                 this.spider.pos = new Vector(500, 150);
 
                 return [
@@ -47,7 +46,7 @@ export class SpiderFactory {
                         ),
                         idle: SpriteSheetResourcesIdle.spiderSheetIdleSmall.getAnimationForAll(
                             this.engine,
-                            30
+                            80
                         ),
                     },
                 ];
@@ -63,7 +62,7 @@ export class SpiderFactory {
                             this.engine,
                             60
                         ),
-                        idle: SpriteSheetResourcesMoving.spiderSheetWalkingMedium.getAnimationForAll(
+                        idle: SpriteSheetResourcesIdle.spiderSheetIdleMedium.getAnimationForAll(
                             this.engine,
                             60
                         ),
@@ -81,7 +80,7 @@ export class SpiderFactory {
                             this.engine,
                             110
                         ),
-                        idle: SpriteSheetResourcesMoving.spiderSheetWalkingLarger.getAnimationForAll(
+                        idle: SpriteSheetResourcesIdle.spiderSheetIdleLarger.getAnimationForAll(
                             this.engine,
                             110
                         ),

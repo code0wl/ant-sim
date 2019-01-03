@@ -1,9 +1,10 @@
 import { Animal } from "common/animal.class";
-import { Coordinates, IAnimationType } from "common/model";
+import { Coordinates } from "common/model";
 import { IAnt } from "actors/ant/model";
 import { spiderType } from "actors/spider/model";
 import { SpiderFactory } from "actors/spider/spider.factory";
-import { Engine, IDrawable, CollisionResolutionStrategy } from "excalibur";
+import { Engine } from "excalibur";
+import { animationLoader } from "common/util/animation-loader";
 
 export class Spider extends Animal {
     public readonly currentLocation: Coordinates;
@@ -24,13 +25,7 @@ export class Spider extends Animal {
             engine
         ).getAnimation();
 
-        // make into util
-        spiderAnimation.map(animation =>
-            Object.entries(animation).map(animationName => {
-                const [name, animation] = animationName;
-                this.addDrawing(name, animation);
-            })
-        );
+        animationLoader(spiderAnimation, this);
 
         this.idle();
     }
