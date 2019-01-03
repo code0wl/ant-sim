@@ -26,7 +26,13 @@ export class Game extends Engine {
     }
 
     public preloadGame() {
-        this.loader = new Loader(Object.values(Resources));
+        const textures = Object.values(Resources).reduce((acc, next) => {
+            acc.push(...Object.values(next));
+            return acc;
+        }, []);
+
+        this.loader = new Loader(textures);
+
         this.bootstrapGame();
     }
 

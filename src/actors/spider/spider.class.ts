@@ -26,8 +26,8 @@ export class Spider extends Animal {
         ).getAnimation();
 
         animationLoader(spiderAnimation, this);
-
-        this.move();
+        setInterval(() => this.move(), 5000);
+        setInterval(() => this.idle(), 10000);
     }
 
     public move() {
