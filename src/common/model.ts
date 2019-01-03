@@ -1,3 +1,5 @@
+import { IDrawable } from "excalibur";
+
 export interface IAnimal {
     move({ longitude, latitude }: Coordinates): void;
     eat(): void;
@@ -5,9 +7,12 @@ export interface IAnimal {
     isMoving: boolean;
 }
 
-export type Colony = "red" | "black";
-
 export interface Coordinates {
     longitude: number;
     latitude: number;
+}
+
+export interface IAnimationType {
+    walking: IDrawable;
+    idle: IDrawable;
 }
