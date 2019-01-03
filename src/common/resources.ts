@@ -90,12 +90,7 @@ export const SpriteSheetResourcesMoving = {
 };
 
 export const SpriteSheetResourcesIdle = {
-    antSheetWalkingBlack: new SpriteSheet(
-        Resources.blackAntIdle,
-        5,
-        3,
-        540,
-        765
-    ),
-    antSheetWalkingRed: new SpriteSheet(Resources.redAntIdle, 5, 3, 540, 765),
+    antSheetIdleBlack: new SpriteSheet(Resources.blackAntIdle, 5, 3, 540, 765),
+    antSheetIdleRed: new SpriteSheet(Resources.redAntIdle, 5, 3, 540, 765),
+    spiderSheetIdleSmall: new SpriteSheet(Resources.spiderSmallIdle, 5, 3, 540, 765),
 };

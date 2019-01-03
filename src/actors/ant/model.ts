@@ -8,3 +8,5 @@ export enum antType {
 }
 
 export type Item = "wood" | "food" | "enemy";
+
+export type Colony = "red" | "black";
