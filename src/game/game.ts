@@ -40,13 +40,8 @@ export class Game extends Engine {
         const antFarm = new AntFarm();
 
         for (let i = 0; i < this.colonySize; i++) {
-            const ant = new Ant(antType.black);
-            antFarm.add(ant);
-        }
-
-        for (let i = 0; i < this.colonySize; i++) {
-            const ant = new Ant(antType.red);
-            antFarm.add(ant);
+            antFarm.add(new Ant(antType.red));
+            antFarm.add(new Ant(antType.black));
         }
 
         const spider = new Spider(spiderType.extra);
