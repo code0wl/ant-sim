@@ -47,7 +47,7 @@ export class Spider extends Animal {
         this.setDrawing("dead");
     }
 
-    public fight() {}
+    public attack() {}
 
     public getLocation() {
         return this.currentLocation;

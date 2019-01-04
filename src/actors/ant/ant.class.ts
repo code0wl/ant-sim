@@ -39,7 +39,7 @@ export class Ant extends Animal {
 
     public eat() {}
 
-    public fight() {}
+    public attack() {}
 
     public getLocation() {
         return this.currentLocation;

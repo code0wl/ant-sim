@@ -9,4 +9,6 @@ export abstract class Animal extends Actor implements IAnimal {
     public abstract move({ longitude, latitude }: Coordinates): void;
 
     public abstract eat(): void;
+
+    public abstract attack(): void;
 }

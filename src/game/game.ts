@@ -1,4 +1,3 @@
-import { Grid } from "game/grid";
 import { Engine, Loader, Color } from "excalibur";
 import { Resources } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
@@ -6,23 +5,18 @@ import { AntFarm } from "game/antfarm.class";
 import { Spider } from "actors/spider/spider.class";
 import { spiderType } from "actors/spider/model";
 import { antType } from "actors/ant/model";
+import { IMap } from "game/model";
+import { Grid, gridSystem } from "game/grid";
 
 export class Game extends Engine {
-    public grid: Grid;
-    public app: ex.Engine;
     public loader: Loader;
+    public grid: Grid;
 
-    constructor(public mapSize: number, public colonySize: number) {
+    constructor(public map: IMap, public colonySize: number) {
         super({
             suppressPlayButton: true,
             backgroundColor: Color.fromHex("#50c878"),
         });
-
-        this.grid = new Grid(this.mapSize);
-    }
-
-    public get game() {
-        return this;
     }
 
     public preloadGame() {
@@ -32,6 +26,8 @@ export class Game extends Engine {
         }, []);
 
         this.loader = new Loader(textures);
+
+        this.grid = gridSystem;
 
         this.bootstrapGame();
     }
@@ -44,15 +40,13 @@ export class Game extends Engine {
             antFarm.add(new Ant(antType.black));
         }
 
-        const spider = new Spider(spiderType.extra);
-
-        const spiderSmall = new Spider(spiderType.small);
-
-        const spiderMedium = new Spider(spiderType.medium);
-
-        const spiderLarger = new Spider(spiderType.larger);
-
-        [spider, spiderSmall, spiderMedium, spiderLarger].forEach(spider => {
+        // pass this to the game directory
+        [
+            new Spider(spiderType.extra),
+            new Spider(spiderType.small),
+            new Spider(spiderType.medium),
+            new Spider(spiderType.larger),
+        ].forEach(spider => {
             antFarm.add(spider);
         });
 
