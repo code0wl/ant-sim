@@ -1,12 +1,12 @@
 import { Animal } from "common/animal.class";
-import { Coordinates } from "common/model";
+import { Point } from "common/model";
 import { AntFactory } from "actors/ant/ant.factory";
 import { antType } from "actors/ant/model";
 import { Engine } from "excalibur";
 import { animationLoader } from "common/util/animation-loader";
 
 export class Ant extends Animal {
-    readonly currentLocation: Coordinates;
+    readonly currentLocation: Point;
     public isAlive = true;
     public isMoving = false;
 
@@ -17,7 +17,7 @@ export class Ant extends Animal {
     public onInitialize(engine: Engine) {
         const antAnimation = new AntFactory(
             this,
-            { latitude: 50, longitude: 50 },
+            { y: 50, x: 50 },
             engine
         ).getAnimation();
 

@@ -3,6 +3,9 @@ import { currentResolution } from "common/util/center";
 import { Actor } from "excalibur";
 
 export class Grid extends Actor {
+    private rows: number;
+    private cols: number;
+
     constructor() {
         super();
         this.renderGrid(2);
@@ -13,17 +16,17 @@ export class Grid extends Actor {
     }
     // think of better type
     public interasections(elements: any) {
-        // pass event when elements have intersected
+        // pass event when actors have intersected
     }
 
     public getCell(map: IMap) {}
 
-    private renderGrid(cellSize: number) {
+    private renderGrid(cellScale: number) {
         const { x, y } = currentResolution;
 
-        for (let i = 0; i < x; i += cellSize) {}
+        for (let i = 0; i < x; i += cellScale) {}
 
-        for (let i = 0; i < y; i += cellSize) {}
+        for (let i = 0; i < y; i += cellScale) {}
     }
 }
 

@@ -1,21 +1,20 @@
 import { Animal } from "common/animal.class";
-import { Coordinates } from "common/model";
+import { Point } from "common/model";
 
 export class Caterpillar extends Animal {
-    readonly currentLocation: Coordinates;
+    readonly currentLocation: Point;
     public isAlive = true;
     public isMoving = false;
 
     constructor() {
         super();
-        console.log("ant");
     }
 
     public move() {}
 
     public eat() {}
 
-    public fight() {}
+    public attack() {}
 
     public getLocation() {
         return this.currentLocation;

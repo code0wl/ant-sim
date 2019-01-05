@@ -1,4 +1,4 @@
-import { IAnimal, Coordinates } from "common/model";
+import { IAnimal, Point } from "common/model";
 import { Actor } from "excalibur";
 
 export abstract class Animal extends Actor implements IAnimal {
@@ -6,7 +6,7 @@ export abstract class Animal extends Actor implements IAnimal {
 
     public abstract isMoving: boolean;
 
-    public abstract move({ longitude, latitude }: Coordinates): void;
+    public abstract move({ x, y }: Point): void;
 
     public abstract eat(): void;
 

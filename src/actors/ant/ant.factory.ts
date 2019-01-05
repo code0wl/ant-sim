@@ -5,13 +5,13 @@ import {
 } from "common/resources";
 import { Ant } from "actors/ant/ant.class";
 import { antType } from "actors/ant/model";
-import { longitude, latitude } from "common/util/center";
-import { Coordinates } from "common/model";
+import { x, y } from "common/util/center";
+import { Point } from "common/model";
 
 export class AntFactory {
     constructor(
         private ant: Ant,
-        private position: Coordinates,
+        private position: Point,
         private engine: Engine
     ) {}
 
@@ -25,7 +25,7 @@ export class AntFactory {
         // check which ant needs to be created
         switch (this.ant.type) {
             case antType.red:
-                this.ant.pos = new Vector(longitude, latitude);
+                this.ant.pos = new Vector(x, y);
 
                 return [
                     {
@@ -41,7 +41,7 @@ export class AntFactory {
                 ];
 
             case antType.black:
-                this.ant.pos = new Vector(longitude + 50, latitude);
+                this.ant.pos = new Vector(x + 50, y);
 
                 return [
                     {
