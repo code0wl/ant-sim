@@ -1,5 +1,6 @@
 import { Texture } from "excalibur";
 
+// implement strategy pattern to create these assets
 export default {
     blackAnt: {
         walk: new Texture("spritesheets/__black_ant_walk.png"),

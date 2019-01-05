@@ -12,29 +12,29 @@ export const SpriteSheetResourcesMoving = {
         Resources.spiderExtra.walk,
         5,
         2,
-        923,
-        815
+        200,
+        176
     ),
     spiderSheetWalkingSmall: new SpriteSheet(
         Resources.spiderSmall.walk,
         5,
         2,
-        930,
-        815
+        200,
+        176
     ),
     spiderSheetWalkingMedium: new SpriteSheet(
         Resources.spiderMedium.walk,
         5,
         2,
-        918,
-        781
+        200,
+        176
     ),
     spiderSheetWalkingLarger: new SpriteSheet(
         Resources.spiderLarger.walk,
         5,
         2,
-        882.5,
-        756
+        200,
+        176
     ),
     antSheetWalkingBlack: new SpriteSheet(
         Resources.blackAnt.walk,
@@ -53,28 +53,28 @@ export const SpriteSheetResourcesIdle = {
         Resources.spiderSmall.idle,
         5,
         2,
-        930,
-        815
+        200,
+        176
     ),
     spiderSheetIdleExtra: new SpriteSheet(
         Resources.spiderExtra.idle,
         5,
         2,
-        923,
-        815
+        200,
+        176
     ),
     spiderSheetIdleMedium: new SpriteSheet(
         Resources.spiderMedium.idle,
         5,
         2,
-        918,
-        781
+        200,
+        176
     ),
     spiderSheetIdleLarger: new SpriteSheet(
         Resources.spiderLarger.idle,
         5,
         2,
-        882.5,
-        756
+        200,
+        176
     ),
 };

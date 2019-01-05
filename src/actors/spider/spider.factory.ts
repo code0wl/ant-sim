@@ -5,19 +5,19 @@ import {
     SpriteSheetResourcesIdle,
 } from "common/resources";
 import { Spider } from "actors/spider/spider.class";
-import { Coordinates, IAnimationType } from "common/model";
+import { IAnimationType, Point } from "common/model";
 
 export class SpiderFactory {
     constructor(
         private spider: Spider,
-        private position: Coordinates,
+        private position: Point,
         private engine: Engine
     ) {}
 
     public getAnimation(): IAnimationType[] {
         switch (this.spider.type) {
             case spiderType.extra:
-                this.spider.scale = new Vector(0.45, 0.45);
+                this.spider.scale = new Vector(1.5, 1.5);
 
                 this.spider.pos = new Vector(150, 150);
 
@@ -35,7 +35,7 @@ export class SpiderFactory {
                 ];
 
             case spiderType.small:
-                this.spider.scale = new Vector(0.15, 0.15);
+                this.spider.scale = new Vector(0.5, 0.5);
                 this.spider.pos = new Vector(500, 150);
 
                 return [
@@ -52,7 +52,7 @@ export class SpiderFactory {
                 ];
 
             case spiderType.medium:
-                this.spider.scale = new Vector(0.25, 0.25);
+                this.spider.scale = new Vector(0.75, 0.75);
 
                 this.spider.pos = new Vector(150, 500);
 
@@ -70,8 +70,6 @@ export class SpiderFactory {
                 ];
 
             case spiderType.larger:
-                this.spider.scale = new Vector(0.35, 0.35);
-
                 this.spider.pos = new Vector(500, 500);
 
                 return [
