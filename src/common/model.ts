@@ -1,5 +1,3 @@
-import { IDrawable } from "excalibur";
-
 export interface IAnimal {
     move({ x, y }: Point): void;
     eat(): void;
@@ -16,5 +14,9 @@ export interface IAnimationType {
     walking: IDrawable;
     idle: IDrawable;
     attack: IDrawable;
+}
+
+interface IDrawable {
+    vector: Point
 }
 
