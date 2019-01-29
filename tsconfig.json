@@ -20,7 +20,6 @@
         "common/*": ["src/common/*"],
         "props/*": ["src/props/*"]
     },
-    "types": ["excalibur"],
     "typeRoots": ["./node_modules/@types"],
     "exclude": ["node_modules", "*.spec.ts"],
     "awesomeTypescriptLoaderOptions": {

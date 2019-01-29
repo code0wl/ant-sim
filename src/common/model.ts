@@ -15,4 +15,6 @@ export interface Point {
 export interface IAnimationType {
     walking: IDrawable;
     idle: IDrawable;
+    attack: IDrawable;
 }
+

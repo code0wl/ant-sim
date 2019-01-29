@@ -2,8 +2,6 @@ import { Animal } from "common/animal.class";
 import { Point } from "common/model";
 import { AntFactory } from "actors/ant/ant.factory";
 import { antType } from "actors/ant/model";
-import { Engine } from "excalibur";
-import { animationLoader } from "common/util/animation-loader";
 
 export class Ant extends Animal {
     readonly currentLocation: Point;
@@ -14,27 +12,16 @@ export class Ant extends Animal {
         super();
     }
 
-    public onInitialize(engine: Engine) {
-        const antAnimation = new AntFactory(
-            this,
-            { y: 50, x: 50 },
-            engine
-        ).getAnimation();
-
-        animationLoader(antAnimation, this);
-
-        setInterval(() => this.move(), 5000);
-        setInterval(() => this.idle(), 10000);
+    attachGraphics() {
+        // new AntFactory();
     }
 
     public move() {
         this.isMoving = true;
-        this.setDrawing("walking");
     }
 
     public idle() {
         this.isMoving = false;
-        this.setDrawing("idle");
     }
 
     public eat() {}

@@ -1,37 +1,25 @@
 import { IMap } from "game/model";
-import { currentResolution } from "common/util/center";
-import { Actor } from "excalibur";
+import { Point, IAnimal } from "common/model";
 
-export class Grid extends Actor {
-    private rows: number;
-    private cols: number;
+export class Grid {
 
-    constructor() {
-        super();
-        this.renderGrid(2);
+    constructor(canvas: Point) {
     }
 
     public debug() {
         // adds lines around grid boxes
     }
+
     // think of better type
-    public interasections(elements: any) {
+    public intersections(elements: IAnimal[]) {
         // pass event when actors have intersected
     }
 
     public getCell(map: IMap) {}
 
-    private renderGrid(cellScale: number) {
-        const { x, y } = currentResolution;
-
-        for (let i = 0; i < x; i += cellScale) {}
-
-        for (let i = 0; i < y; i += cellScale) {}
-    }
 }
 
-const gridSystem = new Grid();
+const gridSystem = new Grid({x: 100, y: 100});
 
 // exporting a pointer,
-// do not know if this is anti-pattern
 export { gridSystem };

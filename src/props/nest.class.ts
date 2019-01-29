@@ -1,7 +1,5 @@
-import { Actor } from "excalibur";
 
-export class Nest extends Actor {
+export class Nest {
     constructor(canvas: HTMLCanvasElement) {
-        super();
     }
 }

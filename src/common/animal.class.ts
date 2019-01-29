@@ -1,7 +1,6 @@
 import { IAnimal, Point } from "common/model";
-import { Actor } from "excalibur";
 
-export abstract class Animal extends Actor implements IAnimal {
+export abstract class Animal  implements IAnimal {
     public abstract isAlive: boolean;
 
     public abstract isMoving: boolean;
