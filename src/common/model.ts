@@ -17,6 +17,6 @@ export interface IAnimationType {
 }
 
 interface IDrawable {
-    vector: Point
+    resourceUrl: string    
 }
 

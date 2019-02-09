@@ -1,5 +1,5 @@
 import { spiderType } from "actors/spider/model";
-import { Spider } from "actors/spider/spider.class";
+import { Spider } from "actors/spider/spider";
 import { IAnimationType, Point } from "common/model";
 
 export class SpiderFactory {

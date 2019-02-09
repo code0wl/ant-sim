@@ -1,4 +1,7 @@
 class Engine {
+    constructor() {
+        
+    }
     public start(): void {
         this.gameLoop(60);
     }

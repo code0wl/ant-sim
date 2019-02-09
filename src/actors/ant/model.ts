@@ -7,6 +7,6 @@ export enum antType {
     black,
 }
 
-export type Item = "wood" | "food" | "enemy";
+export type Item = "food" | "enemy";
 
 export type Colony = "red" | "black";
