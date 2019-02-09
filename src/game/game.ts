@@ -1,12 +1,11 @@
-import { Grid } from "game/grid";
+import { Grid } from "engine/draw.grid";
 import { Point } from "common/model";
 import { currentResolution } from "common/util/center";
 
-export class Game extends Engine {
+export class Game {
     public grid: Grid;
 
     constructor(resolution: Point = currentResolution) {
-        super()
         console.log(resolution)
     }
 }
