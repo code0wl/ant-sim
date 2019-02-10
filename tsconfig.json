@@ -16,9 +16,8 @@
     },
     "paths": {
         "game/*": ["src/game/*"],
-        "actors/*": ["src/actors/*"],
-        "common/*": ["src/common/*"],
-        "props/*": ["src/props/*"]
+        "actors/*": ["src/game/actors/*"],
+        "common/*": ["src/common/*"]
     },
     "typeRoots": ["./node_modules/@types"],
     "exclude": ["node_modules", "*.spec.ts"],

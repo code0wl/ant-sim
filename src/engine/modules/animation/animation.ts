@@ -21,7 +21,6 @@ export class AnimationLoop {
 
 	public constructor(context: CanvasRenderingContext2D, width: number, height: number) {
 		this.context = context;
-		this.log = log;
 		this.width = width;
 		this.engine = engine;
 		this.height = height;
