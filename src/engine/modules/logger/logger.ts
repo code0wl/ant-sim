@@ -1,5 +1,4 @@
-import {AnimationLoop} from "../animation/engine.animation-loop";
-import {generateMarkup} from "./logger-markup";
+import { AnimationLoop } from "engine/modules/animation/animation";
 
 declare const console: any;
 
@@ -7,21 +6,15 @@ export class Logger {
 
 	private color: string;
 	private lagTime: number;
-	private animation: AnimationLoop;
 
-	constructor(animationClass) {
-		console.log("logging performance");
-		this.animation = animationClass;
-		this.lagTime = animationClass.lagTime;
+	constructor(private animation: AnimationLoop) {
+		this.lagTime = animation.lagTime;
 		this.generateUI();
 	}
 
 	public logStats(): void {
 		this.color = this.lagTime > 10 ? "red" : "green";
 		console.log(this.color, "test");
-		if (this.animation.engine.shapeCollection.collection.length) {
-			document.querySelector(".render-info").innerHTML = generateMarkup(this);
-		}
 	}
 
 	private generateUI(): void {

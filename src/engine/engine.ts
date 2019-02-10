@@ -1,21 +1,27 @@
-import { EngineOptions } from 'game/model';
+import { Draw } from 'engine/modules/draw/draw';
+import { currentResolution } from 'game/common/util/center';
 
 export class Engine {
     public draw: Draw;
-    private mouse: InputMouse;
 
-    public constructor(options: EngineOptions) {
-        this.draw = new Draw(options.width, options.height, options.log, this);
-        this.bootstrapEngine(options);
+    constructor() {
+        this.draw = new Draw(currentResolution);
     }
 
-    private bootstrapEngine(options: EngineOptions): void {
-        this.enableMouse(options.mouse);
+    start() {
+
     }
 
-    private enableMouse(isEnabled: boolean): void {
-            this.mouse = new InputMouse();
-            this.mouse.mouseInput$.subscribe();
+    stop() {
+
+    }
+    
+    log() {
+
+    }
+
+    pause() {
+
     }
 
 }

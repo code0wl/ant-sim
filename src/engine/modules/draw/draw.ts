@@ -1,6 +1,7 @@
 import { Engine, engine } from "engine/engine";
-import { Canvas } from "engine/canvas";
-import { AnimationLoop } from "engine/animation";
+import { Canvas } from "engine/modules/draw/canvas";
+import { AnimationLoop } from "engine/modules/animation/animation";
+import { Point } from "game/common/model";
 
 export class Draw extends Canvas {
 
@@ -8,12 +9,11 @@ export class Draw extends Canvas {
 	public engine: Engine;
 	public animationLoop: AnimationLoop;
 
-	public constructor(width, height, logger) {
-		super(width, height);
-		this.logger = logger;
+	constructor({x, y}: Point) {
+		super({x, y});
 		this.engine = engine;
 		this.startEngine();
-		console.log(`drawing engine enabled with dimension: ${width}px X ${height}px`);
+		console.log(`drawing engine enabled with dimension: ${x}px X ${y}px`);
 	}
 
 	public getContext(): CanvasRenderingContext2D {

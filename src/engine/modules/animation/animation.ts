@@ -1,4 +1,4 @@
-import { Engine } from "engine/engine";
+import { Engine, engine } from "engine/engine";
 import { Logger } from "engine/modules/logger/logger";
 
 export class AnimationLoop {
@@ -14,13 +14,12 @@ export class AnimationLoop {
 	private currentTime: number;
 	private elapsedTime: number;
 	private previousTime: number = Date.now();
-	private lagTime: number = 0;
+	public lagTime: number = 0;
 	private fps: number = 60;
 	private frameTime: number = 1 / this.fps;
-	private mUpdateIntervalInSeconds: number = this.frameTime;
 	private kMPF = 1000 * this.frameTime;
 
-	public constructor(context, width, height, log, engine) {
+	public constructor(context, width, height, log) {
 		this.context = context;
 		this.log = log;
 		this.width = width;

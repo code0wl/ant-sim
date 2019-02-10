@@ -1,5 +1,5 @@
-import { Point } from "common/model";
-import { currentResolution } from "common/util/center";
+import { Point } from "game/common/model";
+import { currentResolution } from "game/common/util/center";
 
 export class Canvas {
 	private canvas: HTMLCanvasElement;
