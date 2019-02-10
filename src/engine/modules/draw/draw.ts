@@ -22,6 +22,6 @@ export class Draw extends Canvas {
     }
 
     public update() {
-        console.log("update");
+        // console.log("update");
     }
 }

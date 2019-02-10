@@ -1,13 +1,13 @@
-import { Animal } from "common/animal.class";
-import { Point } from "common/model";
-import { IAnt } from "actors/ant/model";
-import { spiderType } from "actors/spider/model";
+import { Engine } from "engine/engine";
+import { IAnt } from "game/actors/ant/model";
+import { Animal } from "common/animal";
+import { spiderType } from "game/actors/spider/model";
 
 export class Spider extends Animal {
     public attackers: IAnt[];
 
-    constructor(public type: spiderType) {
-        super();
+    constructor(public type: spiderType, imageUrl: string) {
+        super(imageUrl);
     }
 
     public onInitialize(engine: Engine) {

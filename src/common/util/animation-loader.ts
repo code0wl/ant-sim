@@ -2,7 +2,7 @@ import { Sprite } from "common/model";
 
 export function spriteSheetLocation(imageUrl: string) {
     const image = new Image();
-    image.src = `public/${imageUrl}`;
+    image.src = `/public/${imageUrl}`;
     return image;
 }
 

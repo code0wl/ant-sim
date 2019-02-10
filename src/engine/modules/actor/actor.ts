@@ -8,7 +8,7 @@ export class Actor {
         this.addToStore();
     }
 
-    private addGraphic(imageUrl) {
+    private addGraphic(imageUrl: string) {
         // add graphic to actor object
         const spriteSheet = spriteSheetLocation(imageUrl);
     }

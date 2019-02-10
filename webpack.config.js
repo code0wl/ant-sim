@@ -16,7 +16,7 @@ module.exports = {
         plugins: [new TsConfigPathsPlugin()],
     },
     devServer: {
-        contentBase: "./public/index.html",
+        contentBase: "/",
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -36,10 +36,6 @@ module.exports = {
                     path.resolve(__dirname, "node_modules"),
                 ],
                 options: tsconfig,
-            },
-            {
-                test: /\.spec.ts$/,
-                use: "ignore-loader",
             },
         ],
     },
