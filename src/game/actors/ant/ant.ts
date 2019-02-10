@@ -9,8 +9,8 @@ export class Ant extends Animal {
     public isSearching = false;
     public type: string;
 
-    constructor(type: antType) {
-        super();
+    constructor(type: antType, imageUrl: string) {
+        super(imageUrl);
         this.type = antType[type];
     }
 

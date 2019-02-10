@@ -1,14 +1,17 @@
 import { actorStore } from "engine/modules/actor/store";
+import { spriteSheetLocation } from "common/util/animation-loader";
 
 export class Actor {
     private id: number;
-    constructor() {
-        this.addGraphic();
+    constructor(imageUrl: string) {
+        this.addGraphic(imageUrl);
         this.addToStore();
     }
 
-    private addGraphic() {
+    private addGraphic(imageUrl) {
         // add graphic to actor object
+        const spriteSheet = spriteSheetLocation(imageUrl);
+        
     }
 
     public destroy(id: number) {

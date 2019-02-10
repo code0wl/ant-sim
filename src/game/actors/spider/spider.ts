@@ -4,11 +4,6 @@ import { IAnt } from "actors/ant/model";
 import { spiderType } from "actors/spider/model";
 
 export class Spider extends Animal {
-    public readonly currentLocation: Point;
-
-    public isAlive = true;
-    public isMoving = false;
-
     public attackers: IAnt[];
 
     constructor(public type: spiderType) {
