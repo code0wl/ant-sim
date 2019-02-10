@@ -7,8 +7,7 @@ export class AnimationLoop {
 
     private context: CanvasRenderingContext2D;
     public engine: Engine;
-    private log: boolean;
-    private loggable: Logger;
+    private logger: Logger;
 
     private currentTime: number;
     private elapsedTime: number;
@@ -32,11 +31,11 @@ export class AnimationLoop {
     }
 
     private createLogger() {
-        this.loggable = new Logger();
+        this.logger = new Logger();
     }
 
     private updateLogger(): void {
-        this.loggable.logStats();
+        this.logger.logStats();
     }
 
     private draw() {
@@ -55,7 +54,7 @@ export class AnimationLoop {
     }
 
     private animationLoop() {
-        requestAnimationFrame(() => this.animationLoop());
+        requestAnimationFrame(this.animationLoop);
         this.updateLogger();
         this.animationCost();
         this.draw();
