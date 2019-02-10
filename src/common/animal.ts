@@ -1,13 +1,9 @@
 import { IAnimal, Point } from "common/model";
+import { Actor } from "engine/modules/actor/actor";
 
-export abstract class Animal implements IAnimal {
-    public abstract isAlive: boolean;
-
-    public abstract isMoving: boolean;
-
-    public abstract move({ x, y }: Point): void;
-
-    public abstract eat(): void;
-
-    public abstract attack(): void;
+export class Animal extends Actor {
+    constructor() {
+        super();
+        console.log(this);
+    }
 }

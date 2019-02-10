@@ -1,23 +1,21 @@
 import { Animal } from "common/animal";
 import { Point } from "common/model";
-import { AntFactory } from "actors/ant/ant.factory";
-import { antType } from "actors/ant/model";
+import { antType } from "game/actors/ant/model";
 
 export class Ant extends Animal {
     readonly currentLocation: Point;
     public isAlive = true;
     public isMoving = false;
+    public isSearching = false;
+    public type: string;
 
-    constructor(public type: antType) {
+    constructor(type: antType) {
         super();
+        this.type = antType[type];
     }
 
     public move() {
         this.isMoving = true;
-    }
-
-    private attachGraphics() {
-        // new AntFactory();
     }
 
     public idle() {
