@@ -13,7 +13,7 @@ export class Game extends Engine {
     }
 
     public preloadGame() {
-        new Ant(antType.red, "spritesheets/black_ant_walk.png");
+        new Ant(antType.red, "spritesheets/__black_ant_walk.png");
         // load actor assets and play as animation
     }
 }
