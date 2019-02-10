@@ -1,5 +1,5 @@
-import {Logger} from "../logger/engine.logger";
 import { Engine } from "engine/engine";
+import { Logger } from "engine/modules/logger/logger";
 
 export class AnimationLoop {
 
