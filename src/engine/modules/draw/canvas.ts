@@ -1,5 +1,4 @@
 import { Point } from "game/common/model";
-import { currentResolution } from "game/common/util/center";
 
 export class Canvas {
 	private canvas: HTMLCanvasElement;
@@ -23,5 +22,3 @@ export class Canvas {
 	}
 
 }
-
-export const canvas = new Canvas(currentResolution)
