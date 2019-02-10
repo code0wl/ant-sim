@@ -16,7 +16,11 @@ export class Draw extends Canvas {
 
 	public getContext(): CanvasRenderingContext2D {
 		return super.getContext();
-	}
+    }
+    
+    public getCanvas(): HTMLCanvasElement {
+        return super.getCanvas();
+    }
 
 	public update() {
 		
