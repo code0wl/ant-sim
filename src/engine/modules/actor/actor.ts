@@ -1,17 +1,26 @@
-import { actors } from "engine/modules/actor/collection";
+import { actorStore } from "engine/modules/actor/store";
 
 export class Actor {
-    constructor() {}
-
-    public destroy() {}
-
-    private provideID(): number {
-        return actors.size;
+    private id: number;
+    constructor() {
+        this.addGraphic();
+        this.addToStore();
     }
 
-    private addGraphic() {}
+    private addGraphic() {
+        // add graphic to actor object
+    }
 
-    private drawActor() {}
+    public destroy(id: number) {
+        actorStore.forEach(actor => {
+            if (actor.id === id) {
+                actorStore.delete(actor);
+            }
+        });
+    }
 
-    private addActorToCollection() {}
+    private addToStore() {
+        this.id = actorStore.size;
+        actorStore.add(this);
+    }
 }
