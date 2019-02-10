@@ -1,6 +1,6 @@
 import { Draw } from "engine/modules/draw/draw";
 import { currentResolution } from "common/util/center";
-import { AnimationLoop } from "engine/modules/animation/animation";
+import { AnimationLoop } from "engine/modules/animation/loop";
 
 export class Engine {
     public draw: Draw;

@@ -8,7 +8,6 @@ export class Game extends Engine {
 
     constructor(resolution: Point = currentResolution) {
         super(resolution);
-        console.log(resolution);
     }
 
     public preloadGame() {
