@@ -1,13 +1,15 @@
-// import { IAnimationType } from "common/model";
+import { Sprite } from "common/model";
 
-// // make into util
-// export const animationLoader = (
-//     animationArray: IAnimationType[],
-//     ActorInstance: Actor
-// ) =>
-//     animationArray.map(animation =>
-//         Object.entries(animation).map(animationName => {
-//             const [name, animation] = animationName;
-//             ActorInstance.addDrawing(name, animation);
-//         })
-//     );
+export function spriteSheet(imageUrl: string) {
+    const image = new Image();
+    image.src = `public/${imageUrl}`;
+}
+
+export function sprite({ context, width, height, image }: Sprite) {
+    return {
+        context,
+        width,
+        height,
+        image,
+    };
+}
