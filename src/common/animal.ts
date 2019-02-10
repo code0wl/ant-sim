@@ -9,6 +9,5 @@ export class Animal extends Actor implements IAnimal {
 
     constructor(imageUrl: string) {
         super(imageUrl);
-        console.log(this);
     }
 }

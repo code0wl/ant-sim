@@ -1,4 +1,5 @@
 import { Engine, engine } from "engine/engine";
+import { actorStore } from "engine/modules/actor/store";
 
 export class AnimationLoop {
     public width: number;
@@ -29,6 +30,7 @@ export class AnimationLoop {
 
     private draw() {
         this.context.clearRect(0, 0, this.width, this.height);
+        // console.log(actorStore);
     }
 
     private animationCost() {

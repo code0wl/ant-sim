@@ -20,7 +20,7 @@ interface IDrawable {
 
 export interface Sprite {
     context: CanvasRenderingContext2D;
-    image: string;
+    image: HTMLImageElement;
     width: number;
     height: number;
 }
