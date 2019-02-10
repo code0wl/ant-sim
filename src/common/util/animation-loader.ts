@@ -1,6 +1,6 @@
 import { Sprite } from "common/model";
 
-export function spriteSheet(imageUrl: string) {
+export function spriteSheetLocation(imageUrl: string) {
     const image = new Image();
     image.src = `public/${imageUrl}`;
     return image;

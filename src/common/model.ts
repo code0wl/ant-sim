@@ -1,6 +1,4 @@
 export interface IAnimal {
-    move({ x, y }: Point): void;
-    eat(): void;
     isAlive: boolean;
     isMoving: boolean;
 }

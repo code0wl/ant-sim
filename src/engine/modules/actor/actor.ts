@@ -11,7 +11,6 @@ export class Actor {
     private addGraphic(imageUrl) {
         // add graphic to actor object
         const spriteSheet = spriteSheetLocation(imageUrl);
-        
     }
 
     public destroy(id: number) {

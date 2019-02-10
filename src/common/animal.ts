@@ -11,8 +11,4 @@ export class Animal extends Actor implements IAnimal {
         super(imageUrl);
         console.log(this);
     }
-
-    move() {}
-
-    eat() {}
 }
