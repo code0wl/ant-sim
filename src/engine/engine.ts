@@ -31,6 +31,4 @@ export class Engine {
     public pause() {}
 }
 
-const engine = new Engine();
-
-export { engine };
+export const engine = new Engine();

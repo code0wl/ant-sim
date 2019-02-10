@@ -9,7 +9,7 @@
         "start:dev": "webpack && webpack-dev-server",
         "lint": "tslint -p ./tslint.json"
     },
-    "author": "",
+    "author": "Oscar Lodriguez",
     "license": "ISC",
     "devDependencies": {
         "awesome-typescript-loader": "^5.2.1",
@@ -23,5 +23,8 @@
         "webpack": "^4.28.2",
         "webpack-cli": "^3.1.2",
         "webpack-dev-server": "^3.1.14"
+    },
+    "dependencies": {
+        "@tensorflow/tfjs": "^0.15.1"
     }
 }
