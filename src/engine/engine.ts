@@ -1,6 +1,6 @@
-import { Draw } from 'engine/modules/draw/draw';
-import { currentResolution } from 'common/util/center';
-import { AnimationLoop } from 'engine/modules/animation/animation';
+import { Draw } from "engine/modules/draw/draw";
+import { currentResolution } from "common/util/center";
+import { AnimationLoop } from "engine/modules/animation/animation";
 
 export class Engine {
     public draw: Draw;
@@ -12,23 +12,23 @@ export class Engine {
     }
 
     public start() {
-        const {width, height} = this.draw.getCanvas();
+        const { width, height } = this.draw.getCanvas();
         this.animationLoop = new AnimationLoop(
-			this.draw.getContext(), width, height);
+            this.draw.getContext(),
+            width,
+            height
+        );
     }
 
-    public stop() {
-
-    }
-    
-    public log() {
-
+    public getAnimationLoop() {
+        return this.animationLoop;
     }
 
-    public pause() {
+    public stop() {}
 
-    }
+    public log() {}
 
+    public pause() {}
 }
 
 export const engine = new Engine();
