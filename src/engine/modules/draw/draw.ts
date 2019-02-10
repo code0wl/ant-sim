@@ -1,7 +1,7 @@
 import { Engine, engine } from "engine/engine";
 import { Canvas } from "engine/modules/draw/canvas";
 import { AnimationLoop } from "engine/modules/animation/animation";
-import { Point } from "game/common/model";
+import { Point } from "common/model";
 
 export class Draw extends Canvas {
 

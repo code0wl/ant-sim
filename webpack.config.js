@@ -24,7 +24,7 @@ module.exports = {
             filename: "./index.html",
             template: "./src/index.html",
         }),
-        new CopyWebpackPlugin([{ from: "./src/assets", to: "./" }]),
+        new CopyWebpackPlugin([{ from: "./src/game/assets", to: "./" }]),
     ],
     module: {
         rules: [

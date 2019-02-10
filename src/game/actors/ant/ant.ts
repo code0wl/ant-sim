@@ -1,4 +1,4 @@
-import { Animal } from "common/animal.class";
+import { Animal } from "common/animal";
 import { Point } from "common/model";
 import { AntFactory } from "actors/ant/ant.factory";
 import { antType } from "actors/ant/model";
@@ -12,12 +12,12 @@ export class Ant extends Animal {
         super();
     }
 
-    attachGraphics() {
-        // new AntFactory();
-    }
-
     public move() {
         this.isMoving = true;
+    }
+
+    private attachGraphics() {
+        // new AntFactory();
     }
 
     public idle() {
