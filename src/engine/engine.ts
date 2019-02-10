@@ -6,8 +6,8 @@ export class Engine {
     public draw: Draw;
     public animationLoop: AnimationLoop;
 
-    constructor() {
-        this.draw = new Draw(currentResolution);
+    constructor(resolution = currentResolution) {
+        this.draw = new Draw(resolution);
         this.start();
     }
 
@@ -31,4 +31,6 @@ export class Engine {
     public pause() {}
 }
 
-export const engine = new Engine();
+const engine = new Engine();
+
+export { engine };

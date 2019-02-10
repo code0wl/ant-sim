@@ -7,6 +7,11 @@ export class Game extends Engine {
     public grid: Grid;
 
     constructor(resolution: Point = currentResolution) {
-        console.log(resolution)
+        super(resolution);
+        console.log(resolution);
+    }
+
+    public preloadGame() {
+        // load actor assets and play as animation
     }
 }

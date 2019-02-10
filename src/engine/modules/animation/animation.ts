@@ -1,5 +1,4 @@
 import { Engine, engine } from "engine/engine";
-import { Logger } from "engine/modules/logger/logger";
 
 export class AnimationLoop {
     public width: number;
@@ -7,7 +6,6 @@ export class AnimationLoop {
 
     private context: CanvasRenderingContext2D;
     public engine: Engine;
-    private logger: Logger;
 
     private currentTime: number;
     private elapsedTime: number;
@@ -26,16 +24,7 @@ export class AnimationLoop {
         this.width = width;
         this.engine = engine;
         this.height = height;
-        this.createLogger();
         this.animationLoop();
-    }
-
-    private createLogger() {
-        this.logger = new Logger();
-    }
-
-    private updateLogger(): void {
-        this.logger.logStats();
     }
 
     private draw() {
@@ -54,8 +43,7 @@ export class AnimationLoop {
     }
 
     private animationLoop() {
-        requestAnimationFrame(this.animationLoop);
-        this.updateLogger();
+        requestAnimationFrame(() => this.animationLoop());
         this.animationCost();
         this.draw();
     }
