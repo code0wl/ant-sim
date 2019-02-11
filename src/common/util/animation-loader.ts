@@ -6,9 +6,8 @@ export function spriteSheetLocation(imageUrl: string) {
     return image;
 }
 
-export function createSpriteObject({ context, width, height, image }: Sprite) {
+export function createSpriteObject({ width, height, image }: Sprite) {
     return {
-        context,
         width,
         height,
         image,

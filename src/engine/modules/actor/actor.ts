@@ -16,15 +16,18 @@ export class Actor {
         // add graphic to actor object
         const spriteSheet = spriteSheetLocation(imageUrl);
         const spriteObject = createSpriteObject({
-            context: canvas.getContext(),
-            height: 300,
-            width: 300,
+            height: 500,
+            width: 500,
             image: spriteSheet,
         });
 
-        const { context, height, width, image } = spriteObject;
+        const { height, width, image } = spriteObject;
 
-        context.drawImage(image, 0, 0, width, height, 0, 0, width, height);
+        canvas
+            .getContext()
+            .drawImage(image, 30, 30, width, height, 30, 30, width, height);
+
+        console.log("image added");
     }
 
     public destroy(id: number) {
@@ -33,10 +36,6 @@ export class Actor {
                 actorStore.delete(actor);
             }
         });
-    }
-
-    public update() {
-        // redraw
     }
 
     private addToStore() {

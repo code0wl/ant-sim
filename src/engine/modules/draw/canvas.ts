@@ -7,11 +7,13 @@ export class Canvas {
 
     constructor({ x, y }: Point) {
         this.canvas = document.createElement("canvas");
-        this.context = this.canvas.getContext("2d");
         this.canvas.width = x;
         this.canvas.height = y;
         this.canvas.classList.add("physics-canvas");
+        this.context = this.canvas.getContext("2d");
         document.body.appendChild(this.canvas);
+        this.context.fillStyle = "blue";
+        console.log("created canvas");
     }
 
     public getCanvas(): HTMLCanvasElement {

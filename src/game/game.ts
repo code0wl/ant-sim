@@ -12,10 +12,6 @@ export class Game extends Engine {
         super(resolution);
     }
 
-    public preload() {
-        new Ant(antType.red, "spritesheets/__black_ant_walk.png");
-    }
-
     public update(): void {
     }
 }
