@@ -34,6 +34,10 @@ export class Actor {
         });
     }
 
+    public update() {
+        // redraw
+    }
+
     private addToStore() {
         this.id = actorStore.size;
         actorStore.add(this);
