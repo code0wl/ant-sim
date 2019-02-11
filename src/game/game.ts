@@ -12,6 +12,10 @@ export class Game extends Engine {
         super(resolution);
     }
 
+    public preload() {
+        new Ant(antType.red, "https://mdn.mozillademos.org/files/5397/rhino.jpg");
+    }
+
     public update(): void {
     }
 }

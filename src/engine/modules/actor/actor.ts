@@ -3,7 +3,7 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
-import { canvas } from "engine/modules/draw/canvas";
+import { canvas } from "index";
 
 export class Actor {
     private id: number;
@@ -27,7 +27,6 @@ export class Actor {
             .getContext()
             .drawImage(image, 30, 30, width, height, 30, 30, width, height);
 
-        console.log("image added");
     }
 
     public destroy(id: number) {

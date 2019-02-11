@@ -1,5 +1,6 @@
 import { Game } from "game/game";
-import { Ant } from "game/actors/ant/ant";
-new Game();
+import { Canvas } from "engine/modules/draw/canvas";
+import { currentResolution } from "common/util/center";
 
-new Ant(0, "https://mdn.mozillademos.org/files/5397/rhino.jpg");
+export const canvas = new Canvas(currentResolution);
+new Game();
