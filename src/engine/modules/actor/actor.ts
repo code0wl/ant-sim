@@ -3,7 +3,7 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
-import { engine } from "engine/engine";
+import { game } from "../../../index";
 
 export class Actor {
     constructor(imageUrl: string) {
@@ -13,9 +13,10 @@ export class Actor {
 
     private addGraphic(imageUrl: string) {
         // add graphic to actor object
+        console.log(game);
         const spriteSheet = spriteSheetLocation(imageUrl);
         const spriteObject = createSpriteObject({
-            context: engine.draw.getContext(),
+            context: game.draw.getContext(),
             height: 300,
             width: 300,
             image: spriteSheet,

@@ -17,7 +17,8 @@
     "paths": {
         "game/*": ["src/game/*"],
         "actors/*": ["src/game/actors/*"],
-        "common/*": ["src/common/*"]
+        "common/*": ["src/common/*"],
+        "index/*": ["./src"]
     },
     "typeRoots": ["./node_modules/@types"],
     "exclude": ["node_modules", "*.spec.ts"],

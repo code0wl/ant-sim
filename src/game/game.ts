@@ -12,12 +12,10 @@ export class Game extends Engine {
         super(resolution);
     }
 
-    public preloadGame() {
+    public preload() {
         new Ant(antType.red, "spritesheets/__black_ant_walk.png");
-        // load actor assets and play as animation
     }
 
     public update() {
-        console.log('overloaded')
     }
 }
