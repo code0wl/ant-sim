@@ -3,13 +3,11 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
-import { Canvas } from "engine/modules/draw/canvas";
-import { currentResolution } from "common/util/center";
+import { canvas } from "engine/modules/draw/canvas";
 
-export class Actor extends Canvas {
+export class Actor {
     private id: number;
     constructor(imageUrl: string) {
-        super(currentResolution);
         this.addGraphic(imageUrl);
         this.addToStore();
     }
@@ -18,7 +16,7 @@ export class Actor extends Canvas {
         // add graphic to actor object
         const spriteSheet = spriteSheetLocation(imageUrl);
         const spriteObject = createSpriteObject({
-            context: this.getContext(),
+            context: canvas.getContext(),
             height: 300,
             width: 300,
             image: spriteSheet,

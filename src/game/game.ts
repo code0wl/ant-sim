@@ -16,10 +16,6 @@ export class Game extends Engine {
         new Ant(antType.red, "spritesheets/__black_ant_walk.png");
     }
 
-    public getCanvas() {
-        console.log(this)
-    }
-
     public update(): void {
     }
 }
