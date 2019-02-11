@@ -1,3 +1,3 @@
 import { Game } from "game/game";
 
-new Game({ x: 500, y: 500 });
+export const game = new Game({ x: 500, y: 500 });
