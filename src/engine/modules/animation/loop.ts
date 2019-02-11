@@ -1,4 +1,3 @@
-import { engine } from "engine/engine";
 import { Canvas } from "engine/modules/draw/canvas";
 import { Point } from "common/model";
 
@@ -15,8 +14,8 @@ export class AnimationLoop {
         this.animationLoop();
     }
 
-    protected update() {
-        engine.draw.getContext().clearRect(0, 0, this.width, this.height);
+    public update() {
+        // overloaded by Engine
     }
 
     private animationLoop() {

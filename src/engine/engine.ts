@@ -1,18 +1,10 @@
-import { currentResolution } from "common/util/center";
+import { LifeCycle } from "engine/model";
 import { AnimationLoop } from "engine/modules/animation/loop";
-import { Canvas } from "engine/modules/draw/canvas";
 
-export class Engine extends AnimationLoop {
-    public draw: Canvas;
-    public animationLoop: AnimationLoop;
+export abstract class Engine extends AnimationLoop implements LifeCycle {
+    create() {}
 
-    constructor(resolution = currentResolution) {
-        super(resolution);
-    }
+    update() {}
 
-    public getAnimationLoop() {
-        return this.animationLoop;
-    }
+    preload() {}
 }
-
-export const engine = new Engine();
