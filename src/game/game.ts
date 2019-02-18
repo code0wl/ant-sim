@@ -10,12 +10,13 @@ export class Game extends Engine {
 
     constructor(resolution: Point = currentResolution) {
         super(resolution);
+
+        // test
+        new Ant(
+            antType.red,
+            "https://mdn.mozillademos.org/files/5397/rhino.jpg"
+        );
     }
 
-    public preload() {
-        new Ant(antType.red, "https://mdn.mozillademos.org/files/5397/rhino.jpg");
-    }
-
-    public update(): void {
-    }
+    public update(): void {}
 }

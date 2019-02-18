@@ -3,10 +3,10 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
-import { canvas } from "index";
 
 export class Actor {
     private id: number;
+    private spriteObject: Actor;
     constructor(imageUrl: string) {
         this.addGraphic(imageUrl);
         this.addToStore();
@@ -15,18 +15,11 @@ export class Actor {
     private addGraphic(imageUrl: string) {
         // add graphic to actor object
         const spriteSheet = spriteSheetLocation(imageUrl);
-        const spriteObject = createSpriteObject({
+        this.spriteObject = createSpriteObject({
             height: 500,
             width: 500,
             image: spriteSheet,
         });
-
-        const { height, width, image } = spriteObject;
-
-        canvas
-            .getContext()
-            .drawImage(image, 30, 30, width, height, 30, 30, width, height);
-
     }
 
     public destroy(id: number) {
