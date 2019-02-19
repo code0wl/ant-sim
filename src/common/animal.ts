@@ -7,7 +7,7 @@ export class Animal extends Actor implements IAnimal {
     public isAlive = true;
     public isMoving = false;
 
-    constructor(imageUrl: string) {
+    constructor(imageUrl: string[]) {
         super(imageUrl);
     }
 }

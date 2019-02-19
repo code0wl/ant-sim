@@ -3,23 +3,27 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
+import { Sprite } from "common/model";
 
 export class Actor {
     private id: number;
-    private spriteObject: Actor;
-    constructor(imageUrl: string) {
+    public graphics: Sprite[];
+    constructor(imageUrl: string[]) {
         this.addGraphic(imageUrl);
         this.addToStore();
     }
 
-    private addGraphic(imageUrl: string) {
+    private addGraphic(imageLibrary: string[]) {
         // add graphic to actor object
-        const spriteSheet = spriteSheetLocation(imageUrl);
-        this.spriteObject = createSpriteObject({
-            height: 500,
-            width: 500,
-            image: spriteSheet,
-        });
+        this.graphics = imageLibrary.reduce((acc, next) => {
+            const spriteSheet = spriteSheetLocation(next);
+            return createSpriteObject({
+                height: 500,
+                width: 500,
+                image: spriteSheet,
+            });
+        }, []);
+        console.log(this.graphics);
     }
 
     public destroy(id: number) {

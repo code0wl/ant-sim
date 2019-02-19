@@ -12,10 +12,17 @@ export class Game extends Engine {
         super(resolution);
 
         // test
-        new Ant(
-            antType.red,
-            "https://mdn.mozillademos.org/files/5397/rhino.jpg"
-        );
+        new Ant(antType.black, [
+            "ants/__black_ant_walk.png",
+            "ants/__black_ant_idle.png",
+            "ants/__black_ant_dead.png",
+        ]);
+
+        new Ant(antType.red, [
+            "ants/__red_ant_walk.png",
+            "ants/__red_ant_idle.png",
+            "ants/__red_ant_dead.png",
+        ]);
     }
 
     public update(): void {}

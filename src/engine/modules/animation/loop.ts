@@ -13,7 +13,7 @@ export class AnimationLoop {
     }
 
     public update() {
-        console.log("engine update");
+        // implemented by Engine
     }
 
     public renderActors() {
