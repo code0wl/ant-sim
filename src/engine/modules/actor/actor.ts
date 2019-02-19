@@ -23,7 +23,6 @@ export class Actor {
                 image: spriteSheet,
             });
         }, []);
-        console.log(this.graphics);
     }
 
     public destroy(id: number) {

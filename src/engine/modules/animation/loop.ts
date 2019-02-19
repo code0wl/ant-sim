@@ -18,19 +18,20 @@ export class AnimationLoop {
 
     public renderActors() {
         const actors = Array.from(actorStore);
-        actors.map(({ spriteObject }) => {
+
+        actors.map(({ graphics }) => {
             canvas
                 .getContext()
                 .drawImage(
-                    spriteObject.image,
+                    graphics.image,
                     30,
                     30,
-                    spriteObject.width,
-                    spriteObject.height,
+                    graphics.width,
+                    graphics.height,
                     30,
                     30,
-                    spriteObject.width,
-                    spriteObject.height
+                    graphics.width,
+                    graphics.height
                 );
         });
     }
