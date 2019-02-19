@@ -13,15 +13,9 @@ export class Game extends Engine {
 
         // test
         new Ant(antType.black, [
-            "ants/__black_ant_walk.png",
-            "ants/__black_ant_idle.png",
-            "ants/__black_ant_dead.png",
-        ]);
-
-        new Ant(antType.red, [
-            "ants/__red_ant_walk.png",
-            "ants/__red_ant_idle.png",
-            "ants/__red_ant_dead.png",
+            { walk: "ants/__black_ant_walk.png" },
+            { idle: "ants/__black_ant_idle.png" },
+            { dead: "ants/__black_ant_dead.png" },
         ]);
     }
 

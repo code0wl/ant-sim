@@ -1,5 +1,5 @@
 import { Animal } from "common/animal";
-import { Point } from "common/model";
+import { Point, Sprite } from "common/model";
 import { antType } from "game/actors/ant/model";
 
 export class Ant extends Animal {
@@ -9,7 +9,7 @@ export class Ant extends Animal {
     public isSearching = false;
     public type: string;
 
-    constructor(type: antType, imageUrl: string[]) {
+    constructor(type: antType, imageUrl: Sprite[]) {
         super(imageUrl);
         this.type = antType[type];
     }

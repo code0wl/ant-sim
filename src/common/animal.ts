@@ -1,4 +1,4 @@
-import { IAnimal, Point } from "common/model";
+import { IAnimal, Point, Sprite } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
 
 export class Animal extends Actor implements IAnimal {
@@ -7,7 +7,7 @@ export class Animal extends Actor implements IAnimal {
     public isAlive = true;
     public isMoving = false;
 
-    constructor(imageUrl: string[]) {
+    constructor(imageUrl: Sprite[]) {
         super(imageUrl);
     }
 }

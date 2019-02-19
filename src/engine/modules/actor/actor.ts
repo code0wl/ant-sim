@@ -8,14 +8,14 @@ import { Sprite } from "common/model";
 export class Actor {
     private id: number;
     public graphics: Sprite[];
-    constructor(imageUrl: string[]) {
+    constructor(imageUrl: Sprite[]) {
         this.addGraphic(imageUrl);
         this.addToStore();
     }
 
-    private addGraphic(imageLibrary: string[]) {
+    private addGraphic(imageLibrary: Sprite[]) {
         // add graphic to actor object
-        this.graphics = imageLibrary.reduce((acc, next) => {
+        this.graphics = imageLibrary.reduce((_, next) => {
             const spriteSheet = spriteSheetLocation(next);
             return createSpriteObject({
                 height: 500,
@@ -23,6 +23,7 @@ export class Actor {
                 image: spriteSheet,
             });
         }, []);
+
     }
 
     public destroy(id: number) {
