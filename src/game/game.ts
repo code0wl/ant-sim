@@ -19,6 +19,7 @@ export class Game extends Engine {
                 { idle: "ants/__black_ant_idle.png" },
                 { dead: "ants/__black_ant_dead.png" },
             ],
+            'walking';
         );
     }
 

@@ -8,8 +8,8 @@ import { Sprite, IAnimationType } from "common/model";
 export class Actor {
     public graphics: Sprite[];
     private id: number;
-
-    constructor(animationType: IAnimationType[]) {
+    
+    constructor(private type: IAnimationType, animationType: IAnimationType[]) {
         this.addGraphic(animationType);
         this.addToStore();
     }
@@ -25,13 +25,14 @@ export class Actor {
             }, [])
             .map(image =>
                 createSpriteObject({
+                    // TODO: find a way to make dynamic
                     height: 500,
                     width: 500,
                     image,
                 })
             );
 
-            console.log(this.graphics)
+            this.graphics.type = this.type;
     }
 
     public destroy(id: number) {

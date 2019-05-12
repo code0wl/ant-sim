@@ -10,7 +10,7 @@ export class Ant extends Animal {
     public type: string;
 
     constructor(type: antType, imageUrls: AnimationType[]) {
-        super(imageUrls);
+        super(type, imageUrls);
         this.type = antType[type];
     }
 
