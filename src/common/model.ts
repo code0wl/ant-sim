@@ -23,6 +23,7 @@ export interface IAnimationType {
     walk: string;
     idle: string;
     attack: string;
+    dead:string;
 }
 
 export interface Sprite {

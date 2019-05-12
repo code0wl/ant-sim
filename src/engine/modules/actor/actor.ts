@@ -11,17 +11,16 @@ export class Actor {
 
     constructor(
         public type: IAnimalType,
-        animationType: IAnimationType[],
+        animationType: IAnimationType,
         public state: currentState
     ) {
         this.addGraphic(animationType);
         this.addToStore();
     }
 
-    private addGraphic(imageLibrary: IAnimationType[]) {
+    private addGraphic(imageLibrary: IAnimationType) {
         // add graphic to actor object
-
-        this.graphics = imageLibrary
+        this.graphics = [imageLibrary]
             .reduce((prev, next) => {
                 const image = spriteSheetLocation(next);
                 prev.push(image);
@@ -29,7 +28,6 @@ export class Actor {
             }, [])
             .map(image =>
                 createSpriteObject({
-                    // TODO: find a way to make dynamic
                     height: 500,
                     width: 500,
                     image,

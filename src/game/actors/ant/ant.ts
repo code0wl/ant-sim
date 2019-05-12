@@ -8,7 +8,7 @@ export class Ant extends Animal {
     public isMoving = false;
     public isSearching = false;
 
-    constructor(public type: antType, images: IAnimationType[], state: currentState) {
+    constructor(public type: antType, images: IAnimationType, state: currentState) {
         super(type, images, state);
     }
 

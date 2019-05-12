@@ -7,7 +7,7 @@ export class Animal extends Actor implements IAnimal {
     public isAlive = true;
     public isMoving = false;
 
-    constructor(type: IAnimalType, imageUrls: IAnimationType[], state: currentState) {
+    constructor(type: IAnimalType, imageUrls: IAnimationType, state: currentState) {
         super(type, imageUrls, state);
     }
 }
