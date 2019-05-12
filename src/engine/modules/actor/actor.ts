@@ -9,28 +9,29 @@ export class Actor {
     public graphics: Sprite[];
     private id: number;
 
-    constructor(imageUrl: IAnimationType) {
-        this.addGraphic(imageUrl);
+    constructor(animationType: IAnimationType[]) {
+        this.addGraphic(animationType);
         this.addToStore();
     }
 
     private addGraphic(imageLibrary: IAnimationType[]) {
         // add graphic to actor object
 
-        const images: HTMLImageElement[] = [];
+        this.graphics = imageLibrary
+            .reduce((prev, next) => {
+                const image = spriteSheetLocation(next);
+                prev.push(image);
+                return prev;
+            }, [])
+            .map(image =>
+                createSpriteObject({
+                    height: 500,
+                    width: 500,
+                    image,
+                })
+            );
 
-        this.graphics = imageLibrary.reduce((_, next) => {
-            const image = spriteSheetLocation(next);
-
-            images.push(image);
-
-            return createSpriteObject({
-                height: 500,
-                width: 500,
-                image: images,
-            });
-        }, []);
-
+            console.log(this.graphics)
     }
 
     public destroy(id: number) {

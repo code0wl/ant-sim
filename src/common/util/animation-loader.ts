@@ -1,6 +1,6 @@
-import { Sprite, AnimationType  } from "common/model";
+import { Sprite, IAnimationType } from "common/model";
 
-export function spriteSheetLocation(action: AnimationType) {
+export function spriteSheetLocation(action: IAnimationType) {
     const type = Object.values(action)[0];
     const image = new Image();
     image.src = type;

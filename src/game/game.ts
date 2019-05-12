@@ -11,12 +11,15 @@ export class Game extends Engine {
     constructor(resolution: Point = currentResolution) {
         super(resolution);
 
-        // // test
-        // new Ant(antType.black, [
-        //     { walk: "ants/__black_ant_walk.png" },
-        //     { idle: "ants/__black_ant_idle.png" },
-        //     { dead: "ants/__black_ant_dead.png" },
-        // ]);
+        // test
+        new Ant(
+            antType.black,
+            [
+                { walk: "ants/__black_ant_walk.png" },
+                { idle: "ants/__black_ant_idle.png" },
+                { dead: "ants/__black_ant_dead.png" },
+            ],
+        );
     }
 
     public update(): void {}

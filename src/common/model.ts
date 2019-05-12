@@ -8,14 +8,16 @@ export interface Point {
     y: number;
 }
 
-export enum AnimationType {
-    walking,
-    idle,
-    attack,
+export interface IAnimationType {
+    walking: string;
+    idle: string;
+    attack: string;
+    width: number, 
+    height: number
 }
 
 export interface Sprite {
-    image: HTMLImageElement[];
+    image: HTMLImageElement;
     width: number;
     height: number;
 }
