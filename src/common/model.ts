@@ -6,19 +6,23 @@ export interface IAnimal {
     isMoving: boolean;
 }
 
-export type IAnimalType = antType | spiderType  
+export type IAnimalType = antType | spiderType;
 
 export interface Point {
     x: number;
     y: number;
 }
 
+export enum currentState {
+    walk,
+    idle,
+    dead,
+}
+
 export interface IAnimationType {
     walking: string;
     idle: string;
     attack: string;
-    width: number, 
-    height: number
 }
 
 export interface Sprite {

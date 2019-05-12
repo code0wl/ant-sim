@@ -23,7 +23,7 @@ export class AnimationLoop {
             canvas
                 .getContext()
                 .drawImage(
-                    graphics.image,
+                    graphics[graphics.state].image,
                     30,
                     30,
                     graphics.width,
