@@ -1,5 +1,5 @@
 import { Animal } from "common/animal";
-import { Point, AnimationType } from "common/model";
+import { Point, currentState, IAnimationType } from "common/model";
 import { antType } from "game/actors/ant/model";
 
 export class Ant extends Animal {
@@ -9,8 +9,8 @@ export class Ant extends Animal {
     public isSearching = false;
     public type: string;
 
-    constructor(type: antType, imageUrls: AnimationType[]) {
-        super(type, imageUrls);
+    constructor(type: antType, imageUrls: IAnimationType[], state: currentState) {
+        super(type, imageUrls, state);
         this.type = antType[type];
     }
 

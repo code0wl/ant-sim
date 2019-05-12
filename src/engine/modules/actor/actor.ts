@@ -3,13 +3,17 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
-import { Sprite, IAnimationType, currentState } from "common/model";
+import { IAnimationType, currentState, IAnimalType } from "common/model";
 
 export class Actor {
     public graphics: any;
     private id: number;
 
-    constructor(private type: IAnimationType, animationType: IAnimationType[]) {
+    constructor(
+        public type: IAnimalType,
+        animationType: IAnimationType[],
+        public state: currentState
+    ) {
         this.addGraphic(animationType);
         this.addToStore();
     }
@@ -32,9 +36,9 @@ export class Actor {
                 })
             );
 
-        //
         this.graphics.type = this.type;
-        this.graphics.state = currentState.walk;
+        this.graphics.id = this.id;
+        this.graphics.state = this.state;
     }
 
     public destroy(id: number) {

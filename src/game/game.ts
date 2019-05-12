@@ -1,5 +1,5 @@
 import { Grid } from "engine/modules/draw/grid";
-import { Point } from "common/model";
+import { Point, currentState } from "common/model";
 import { currentResolution } from "common/util/center";
 import { Ant } from "game/actors/ant/ant";
 import { antType } from "game/actors/ant/model";
@@ -16,7 +16,8 @@ export class Game extends Engine {
             { walk: "ants/__black_ant_walk.png" },
             { idle: "ants/__black_ant_idle.png" },
             { dead: "ants/__black_ant_dead.png" },
-        ]);
+        ]
+        currentState.walk);
     }
 
     public update(): void {}
