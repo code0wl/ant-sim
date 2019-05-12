@@ -12,12 +12,15 @@ export class Game extends Engine {
         super(resolution);
 
         // test
-        new Ant(antType.black, [
-            { walk: "ants/__black_ant_walk.png" },
-            { idle: "ants/__black_ant_idle.png" },
-            { dead: "ants/__black_ant_dead.png" },
-        ]
-        currentState.walk);
+        new Ant(
+            antType.black,
+            [
+                { walk: "ants/__black_ant_walk.png" },
+                { idle: "ants/__black_ant_idle.png" },
+                { dead: "ants/__black_ant_dead.png" },
+            ],
+            currentState.walk
+        );
     }
 
     public update(): void {}

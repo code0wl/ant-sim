@@ -1,17 +1,15 @@
 import { Animal } from "common/animal";
 import { Point, currentState, IAnimationType } from "common/model";
-import { antType } from "game/actors/ant/model";
+import { antType } from "./model";
 
 export class Ant extends Animal {
     readonly currentLocation: Point;
     public isAlive = true;
     public isMoving = false;
     public isSearching = false;
-    public type: string;
 
-    constructor(type: antType, imageUrls: IAnimationType[], state: currentState) {
-        super(type, imageUrls, state);
-        this.type = antType[type];
+    constructor(public type: antType, images: IAnimationType[], state: currentState) {
+        super(type, images, state);
     }
 
     public move() {

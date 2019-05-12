@@ -20,7 +20,7 @@ export enum currentState {
 }
 
 export interface IAnimationType {
-    walking: string;
+    walk: string;
     idle: string;
     attack: string;
 }
