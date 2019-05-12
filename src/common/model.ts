@@ -8,18 +8,14 @@ export interface Point {
     y: number;
 }
 
-export interface IAnimationType {
-    walking: IDrawable;
-    idle: IDrawable;
-    attack: IDrawable;
-}
-
-interface IDrawable {
-    resourceUrl: string;
+export enum AnimationType {
+    walking,
+    idle,
+    attack,
 }
 
 export interface Sprite {
-    image: HTMLImageElement;
+    image: HTMLImageElement[];
     width: number;
     height: number;
 }

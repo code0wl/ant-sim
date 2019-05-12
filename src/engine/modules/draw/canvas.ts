@@ -8,8 +8,8 @@ export class Canvas {
         this.canvas = document.getElementById("canvas") as HTMLCanvasElement;
         this.canvas.width = x;
         this.canvas.height = y;
+        this.canvas.style.backgroundColor = 'blue'
         this.context = this.canvas.getContext("2d");
-        this.context.fillStyle = "blue";
     }
 
     public getCanvas(): HTMLCanvasElement {

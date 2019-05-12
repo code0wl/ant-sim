@@ -16,7 +16,8 @@ module.exports = {
         plugins: [new TsConfigPathsPlugin()],
     },
     devServer: {
-        contentBase: "/",
+        contentBase: path.join(__dirname, 'public'),
+        port: 9000
     },
     plugins: [
         new HtmlWebpackPlugin({
