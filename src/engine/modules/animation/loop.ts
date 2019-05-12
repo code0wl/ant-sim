@@ -20,6 +20,7 @@ export class AnimationLoop {
         const actors = Array.from(actorStore);
 
         actors.map(({ graphics }) => {
+            console.log(graphics[graphics.state].image)
             canvas
                 .getContext()
                 .drawImage(
@@ -28,10 +29,6 @@ export class AnimationLoop {
                     30,
                     graphics.width,
                     graphics.height,
-                    30,
-                    30,
-                    graphics.width,
-                    graphics.height
                 );
         });
     }
