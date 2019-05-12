@@ -29,6 +29,4 @@ export interface IAnimationType {
 export interface Sprite {
     type?: IAnimalType;
     image: HTMLImageElement;
-    width: number;
-    height: number;
 }

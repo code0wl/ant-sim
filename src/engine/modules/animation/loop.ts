@@ -38,7 +38,6 @@ export class AnimationLoop {
 
     private animationLoop() {
         requestAnimationFrame(() => this.animationLoop());
-        this.update();
         this.renderActors();
     }
 }

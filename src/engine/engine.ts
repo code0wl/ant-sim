@@ -9,5 +9,7 @@ export abstract class Engine extends AnimationLoop implements LifeCycle {
 
     preload() {}
 
-    update() {}
+    update() {
+        console.log('updating')
+    }
 }

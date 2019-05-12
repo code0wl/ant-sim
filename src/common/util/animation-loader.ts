@@ -7,10 +7,8 @@ export function spriteSheetLocation(action: IAnimationType) {
     return image;
 }
 
-export function createSpriteObject({ width, height, image }: Sprite) {
+export function createSpriteObject({ image }: Sprite) {
     return {
-        width,
-        height,
         image,
     };
 }

@@ -28,8 +28,6 @@ export class Actor {
             }, [])
             .map(image =>
                 createSpriteObject({
-                    height: 500,
-                    width: 500,
                     image,
                 })
             );
