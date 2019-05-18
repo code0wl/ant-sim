@@ -17,6 +17,7 @@ export enum currentState {
     walk,
     idle,
     dead,
+    attack,
 }
 
 export interface IAnimationType {

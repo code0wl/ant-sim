@@ -7,7 +7,13 @@ import { IAnimationType, currentState, IAnimalType } from "common/model";
 
 export class Actor {
     public graphics: any;
-    private id: number;
+
+    public id: number;
+    public tick = 0;
+    public ticksPerFrame = 1;
+    public frameIndex = 0;
+
+    numberOfFrames = 1;
 
     constructor(
         public type: IAnimalType,
@@ -33,8 +39,19 @@ export class Actor {
             );
 
         this.graphics.type = this.type;
-        this.graphics.id = this.id;
         this.graphics.state = this.state;
+    }
+
+    public update() {
+        this.tick += 1;
+
+        if (this.tick > this.ticksPerFrame) {
+            this.tick = 0;
+
+            if (this.frameIndex < this.numberOfFrames - 1) {
+                this.frameIndex += 1;
+            }
+        }
     }
 
     public destroy(id: number) {

@@ -11,7 +11,6 @@ export class AnimationLoop {
         this.height = resolution.y;
         this.animationLoop();
     }
-
     public update() {
         // implemented by Engine
     }
@@ -19,21 +18,32 @@ export class AnimationLoop {
     public renderActors() {
         const actors = Array.from(actorStore);
 
-        actors.map(actor =>
+        actors.forEach(actor => {
+            const {
+                width,
+                height,
+                graphics,
+                ticksPerFrame,
+                tick,
+                frameIndex,
+                numberOfFrames,
+            } = actor;
+
             canvas
                 .getContext()
                 .drawImage(
-                    actor.graphics[actor.graphics.state].image,
+                    graphics[graphics.state].image,
+                    (frameIndex * width) / numberOfFrames,
+                    0,
+                    width / numberOfFrames,
+                    height,
                     0,
                     0,
-                    actor.width,
-                    actor.height,
-                    0,
-                    0,
-                    actor.width,
-                    actor.height
-                )
-        );
+                    width / numberOfFrames,
+                    height
+                );
+            actor.update();
+        });
     }
 
     private animationLoop() {
