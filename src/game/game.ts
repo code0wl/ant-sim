@@ -12,7 +12,7 @@ export class Game extends Engine {
         super(resolution);
 
         // test
-       const ant =  new Ant(
+        new Ant(
             antType.black,
             {
                 walk: "ants/__black_ant_walk-small.png",
@@ -20,7 +20,7 @@ export class Game extends Engine {
                 dead: "ants/__black_ant_dead-small.png",
                 attack: "",
             },
-            currentState.walk
+            currentState.walk,
         );
 
     }
