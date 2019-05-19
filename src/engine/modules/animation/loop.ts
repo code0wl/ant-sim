@@ -23,8 +23,6 @@ export class AnimationLoop {
                 width,
                 height,
                 graphics,
-                ticksPerFrame,
-                tick,
                 frameIndex,
                 numberOfFrames,
             } = actor;

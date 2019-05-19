@@ -13,7 +13,7 @@ export class Actor {
     public ticksPerFrame = 1;
     public frameIndex = 0;
 
-    numberOfFrames = 1;
+    public numberOfFrames = 1;
 
     constructor(
         public type: IAnimalType,

@@ -1,14 +1,13 @@
 import { Animal } from "common/animal";
-import { Point, currentState, IAnimationType } from "common/model";
+import { currentState, IAnimationType } from "common/model";
 import { antType } from "./model";
 
 export class Ant extends Animal {
-    readonly currentLocation: Point;
     public isAlive = true;
     public isMoving = false;
     public isSearching = false;
-    public width = 200;
-    public height = 200;
+    public width = 20;
+    public height = 40;
 
     constructor(
         public type: antType,
@@ -27,6 +26,8 @@ export class Ant extends Animal {
     }
 
     public eat() {}
+
+    public carry() {}
 
     public attack() {}
 
