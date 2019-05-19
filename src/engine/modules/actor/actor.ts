@@ -12,8 +12,7 @@ export class Actor {
     public tick = 0;
     public ticksPerFrame = 1;
     public frameIndex = 0;
-
-    public numberOfFrames = 1;
+    public numberOfFrames = 5;
 
     constructor(
         public type: IAnimalType,
@@ -50,6 +49,8 @@ export class Actor {
 
             if (this.frameIndex < this.numberOfFrames - 1) {
                 this.frameIndex += 1;
+            } else {
+                this.frameIndex = 0;
             }
         }
     }

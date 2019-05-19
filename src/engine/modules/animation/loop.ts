@@ -6,9 +6,9 @@ export class AnimationLoop {
     public width: number;
     public height: number;
 
-    constructor(resolution: Point) {
-        this.width = resolution.x;
-        this.height = resolution.y;
+    constructor({ x, y }: Point) {
+        this.width = x;
+        this.height = y;
         this.animationLoop();
     }
     public update() {
@@ -27,6 +27,8 @@ export class AnimationLoop {
                 numberOfFrames,
             } = actor;
 
+            canvas.getContext().clearRect(100, 100, width, height);
+
             canvas
                 .getContext()
                 .drawImage(
@@ -35,8 +37,8 @@ export class AnimationLoop {
                     0,
                     width / numberOfFrames,
                     height,
-                    0,
-                    0,
+                    100,
+                    100,
                     width / numberOfFrames,
                     height
                 );
@@ -46,6 +48,7 @@ export class AnimationLoop {
 
     private animationLoop() {
         requestAnimationFrame(() => this.animationLoop());
+        // Clear the canvas
         this.renderActors();
     }
 }

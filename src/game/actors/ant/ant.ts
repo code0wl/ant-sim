@@ -6,7 +6,7 @@ export class Ant extends Animal {
     public isAlive = true;
     public isMoving = false;
     public isSearching = false;
-    public width = 20;
+    public width = 120;
     public height = 40;
 
     constructor(
