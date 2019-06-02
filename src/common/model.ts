@@ -2,8 +2,7 @@ import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
 
 export interface IAnimal {
-    isAlive: boolean;
-    isMoving: boolean;
+    currentState: currentState
 }
 
 export type IAnimalType = antType | spiderType;

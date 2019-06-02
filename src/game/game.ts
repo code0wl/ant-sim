@@ -22,7 +22,6 @@ export class Game extends Engine {
                 dead: "ants/__black_ant_dead-small.png",
                 attack: "",
             },
-            currentState.walk,
             { x: 100, y: 100 }
         );
 
@@ -34,7 +33,6 @@ export class Game extends Engine {
                 dead: "ants/__red_ant_dead-small.png",
                 attack: "",
             },
-            currentState.walk,
             { x: 200, y: 100 }
         );
 
@@ -46,7 +44,6 @@ export class Game extends Engine {
                 dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
                 attack: "",
             },
-            currentState.walk,
             { x: 300, y: 100 }
         );
 
@@ -58,7 +55,6 @@ export class Game extends Engine {
                 dead: "spiders/spider2/spritesheets/sheet_spider_die-small.png",
                 attack: "spiders/spider2/spritesheets/sheet_spider_attack-small.png",
             },
-            currentState.walk,
             { x: 400, y: 100 }
         );
     }

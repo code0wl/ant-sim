@@ -27,6 +27,7 @@ export class AnimationLoop {
                 frameIndex,
                 numberOfFrames,
                 coordinates,
+                currentState
             } = actor;
 
             canvas
@@ -36,7 +37,7 @@ export class AnimationLoop {
             canvas
                 .getContext()
                 .drawImage(
-                    graphics[graphics.state].image,
+                    graphics[currentState].image,
                     (frameIndex * width) / numberOfFrames,
                     0,
                     width / numberOfFrames,
