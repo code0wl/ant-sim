@@ -25,7 +25,6 @@ export class Actor {
     }
 
     private addGraphic(imageLibrary: IAnimationType) {
-        // add graphic to actor object
         this.graphics = [imageLibrary]
             .reduce((prev, next) => {
                 prev.push(spriteSheetLocation(next));

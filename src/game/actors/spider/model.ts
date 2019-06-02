@@ -6,9 +6,7 @@ export interface ISpider {
 
 export enum spiderType {
     small,
-    medium,
-    larger,
-    extra,
+    large
 }
 
 export type Item = IAnimal;
