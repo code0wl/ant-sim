@@ -15,7 +15,6 @@ export class Spider extends Animal {
         public coordinates: Point
     ) {
         super(type, images, coordinates);
-
         setInterval(() => this.move(), 5000);
         setInterval(() => this.idle(), 10000);
     }

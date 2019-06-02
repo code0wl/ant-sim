@@ -34,10 +34,12 @@ export class AnimationLoop {
                 .getContext()
                 .clearRect(coordinates.x, coordinates.y, width, height);
 
+console.log(currentState)
+
             canvas
                 .getContext()
                 .drawImage(
-                    graphics[currentState].image,
+                    graphics[0].image,
                     (frameIndex * width) / numberOfFrames,
                     0,
                     width / numberOfFrames,
