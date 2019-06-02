@@ -14,21 +14,18 @@ export class Actor {
     public frameIndex = 0;
     public numberOfFrames = 5;
 
-    constructor(
-        public type: IAnimalType,
-        animationType: IAnimationType,
-    ) {
+    constructor(public type: IAnimalType, animationType: IAnimationType) {
         this.addGraphic(animationType);
         this.addToStore();
     }
 
     private addGraphic(imageLibrary: IAnimationType) {
-        this.graphics = [imageLibrary]
+        this.graphics = Object.values(imageLibrary)
             .reduce((prev, next) => {
                 prev.push(spriteSheetLocation(next));
                 return prev;
             }, [])
-            .map(image =>
+            .map((image: HTMLImageElement) =>
                 createSpriteObject({
                     image,
                 })
