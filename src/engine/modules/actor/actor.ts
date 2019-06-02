@@ -9,10 +9,11 @@ export class Actor {
     public graphics: any;
 
     public id: number;
-    public tick = 0;
-    public ticksPerFrame = 1;
-    public frameIndex = 0;
-    public numberOfFrames = 5;
+    
+    private tick = 0;
+    private ticksPerFrame = 1;
+    private frameIndex = 0;
+    private numberOfFrames = 5;
 
     constructor(public type: IAnimalType, animationType: IAnimationType) {
         this.addGraphic(animationType);
