@@ -3,7 +3,7 @@ import {
     spriteSheetLocation,
     createSpriteObject,
 } from "common/util/animation-loader";
-import { IAnimationType, currentState, IAnimalType } from "common/model";
+import { IAnimationType, currentState, IAnimalType, Point; } from "common/model";
 
 export class Actor {
     public graphics: any;
@@ -17,7 +17,8 @@ export class Actor {
     constructor(
         public type: IAnimalType,
         animationType: IAnimationType,
-        public state: currentState
+        public state: currentState,
+        public coordinates: Point;
     ) {
         this.addGraphic(animationType);
         this.addToStore();
@@ -27,8 +28,7 @@ export class Actor {
         // add graphic to actor object
         this.graphics = [imageLibrary]
             .reduce((prev, next) => {
-                const image = spriteSheetLocation(next);
-                prev.push(image);
+                prev.push(spriteSheetLocation(next));
                 return prev;
             }, [])
             .map(image =>
@@ -39,6 +39,7 @@ export class Actor {
 
         this.graphics.type = this.type;
         this.graphics.state = this.state;
+        this.graphics.coordinates = this.coordinates;
     }
 
     public update() {

@@ -1,20 +1,21 @@
 import { Animal } from "common/animal";
-import { currentState, IAnimationType } from "common/model";
+import { currentState, IAnimationType, Point } from "common/model";
 import { antType } from "./model";
 
 export class Ant extends Animal {
     public isAlive = true;
     public isMoving = false;
     public isSearching = false;
-    public width = 120;
-    public height = 40;
+    public width = 80;
+    public height = 27;
 
     constructor(
         public type: antType,
         images: IAnimationType,
-        state: currentState
+        state: currentState,
+        public coordinates: Point
     ) {
-        super(type, images, state);
+        super(type, images, state, coordinates);
     }
 
     public move() {
@@ -32,6 +33,6 @@ export class Ant extends Animal {
     public attack() {}
 
     public getLocation() {
-        return this.currentLocation;
+        return this.coordinates;
     }
 }

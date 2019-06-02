@@ -11,6 +11,7 @@ export class AnimationLoop {
         this.height = y;
         this.animationLoop();
     }
+
     public update() {
         // implemented by Engine
     }
@@ -25,9 +26,12 @@ export class AnimationLoop {
                 graphics,
                 frameIndex,
                 numberOfFrames,
+                coordinates,
             } = actor;
 
-            canvas.getContext().clearRect(100, 100, width, height);
+            canvas
+                .getContext()
+                .clearRect(coordinates.x, coordinates.y, width, height);
 
             canvas
                 .getContext()
@@ -37,8 +41,8 @@ export class AnimationLoop {
                     0,
                     width / numberOfFrames,
                     height,
-                    100,
-                    100,
+                    coordinates.x,
+                    coordinates.y,
                     width / numberOfFrames,
                     height
                 );
@@ -48,7 +52,6 @@ export class AnimationLoop {
 
     private animationLoop() {
         requestAnimationFrame(() => this.animationLoop());
-        // Clear the canvas
         this.renderActors();
     }
 }

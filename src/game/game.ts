@@ -21,8 +21,20 @@ export class Game extends Engine {
                 attack: "",
             },
             currentState.walk,
+            { x: 100, y: 100 }
         );
 
+        new Ant(
+            antType.red,
+            {
+                walk: "ants/__red_ant_walk-small.png",
+                idle: "ants/__red_ant_idle-small.png",
+                dead: "ants/__red_ant_dead-small.png",
+                attack: "",
+            },
+            currentState.walk,
+            { x: 200, y: 200 }
+        );
     }
 
     public update(): void {}
