@@ -4,6 +4,7 @@ import { currentResolution } from "common/util/center";
 import { Ant } from "game/actors/ant/ant";
 import { antType } from "game/actors/ant/model";
 import { Engine } from "engine/engine";
+import { spiderType } from "./actors/spider/model";
 
 export class Game extends Engine {
     public grid: Grid;
@@ -26,6 +27,18 @@ export class Game extends Engine {
 
         new Ant(
             antType.red,
+            {
+                walk: "ants/__red_ant_walk-small.png",
+                idle: "ants/__red_ant_idle-small.png",
+                dead: "ants/__red_ant_dead-small.png",
+                attack: "",
+            },
+            currentState.walk,
+            { x: 200, y: 200 }
+        );
+
+        new Spider(
+            spiderType.small,
             {
                 walk: "ants/__red_ant_walk-small.png",
                 idle: "ants/__red_ant_idle-small.png",
