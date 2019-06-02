@@ -6,8 +6,11 @@ import {
     currentState,
 } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
+import { canvas } from "index";
 
 export class Animal extends Actor implements IAnimal {
+    public height: number;
+    public width: number;
     public currentState: currentState = currentState.idle;
 
     constructor(
@@ -33,7 +36,7 @@ export class Animal extends Actor implements IAnimal {
     public attack() {
         this.currentState = currentState.attack;
     }
-    
+
     public getLocation() {
         return this.coordinates;
     }
