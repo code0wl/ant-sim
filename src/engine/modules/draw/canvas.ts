@@ -1,6 +1,8 @@
 import { Point } from "common/model";
+import { Grid } from "./grid";
 
 export class Canvas {
+    public grid: Grid;
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
 
@@ -9,6 +11,7 @@ export class Canvas {
         this.canvas.width = x;
         this.canvas.height = y;
         this.context = this.canvas.getContext("2d");
+        this.grid = new Grid({ x, y });
     }
 
     public getCanvas(): HTMLCanvasElement {

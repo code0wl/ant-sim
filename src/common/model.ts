@@ -2,7 +2,7 @@ import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
 
 export interface IAnimal {
-    currentState: currentState
+    currentState: currentState;
 }
 
 export type IAnimalType = antType | spiderType;
@@ -23,7 +23,7 @@ export interface IAnimationType {
     walk: string;
     idle: string;
     attack: string;
-    dead:string;
+    dead: string;
 }
 
 export interface Sprite {
