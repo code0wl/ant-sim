@@ -1,13 +1,14 @@
 import { IMap } from "game/model";
 import { IAnimal, Point } from "common/model";
+import { ICell } from "./model";
 
 export class Grid {
-    gridSize: number = 20;
-    // add interface
-    cells: any;
+    public cells: any = [];
+    private cellSize: number = 20;
 
     constructor(public canvas: HTMLCanvasElement, dimensions: Point) {
-        this.drawGrid(dimensions);
+        this.createGrid(dimensions);
+        this.drawGrid();
     }
 
     public debug() {}
@@ -19,33 +20,23 @@ export class Grid {
 
     public getCell(map: IMap) {}
 
-    private drawGrid({ x, y }: Point) {
+    public drawGrid() {
         const ctx = this.canvas.getContext("2d");
-        const cols: any = [];
-        const rows = [];
-
-        // cols
-        for (let i = 0, j = 0; i <= x; i += this.gridSize) {
-            cols[j] = j;
-            ctx.moveTo(i, 0);
-            ctx.lineTo(i, y);
-            j += 1;
-        }
-
-        // rows: any
-        for (let i = 0, j = 0; i <= y; i += this.gridSize) {
-            rows[j] = j;
-            ctx.moveTo(0, i);
-            ctx.lineTo(x, i);
-            j += 1;
-        }
-
         ctx.strokeStyle = "#006400";
-
         ctx.stroke();
+        this.cells.forEach(({ end, start }: ICell) => {
+            ctx.strokeRect(start, end, this.cellSize, this.cellSize);
+        });
+    }
 
-        // this.cells = [...new Set(rows.concat(cols))];
-
-        // console.log(this.cells);
+    public createGrid({ x, y }: Point) {
+        for (let i = 0; i <= y; i += this.cellSize) {
+            for (let j = 0; j <= x; j += this.cellSize) {
+                this.cells.push({
+                    start: j,
+                    end: i,
+                });
+            }
+        }
     }
 }
