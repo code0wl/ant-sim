@@ -1,13 +1,5 @@
-import { Sprite } from "common/model";
-
-export function spriteSheetLocation(action: string) {
+export function spriteSheetLocation(src: string) {
     const image = new Image();
-    image.src = action;
+    image.src = src;
     return image;
-}
-
-export function createSpriteObject({ image }: Sprite) {
-    return {
-        image,
-    };
 }

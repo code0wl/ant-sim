@@ -9,7 +9,7 @@ export class Actor {
     public graphics: any;
 
     public id: number;
-    
+
     private tick = 0;
     private ticksPerFrame = 1;
     private frameIndex = 0;
@@ -26,11 +26,7 @@ export class Actor {
                 prev.push(spriteSheetLocation(next));
                 return prev;
             }, [])
-            .map((image: HTMLImageElement) =>
-                createSpriteObject({
-                    image,
-                })
-            );
+            .map((image: HTMLImageElement) => ({ image }));
     }
 
     public update() {
