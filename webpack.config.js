@@ -16,9 +16,10 @@ module.exports = {
         plugins: [new TsConfigPathsPlugin()],
     },
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
-        port: 9000
+        contentBase: path.join(__dirname, "public"),
+        port: 9000,
     },
+    devtool: "source-map",
     plugins: [
         new HtmlWebpackPlugin({
             hash: true,
