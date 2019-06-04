@@ -1,11 +1,12 @@
 import { Grid } from "engine/modules/draw/grid";
-import { Point, currentState } from "common/model";
+import { Point } from "common/model";
 import { currentResolution } from "common/util/center";
 import { Ant } from "game/actors/ant/ant";
 import { antType } from "game/actors/ant/model";
 import { Engine } from "engine/engine";
 import { spiderType } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
+import { actorStore } from "engine/modules/actor/store";
 
 export class Game extends Engine {
     public grid: Grid;
@@ -59,5 +60,42 @@ export class Game extends Engine {
         );
     }
 
-    public update(): void {}
+    public renderActors() {
+        const actors = Array.from(actorStore);
+
+        actors.forEach(actor => {
+            const {
+                width,
+                height,
+                graphics,
+                frameIndex,
+                numberOfFrames,
+                coordinates,
+                currentState,
+            } = actor;
+
+            this.canvas
+                .getContext()
+                .clearRect(coordinates.x, coordinates.y, width, height);
+
+            this.canvas
+                .getContext()
+                .drawImage(
+                    graphics[currentState].image,
+                    (frameIndex * width) / numberOfFrames,
+                    0,
+                    width / numberOfFrames,
+                    height,
+                    coordinates.x,
+                    coordinates.y,
+                    width / numberOfFrames,
+                    height
+                );
+            actor.update();
+        });
+    }
+
+    public update(): void {
+        this.renderActors();
+    }
 }

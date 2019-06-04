@@ -1,19 +1,16 @@
 import { IMap } from "game/model";
 import { IAnimal, Point } from "common/model";
 import { ICell } from "./model";
+import { Canvas } from "./canvas";
 
 export class Grid {
     public cells: any = [];
     private cellSize: number = 20;
 
-    constructor(public canvas: HTMLCanvasElement, dimensions: Point) {
+    constructor(public canvas: Canvas, dimensions: Point) {
         this.createGrid(dimensions);
-        this.drawGrid();
     }
 
-    public debug() {}
-
-    // think of better type
     public intersections(elements: IAnimal[]) {
         // pass event when actors have intersected
     }
@@ -21,10 +18,13 @@ export class Grid {
     public getCell(map: IMap) {}
 
     public drawGrid() {
-        const ctx = this.canvas.getContext("2d");
+        const ctx = this.canvas.getContext();
+        ctx.fillStyle = "#228B22";
         ctx.strokeStyle = "#006400";
         ctx.stroke();
+
         this.cells.forEach(({ end, start }: ICell) => {
+            ctx.fillRect(start, end, this.cellSize, this.cellSize);
             ctx.strokeRect(start, end, this.cellSize, this.cellSize);
         });
     }

@@ -6,7 +6,6 @@ import {
     currentState,
 } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
-import { canvas } from "index";
 
 export class Animal extends Actor implements IAnimal {
     public height: number;

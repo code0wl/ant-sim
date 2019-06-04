@@ -1,5 +1,4 @@
 import { Point } from "common/model";
-import { canvas } from "index";
 
 export class Nest {
     constructor(public size: Point, public coordinates: Point) {
