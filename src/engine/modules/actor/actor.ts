@@ -1,8 +1,5 @@
 import { actorStore } from "engine/modules/actor/store";
-import {
-    spriteSheetLocation,
-    createSpriteObject,
-} from "common/util/animation-loader";
+import { spriteSheetLocation } from "common/util/animation-loader";
 import { IAnimationType, IAnimalType } from "common/model";
 
 export class Actor {
@@ -20,8 +17,8 @@ export class Actor {
         this.addToStore();
     }
 
-    private addGraphic(imageLibrary: IAnimationType) {
-        this.graphics = Object.values(imageLibrary)
+    private addGraphic(animationType: IAnimationType) {
+        this.graphics = Object.values(animationType)
             .reduce((prev, next) => {
                 prev.push(spriteSheetLocation(next));
                 return prev;
