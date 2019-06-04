@@ -96,6 +96,9 @@ export class Game extends Engine {
     }
 
     public update(): void {
-        this.renderActors();
+        if (this.grid) {
+            // this.grid.drawGrid();
+            this.renderActors();
+        }
     }
 }

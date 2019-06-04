@@ -9,6 +9,7 @@ export class Grid {
 
     constructor(public canvas: Canvas, dimensions: Point) {
         this.createGrid(dimensions);
+        this.drawGrid();
     }
 
     public intersections(elements: IAnimal[]) {
@@ -17,9 +18,9 @@ export class Grid {
 
     public getCell(map: IMap) {}
 
-    public drawGrid() {
+    public drawGrid(color = "#228B22") {
         const ctx = this.canvas.getContext();
-        ctx.fillStyle = "#228B22";
+        ctx.fillStyle = color;
         ctx.strokeStyle = "#006400";
         ctx.stroke();
 
