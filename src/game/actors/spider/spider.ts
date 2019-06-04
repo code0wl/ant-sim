@@ -1,4 +1,3 @@
-import { Engine } from "engine/engine";
 import { IAnt } from "game/actors/ant/model";
 import { Animal } from "common/animal";
 import { spiderType } from "game/actors/spider/model";
@@ -10,9 +9,9 @@ export class Spider extends Animal {
     public height = !this.type ? 50 : 150;
 
     constructor(
-        public type: spiderType,
+        type: spiderType,
         images: IAnimationType,
-        public coordinates: Point
+        coordinates: Point
     ) {
         super(type, images, coordinates);
         setInterval(() => this.move(), 5000);

@@ -7,9 +7,9 @@ export class Ant extends Animal {
     public height = 27;
 
     constructor(
-        public type: antType,
+        type: antType,
         images: IAnimationType,
-        public coordinates: Point
+        coordinates: Point
     ) {
         super(type, images, coordinates);
         setInterval(() => this.move(), 5000);
