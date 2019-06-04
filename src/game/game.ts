@@ -40,8 +40,10 @@ export class Game extends Engine {
         new Spider(
             spiderType.large,
             {
-                walk: "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
-                idle: "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
+                walk:
+                    "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
+                idle:
+                    "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
                 dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
                 attack: "",
             },
@@ -51,17 +53,23 @@ export class Game extends Engine {
         new Spider(
             spiderType.small,
             {
-                walk: "spiders/spider2/spritesheets/sheet_spider_walk-small.png",
-                idle: "spiders/spider2/spritesheets/sheet_spider_idle-small.png",
+                walk:
+                    "spiders/spider2/spritesheets/sheet_spider_walk-small.png",
+                idle:
+                    "spiders/spider2/spritesheets/sheet_spider_idle-small.png",
                 dead: "spiders/spider2/spritesheets/sheet_spider_die-small.png",
-                attack: "spiders/spider2/spritesheets/sheet_spider_attack-small.png",
+                attack:
+                    "spiders/spider2/spritesheets/sheet_spider_attack-small.png",
             },
             { x: 400, y: 100 }
         );
     }
 
     public renderActors() {
+        if (!this.canvas) return;
         const actors = Array.from(actorStore);
+
+        const ctx = this.canvas.getContext();
 
         actors.forEach(actor => {
             const {
@@ -74,31 +82,24 @@ export class Game extends Engine {
                 currentState,
             } = actor;
 
-            this.canvas
-                .getContext()
-                .clearRect(coordinates.x, coordinates.y, width, height);
+            ctx.clearRect(coordinates.x, coordinates.y, width, height);
 
-            this.canvas
-                .getContext()
-                .drawImage(
-                    graphics[currentState].image,
-                    (frameIndex * width) / numberOfFrames,
-                    0,
-                    width / numberOfFrames,
-                    height,
-                    coordinates.x,
-                    coordinates.y,
-                    width / numberOfFrames,
-                    height
-                );
+            ctx.drawImage(
+                graphics[currentState].image,
+                (frameIndex * width) / numberOfFrames,
+                0,
+                width / numberOfFrames,
+                height,
+                coordinates.x,
+                coordinates.y,
+                width / numberOfFrames,
+                height
+            );
             actor.update();
         });
     }
 
     public update(): void {
-        if (this.grid) {
-            // this.grid.drawGrid();
-            this.renderActors();
-        }
+        this.renderActors();
     }
 }

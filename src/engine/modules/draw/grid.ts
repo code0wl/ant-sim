@@ -18,9 +18,9 @@ export class Grid {
 
     public getCell(map: IMap) {}
 
-    public drawGrid(color = "#228B22") {
+    public drawGrid() {
         const ctx = this.canvas.getContext();
-        ctx.fillStyle = color;
+        ctx.fillStyle = "#228B22";
         ctx.strokeStyle = "#006400";
         ctx.stroke();
 
