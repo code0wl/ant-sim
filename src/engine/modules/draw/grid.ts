@@ -1,16 +1,13 @@
 import { IMap } from "game/model";
 import { IAnimal, Point } from "common/model";
-import { canvas } from "index";
 
 export class Grid {
-    constructor(dimensions: Point) {
+    gridSize: number = 50;
+    constructor(public canvas: HTMLCanvasElement, dimensions: Point) {
         this.drawGrid(dimensions);
     }
 
-    public debug() {
-        canvas.getContext().strokeStyle = "black";
-        canvas.getContext().stroke();
-    }
+    public debug() {}
 
     // think of better type
     public intersections(elements: IAnimal[]) {
@@ -20,18 +17,19 @@ export class Grid {
     public getCell(map: IMap) {}
 
     private drawGrid({ x, y }: Point) {
-        const bw = x;
-        const bh = y;
-        const p = 10;
+        const ctx = this.canvas.getContext("2d");
 
-        for (let x = 0; x <= bw; x += 40) {
-            canvas.getContext().moveTo(0.5 + x + p, p);
-            canvas.getContext().lineTo(0.5 + x + p, bh + p);
+        for (let i = 0; i < x; i += this.gridSize) {
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, y);
         }
 
-        for (let x = 0; x <= bh; x += 40) {
-            canvas.getContext().moveTo(p, 0.5 + x + p);
-            canvas.getContext().lineTo(bw + p, 0.5 + x + p);
+        for (let i = 0; i < x; i += this.gridSize) {
+            ctx.moveTo(0, i);
+            ctx.lineTo(x, i);
         }
+        ctx.strokeStyle = "#006400";
+        ctx.lineWidth = 1;
+        ctx.stroke();
     }
 }

@@ -11,7 +11,7 @@ export class Canvas {
         this.canvas.width = x;
         this.canvas.height = y;
         this.context = this.canvas.getContext("2d");
-        this.grid = new Grid({ x, y });
+        this.grid = new Grid(this.canvas, { x, y });
     }
 
     public getCanvas(): HTMLCanvasElement {
