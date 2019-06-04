@@ -2,6 +2,8 @@ import { IMap } from "game/model";
 import { IAnimal, Point } from "common/model";
 import { ICell } from "./model";
 import { Canvas } from "./canvas";
+import { currentResolution } from "common/util/center";
+import { controls } from "../actor/store";
 
 export class Grid {
     public cells: any = [];
@@ -16,25 +18,6 @@ export class Grid {
         // pass event when actors have intersected
     }
 
-    public debugCells(ctx: CanvasRenderingContext2D) {
-        const { x, y } = this.dimensions;
-
-        for (let i = 0; i <= x; i += this.cellSize) {
-            ctx.moveTo(i, 0);
-            ctx.lineTo(i, y);
-        }
-
-        // rows: any
-        for (let i = 0; i <= y; i += this.cellSize) {
-            ctx.moveTo(0, i);
-            ctx.lineTo(x, i);
-        }
-
-        ctx.strokeStyle = "#006400";
-
-        ctx.stroke();
-    }
-
     public getCell(map: IMap) {}
 
     public drawGrid() {
@@ -45,10 +28,6 @@ export class Grid {
         });
 
         ctx.fillStyle = "#228B22";
-
-        if (false) {
-            this.debugCells(ctx);
-        }
     }
 
     public createGrid({ x, y }: Point) {
