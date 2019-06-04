@@ -7,8 +7,8 @@ export class Grid {
     public cells: any = [];
     private cellSize: number = 20;
 
-    constructor(public canvas: Canvas, dimensions: Point) {
-        this.createGrid(dimensions);
+    constructor(public canvas: Canvas, public dimensions: Point) {
+        this.createGrid(this.dimensions);
         this.drawGrid();
     }
 
@@ -16,18 +16,39 @@ export class Grid {
         // pass event when actors have intersected
     }
 
+    public debugCells(ctx: CanvasRenderingContext2D) {
+        const { x, y } = this.dimensions;
+
+        for (let i = 0; i <= x; i += this.cellSize) {
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i, y);
+        }
+
+        // rows: any
+        for (let i = 0; i <= y; i += this.cellSize) {
+            ctx.moveTo(0, i);
+            ctx.lineTo(x, i);
+        }
+
+        ctx.strokeStyle = "#006400";
+
+        ctx.stroke();
+    }
+
     public getCell(map: IMap) {}
 
     public drawGrid() {
         const ctx = this.canvas.getContext();
-        ctx.fillStyle = "#228B22";
-        ctx.strokeStyle = "#006400";
-        ctx.stroke();
 
         this.cells.forEach(({ end, start }: ICell) => {
             ctx.fillRect(start, end, this.cellSize, this.cellSize);
-            ctx.strokeRect(start, end, this.cellSize, this.cellSize);
         });
+
+        ctx.fillStyle = "#228B22";
+
+        if (false) {
+            this.debugCells(ctx);
+        }
     }
 
     public createGrid({ x, y }: Point) {
