@@ -1,11 +1,16 @@
-import { Point, ICell } from "common/model";
+import { Point } from "common/model";
+import { Cell } from "engine/modules/draw/cell";
 
 export class Food {
     constructor(public amount: number, public coordinates: Point) {
         // canvas.getContext
     }
 
-    removeFood(cell: ICell) {
-        cell.removeFood();
+    remove(cell: Cell) {
+        cell.removeItem();
+    }
+
+    add() {
+
     }
 }

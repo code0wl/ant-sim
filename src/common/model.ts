@@ -12,10 +12,6 @@ export interface Point {
     y: number;
 }
 
-export interface ICell extends Point {
-    remove(): void;
-}
-
 export enum currentState {
     walk,
     idle,

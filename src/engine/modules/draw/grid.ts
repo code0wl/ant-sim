@@ -1,7 +1,6 @@
-import { IMap } from "game/model";
 import { IAnimal, Point } from "common/model";
-import { ICell } from "./model";
 import { Canvas } from "./canvas";
+import { Cell } from "./cell";
 
 export class Grid {
     public cells: any = [];
@@ -16,12 +15,10 @@ export class Grid {
         // pass event when actors have intersected
     }
 
-    public getCell(map: IMap) {}
-
     public drawGrid() {
         const ctx = this.canvas.getContext();
 
-        this.cells.forEach(({ end, start }: ICell) => {
+        this.cells.forEach(({ end, start }: Cell) => {
             ctx.fillRect(start, end, this.cellSize, this.cellSize);
         });
 
@@ -29,12 +26,9 @@ export class Grid {
     }
 
     public createGrid({ x, y }: Point) {
-        for (let i = 0; i <= y; i += this.cellSize) {
-            for (let j = 0; j <= x; j += this.cellSize) {
-                this.cells.push({
-                    start: j,
-                    end: i,
-                });
+        for (let i = 0; i <= x; i += this.cellSize) {
+            for (let j = 0; j <= y; j += this.cellSize) {
+                this.cells.push(new Cell(i, j));
             }
         }
     }
