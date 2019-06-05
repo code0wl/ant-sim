@@ -1,6 +1,6 @@
-import { Point } from "common/model";
 import { Canvas } from "./canvas";
 import { Cell } from "./cell";
+import { Point } from "./point";
 
 export class Grid {
     public cells: any = [];

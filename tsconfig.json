@@ -18,7 +18,8 @@
         "game/*": ["src/game/*"],
         "actors/*": ["src/game/actors/*"],
         "common/*": ["src/common/*"],
-        "index/*": ["./src"]
+        "index/*": ["./src"],
+        "engine": ["./src/engine"]
     },
     "typeRoots": ["./node_modules/@types"],
     "exclude": ["node_modules", "*.spec.ts"],

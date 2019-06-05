@@ -1,4 +1,4 @@
-import { IAnimal } from "common/model";
+import { IActorType } from "common/model";
 
 export interface ISpider {
     carry(item: Item): void;
@@ -9,4 +9,4 @@ export enum spiderType {
     large
 }
 
-export type Item = IAnimal;
+export type Item = IActorType;

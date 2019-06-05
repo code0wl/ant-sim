@@ -1,5 +1,4 @@
 import {
-    IAnimal,
     IAnimationType,
     currentState,
     IActorType,
@@ -7,7 +6,7 @@ import {
 import { Actor } from "engine/modules/actor/actor";
 import { Point } from "engine/modules/draw/point";
 
-export class Animal extends Actor implements IAnimal {
+export class Animal extends Actor {
     public height: number;
     public width: number;
     public currentState: currentState = currentState.idle;

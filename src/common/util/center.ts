@@ -1,9 +1,8 @@
-import { Point } from "common/model";
-
-export const currentResolution = {
-    x: window.innerWidth,
-    y: window.innerHeight,
-};
+import { Point } from "engine/modules/draw/point";
+export const currentResolution = new Point(
+    window.innerWidth,
+    window.innerHeight
+);
 
 const setCenter = (): Point => ({
     x: currentResolution.x / 2,

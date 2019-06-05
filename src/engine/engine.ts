@@ -1,10 +1,10 @@
 import { AnimationLoop } from "engine/modules/animation/loop";
-import { Point } from "common/model";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
 import { currentResolution } from "common/util/center";
 import { actorStore } from "./modules/actor/store";
 import { Menu } from "ui/menu";
+import { Point } from "./modules/draw/point";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
