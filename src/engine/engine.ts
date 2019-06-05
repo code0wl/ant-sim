@@ -17,13 +17,7 @@ export abstract class Engine extends AnimationLoop {
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();
     }
-
-    clearCanvas() {
-        this.canvas
-            .getContext()
-            .clearRect(0, 0, currentResolution.x, currentResolution.y);
-    }
-
+    
     public renderActors() {
         if (!this.canvas) return;
         const actors = Array.from(actorStore);
@@ -63,7 +57,6 @@ export abstract class Engine extends AnimationLoop {
 
     public update(): void {
         if (!this.grid) return;
-        this.clearCanvas();
         this.grid.drawGrid();
         this.renderActors();
     }

@@ -10,6 +10,11 @@ export enum currentState {
     attack,
 }
 
+export const Colors = {
+    grass: "#228B22",
+    food: "red",
+};
+
 export interface IAnimationType {
     walk?: string;
     idle: string;

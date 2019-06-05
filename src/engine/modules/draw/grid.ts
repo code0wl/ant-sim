@@ -17,8 +17,6 @@ export class Grid {
         this.cells.forEach(({ end, start }: Cell) => {
             ctx.fillRect(start, end, this.cellSize, this.cellSize);
         });
-
-        ctx.fillStyle = "#228B22";
     }
 
     public createGrid({ x, y }: Point) {

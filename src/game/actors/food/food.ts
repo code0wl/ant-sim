@@ -1,7 +1,7 @@
 import { Cell } from "engine/modules/draw/cell";
 import { Actor } from "engine/modules/actor/actor";
 import { Point } from "engine/modules/draw/point";
-import { currentState } from "common/model";
+import { currentState, Colors } from "common/model";
 
 export class Food extends Actor {
     public width = 2;
@@ -17,11 +17,13 @@ export class Food extends Actor {
     }
 
     draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = Colors.food;
         ctx.fillRect(
             this.coordinates.x,
             this.coordinates.y,
             this.width,
             this.height
         );
+        ctx.fillStyle = Colors.grass;
     }
 }
