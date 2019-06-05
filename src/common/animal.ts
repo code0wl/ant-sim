@@ -13,10 +13,10 @@ export class Animal extends Actor {
 
     constructor(
         type: IActorType,
-        imageUrls: IAnimationType,
-        coordinates: Point
+        coordinates: Point,
+        imageUrls?: IAnimationType,
     ) {
-        super(type, imageUrls, coordinates);
+        super(type, coordinates, imageUrls);
     }
 
     public move() {

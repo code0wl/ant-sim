@@ -41,17 +41,21 @@ export abstract class Engine extends AnimationLoop {
                 currentState,
             } = actor;
 
-            ctx.drawImage(
-                graphics[currentState].image,
-                (frameIndex * width) / numberOfFrames,
-                0,
-                width / numberOfFrames,
-                height,
-                coordinates.x,
-                coordinates.y,
-                width / numberOfFrames,
-                height
-            );
+            if (graphics) {
+                ctx.drawImage(
+                    graphics[currentState].image,
+                    (frameIndex * width) / numberOfFrames,
+                    0,
+                    width / numberOfFrames,
+                    height,
+                    coordinates.x,
+                    coordinates.y,
+                    width / numberOfFrames,
+                    height
+                );
+            } else {
+                ctx.fillRect(coordinates.x, coordinates.y, width, height);
+            }
 
             actor.update();
         });

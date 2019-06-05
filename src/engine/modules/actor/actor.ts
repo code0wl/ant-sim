@@ -15,12 +15,13 @@ export class Actor {
 
     constructor(
         public type: IActorType,
-        animationType: IAnimationType,
-        public coordinates: Point
+        public coordinates: Point,
+        animationType?: IAnimationType
     ) {
-        this.addGraphic(animationType);
+        if (animationType) {
+            this.addGraphic(animationType);
+        }
         this.addToStore();
-        console.log(actorStore)
     }
 
     private addGraphic(animationType: IAnimationType) {

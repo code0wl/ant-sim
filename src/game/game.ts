@@ -14,35 +14,32 @@ export class Game extends Engine {
         // test
         new Ant(
             antType.black,
+            { x: 100, y: 100 },
             {
                 walk: "ants/__black_ant_walk-small.png",
                 idle: "ants/__black_ant_idle-small.png",
                 dead: "ants/__black_ant_dead-small.png",
                 attack: "",
-            },
-            { x: 100, y: 100 }
+            }
         );
 
-        new Food(
-            {
-                idle: "ants/__black_ant_idle-small.png",
-            },
-            { x: 500, y: 500 }
-        );
+        new Food({ x: 500, y: 500 });
 
         new Ant(
             antType.red,
+
+            { x: 200, y: 100 },
             {
                 walk: "ants/__red_ant_walk-small.png",
                 idle: "ants/__red_ant_idle-small.png",
                 dead: "ants/__red_ant_dead-small.png",
                 attack: "",
-            },
-            { x: 200, y: 100 }
+            }
         );
 
         new Spider(
             spiderType.large,
+            { x: 300, y: 100 },
             {
                 walk:
                     "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
@@ -50,12 +47,12 @@ export class Game extends Engine {
                     "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
                 dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
                 attack: "",
-            },
-            { x: 300, y: 100 }
+            }
         );
 
         new Spider(
             spiderType.small,
+            { x: 400, y: 100 },
             {
                 walk:
                     "spiders/spider2/spritesheets/sheet_spider_walk-small.png",
@@ -64,8 +61,7 @@ export class Game extends Engine {
                 dead: "spiders/spider2/spritesheets/sheet_spider_die-small.png",
                 attack:
                     "spiders/spider2/spritesheets/sheet_spider_attack-small.png",
-            },
-            { x: 400, y: 100 }
+            }
         );
     }
 }
