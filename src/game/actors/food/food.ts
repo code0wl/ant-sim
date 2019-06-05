@@ -1,11 +1,11 @@
-import { Point } from "common/model";
+import { Point, ICell } from "common/model";
 
 export class Food {
     constructor(public amount: number, public coordinates: Point) {
         // canvas.getContext
     }
 
-    removeFood() {
-        this.amount--;
+    removeFood(cell: ICell) {
+        cell.removeFood();
     }
 }
