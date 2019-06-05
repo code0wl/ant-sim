@@ -1,4 +1,3 @@
-import { Point } from "common/model";
 import { currentResolution } from "common/util/center";
 import { Ant } from "game/actors/ant/ant";
 import { antType } from "game/actors/ant/model";
@@ -6,6 +5,7 @@ import { Engine } from "engine/engine";
 import { spiderType } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
+import { Point } from "engine/modules/draw/point";
 
 export class Game extends Engine {
     constructor(resolution: Point = currentResolution) {
@@ -25,7 +25,7 @@ export class Game extends Engine {
 
         new Food(
             {
-                idle: "ants/__black_ant_walk-small.png",
+                idle: "ants/__black_ant_idle-small.png",
             },
             { x: 500, y: 500 }
         );
