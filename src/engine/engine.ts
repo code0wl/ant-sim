@@ -31,10 +31,6 @@ export abstract class Engine extends AnimationLoop {
         const ctx = this.canvas.getContext();
 
         actors.forEach(actor => {
-            if (!actor.graphics) {
-                return;
-            }
-
             const {
                 width,
                 height,
@@ -45,17 +41,21 @@ export abstract class Engine extends AnimationLoop {
                 currentState,
             } = actor;
 
-            ctx.drawImage(
-                graphics[currentState].image,
-                (frameIndex * width) / numberOfFrames,
-                0,
-                width / numberOfFrames,
-                height,
-                coordinates.x,
-                coordinates.y,
-                width / numberOfFrames,
-                height
-            );
+            if (graphics) {
+                ctx.drawImage(
+                    graphics[currentState].image,
+                    (frameIndex * width) / numberOfFrames,
+                    0,
+                    width / numberOfFrames,
+                    height,
+                    coordinates.x,
+                    coordinates.y,
+                    width / numberOfFrames,
+                    height
+                );
+            } else {
+                actor.draw(ctx)
+            }
 
             actor.update();
         });

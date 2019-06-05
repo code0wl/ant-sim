@@ -16,7 +16,12 @@ export class Food extends Actor {
         cell.removeActor();
     }
 
-    draw() {
-        ctx.fillRect(this.coordinates.x, this.coordinates.y, this.width, this.height);
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillRect(
+            this.coordinates.x,
+            this.coordinates.y,
+            this.width,
+            this.height
+        );
     }
 }
