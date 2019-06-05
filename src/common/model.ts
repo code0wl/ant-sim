@@ -5,12 +5,7 @@ export interface IAnimal {
     currentState: currentState;
 }
 
-export type IAnimalType = antType | spiderType;
-
-export interface Point {
-    x: number;
-    y: number;
-}
+export type IActorType = antType | spiderType | "food";
 
 export enum currentState {
     walk,
@@ -27,6 +22,6 @@ export interface IAnimationType {
 }
 
 export interface Sprite {
-    type?: IAnimalType;
+    type?: IActorType;
     image: HTMLImageElement;
 }

@@ -1,7 +1,8 @@
 import { IAnt } from "game/actors/ant/model";
 import { Animal } from "common/animal";
 import { spiderType, ISpider } from "game/actors/spider/model";
-import { IAnimationType, Point } from "common/model";
+import { IAnimationType } from "common/model";
+import { Point } from "engine/modules/draw/point";
 
 export class Spider extends Animal implements ISpider {
     public attackers: IAnt[];

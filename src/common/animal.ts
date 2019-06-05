@@ -1,11 +1,11 @@
 import {
     IAnimal,
-    Point,
     IAnimationType,
-    IAnimalType,
     currentState,
+    IActorType,
 } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
+import { Point } from "engine/modules/draw/point";
 
 export class Animal extends Actor implements IAnimal {
     public height: number;
@@ -13,11 +13,11 @@ export class Animal extends Actor implements IAnimal {
     public currentState: currentState = currentState.idle;
 
     constructor(
-        type: IAnimalType,
+        type: IActorType,
         imageUrls: IAnimationType,
-        public coordinates: Point
+        coordinates: Point
     ) {
-        super(type, imageUrls);
+        super(type, imageUrls, coordinates);
     }
 
     public move() {
@@ -34,9 +34,5 @@ export class Animal extends Actor implements IAnimal {
 
     public attack() {
         this.currentState = currentState.attack;
-    }
-
-    public getLocation() {
-        return this.coordinates;
     }
 }

@@ -1,6 +1,7 @@
 import { actorStore } from "engine/modules/actor/store";
 import { spriteSheetLocation } from "common/util/animation-loader";
-import { IAnimationType, IAnimalType } from "common/model";
+import { IAnimationType, IActorType } from "common/model";
+import { Point } from "../draw/point";
 
 export class Actor {
     public graphics: any;
@@ -12,7 +13,11 @@ export class Actor {
     private frameIndex = 0;
     private numberOfFrames = 5;
 
-    constructor(public type: IAnimalType, animationType: IAnimationType) {
+    constructor(
+        public type: IActorType,
+        animationType: IAnimationType,
+        public coordinates: Point
+    ) {
         this.addGraphic(animationType);
         this.addToStore();
     }
@@ -46,6 +51,10 @@ export class Actor {
                 actorStore.delete(actor);
             }
         });
+    }
+
+    public getLocation() {
+        return this.coordinates;
     }
 
     private addToStore() {
