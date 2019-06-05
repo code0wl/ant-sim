@@ -1,4 +1,4 @@
-import { IAnimal, Point } from "common/model";
+import { Point } from "common/model";
 import { Canvas } from "./canvas";
 import { Cell } from "./cell";
 
@@ -9,10 +9,6 @@ export class Grid {
     constructor(public canvas: Canvas, public dimensions: Point) {
         this.createGrid(this.dimensions);
         this.drawGrid();
-    }
-
-    public intersections(elements: IAnimal[]) {
-        // pass event when actors have intersected
     }
 
     public drawGrid() {

@@ -4,15 +4,18 @@ import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
 import { currentResolution } from "common/util/center";
 import { actorStore } from "./modules/actor/store";
+import { Menu } from "ui/menu";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
     public grid: Grid;
+    public menu: Menu;
 
     constructor(resolution: Point) {
         super(resolution);
         this.canvas = new Canvas(currentResolution);
         this.grid = new Grid(this.canvas, currentResolution);
+        this.menu = new Menu();
     }
 
     clearCanvas() {
