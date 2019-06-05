@@ -12,16 +12,16 @@ export class Game extends Engine {
         super(resolution);
 
         // test
-        // new Ant(
-        //     antType.black,
-        //     {
-        //         walk: "ants/__black_ant_walk-small.png",
-        //         idle: "ants/__black_ant_idle-small.png",
-        //         dead: "ants/__black_ant_dead-small.png",
-        //         attack: "",
-        //     },
-        //     { x: 100, y: 100 }
-        // );
+        new Ant(
+            antType.black,
+            {
+                walk: "ants/__black_ant_walk-small.png",
+                idle: "ants/__black_ant_idle-small.png",
+                dead: "ants/__black_ant_dead-small.png",
+                attack: "",
+            },
+            { x: 100, y: 100 }
+        );
 
         new Food(
             {
@@ -30,42 +30,42 @@ export class Game extends Engine {
             { x: 500, y: 500 }
         );
 
-        // new Ant(
-        //     antType.red,
-        //     {
-        //         walk: "ants/__red_ant_walk-small.png",
-        //         idle: "ants/__red_ant_idle-small.png",
-        //         dead: "ants/__red_ant_dead-small.png",
-        //         attack: "",
-        //     },
-        //     { x: 200, y: 100 }
-        // );
+        new Ant(
+            antType.red,
+            {
+                walk: "ants/__red_ant_walk-small.png",
+                idle: "ants/__red_ant_idle-small.png",
+                dead: "ants/__red_ant_dead-small.png",
+                attack: "",
+            },
+            { x: 200, y: 100 }
+        );
 
-        // new Spider(
-        //     spiderType.large,
-        //     {
-        //         walk:
-        //             "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
-        //         idle:
-        //             "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
-        //         dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
-        //         attack: "",
-        //     },
-        //     { x: 300, y: 100 }
-        // );
+        new Spider(
+            spiderType.large,
+            {
+                walk:
+                    "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
+                idle:
+                    "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
+                dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
+                attack: "",
+            },
+            { x: 300, y: 100 }
+        );
 
-        // new Spider(
-        //     spiderType.small,
-        //     {
-        //         walk:
-        //             "spiders/spider2/spritesheets/sheet_spider_walk-small.png",
-        //         idle:
-        //             "spiders/spider2/spritesheets/sheet_spider_idle-small.png",
-        //         dead: "spiders/spider2/spritesheets/sheet_spider_die-small.png",
-        //         attack:
-        //             "spiders/spider2/spritesheets/sheet_spider_attack-small.png",
-        //     },
-        //     { x: 400, y: 100 }
-        // );
+        new Spider(
+            spiderType.small,
+            {
+                walk:
+                    "spiders/spider2/spritesheets/sheet_spider_walk-small.png",
+                idle:
+                    "spiders/spider2/spritesheets/sheet_spider_idle-small.png",
+                dead: "spiders/spider2/spritesheets/sheet_spider_die-small.png",
+                attack:
+                    "spiders/spider2/spritesheets/sheet_spider_attack-small.png",
+            },
+            { x: 400, y: 100 }
+        );
     }
 }

@@ -20,6 +20,7 @@ export class Actor {
     ) {
         this.addGraphic(animationType);
         this.addToStore();
+        console.log(actorStore)
     }
 
     private addGraphic(animationType: IAnimationType) {

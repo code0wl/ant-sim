@@ -4,6 +4,8 @@ import { Point } from "engine/modules/draw/point";
 import { IAnimationType, currentState } from "common/model";
 
 export class Food extends Actor {
+    public width = 80;
+    public height = 27;
     public currentState: currentState = currentState.idle;
 
     constructor(images: IAnimationType, public coordinates: Point) {

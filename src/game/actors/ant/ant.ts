@@ -1,6 +1,7 @@
 import { Animal } from "common/animal";
-import { IAnimationType, Point } from "common/model";
+import { IAnimationType } from "common/model";
 import { antType } from "./model";
+import { Point } from "engine/modules/draw/point";
 
 export class Ant extends Animal {
     public width = 80;
