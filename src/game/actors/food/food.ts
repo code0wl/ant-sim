@@ -4,8 +4,8 @@ import { Point } from "engine/modules/draw/point";
 import { currentState } from "common/model";
 
 export class Food extends Actor {
-    public width = 80;
-    public height = 27;
+    public width = 2;
+    public height = 2;
     public currentState: currentState = currentState.idle;
 
     constructor(public coordinates: Point) {
@@ -14,5 +14,9 @@ export class Food extends Actor {
 
     remove(cell: Cell) {
         cell.removeActor();
+    }
+
+    draw() {
+        ctx.fillRect(this.coordinates.x, this.coordinates.y, this.width, this.height);
     }
 }
