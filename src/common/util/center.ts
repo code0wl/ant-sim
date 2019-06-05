@@ -1,4 +1,4 @@
-import { Point } from "game/common/model";
+import { Point } from "common/model";
 
 export const currentResolution = {
     x: window.innerWidth,
