@@ -7,7 +7,6 @@ import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
 import { Colors } from "common/model";
 import { Cell } from "./modules/draw/cell";
-import { Actor } from "./modules/actor/actor";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -31,7 +30,6 @@ export abstract class Engine extends AnimationLoop {
             actors.forEach(actor => {
                 if (this.mapIntersections(cell, actor)) {
                     cell.actor = actor;
-                    console.log(cell);
                 }
             });
 
