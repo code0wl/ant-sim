@@ -7,6 +7,7 @@ import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
 import { Point } from "engine/modules/draw/point";
 
+
 export class Game extends Engine {
     constructor(resolution: Point = currentResolution) {
         super(resolution);
@@ -19,7 +20,6 @@ export class Game extends Engine {
                 walk: "ants/__black_ant_walk-small.png",
                 idle: "ants/__black_ant_idle-small.png",
                 dead: "ants/__black_ant_dead-small.png",
-                attack: "",
             }
         );
 
@@ -27,13 +27,11 @@ export class Game extends Engine {
 
         new Ant(
             antType.red,
-
             { x: 200, y: 100 },
             {
                 walk: "ants/__red_ant_walk-small.png",
                 idle: "ants/__red_ant_idle-small.png",
                 dead: "ants/__red_ant_dead-small.png",
-                attack: "",
             }
         );
 
@@ -46,7 +44,6 @@ export class Game extends Engine {
                 idle:
                     "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
                 dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
-                attack: "",
             }
         );
 

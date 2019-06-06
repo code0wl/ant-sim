@@ -5,7 +5,7 @@ import { currentResolution } from "common/util/center";
 import { actorStore } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
-import { Colors } from "common/model";
+
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -55,12 +55,8 @@ export abstract class Engine extends AnimationLoop {
         });
     }
 
-    private addGrassColor() {
-        this.canvas.getContext().fillStyle = Colors.grass
-    }
-
     private clearCanvas() {
-        // TODO: optmise
+        // TODO: optimise
         this.canvas.getContext().clearRect(0,0, currentResolution.x, currentResolution.y)
     }
 
@@ -69,8 +65,5 @@ export abstract class Engine extends AnimationLoop {
         this.clearCanvas();
         this.grid.drawGrid();
         this.renderActors();
-
-        // default color to all rects should be grass
-        this.addGrassColor()
     }
 }

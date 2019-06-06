@@ -1,4 +1,3 @@
-import { Cell } from "engine/modules/draw/cell";
 import { Actor } from "engine/modules/actor/actor";
 import { Point } from "engine/modules/draw/point";
 import { currentState, Colors } from "common/model";
@@ -10,10 +9,6 @@ export class Food extends Actor {
 
     constructor(public coordinates: Point) {
         super("food", coordinates);
-    }
-
-    remove(cell: Cell) {
-        cell.removeActor();
     }
 
     draw(ctx: CanvasRenderingContext2D) {
