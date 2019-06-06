@@ -24,6 +24,5 @@ export class Food extends Actor {
             this.width,
             this.height
         );
-        ctx.fillStyle = Colors.grass;
     }
 }
