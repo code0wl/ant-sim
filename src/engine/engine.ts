@@ -24,11 +24,8 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private renderCells() {
-        const cells = Array.from(cellStore);
-        const actors = Array.from(actorStore);
-
-        cells.forEach((cell: Cell) => {
-            actors.forEach(actor => {
+        cellStore.forEach((cell: Cell) => {
+            actorStore.forEach(actor => {
                 if (this.mapIntersections(cell, actor)) {
                     cell.actor = actor;
                     if (controls.debug) {
