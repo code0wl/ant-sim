@@ -1,5 +1,3 @@
 export class Quadtree {
-    constructor() {
-        
-    }
+    constructor(public boundary: any) {}
 }

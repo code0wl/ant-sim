@@ -12,7 +12,7 @@ export enum currentState {
 
 export const Colors = {
     grass: "#228B22",
-    food: "red",
+    food: "#edcf18",
 };
 
 export interface IAnimationType {

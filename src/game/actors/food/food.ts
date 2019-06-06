@@ -4,8 +4,8 @@ import { Point } from "engine/modules/draw/point";
 import { currentState, Colors } from "common/model";
 
 export class Food extends Actor {
-    public width = 2;
-    public height = 2;
+    public width = 5;
+    public height = 5;
     public currentState: currentState = currentState.idle;
 
     constructor(public coordinates: Point) {
