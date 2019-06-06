@@ -21,24 +21,31 @@ export abstract class Engine extends AnimationLoop {
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();
         this.ctx = this.canvas.getContext();
-        setTimeout(() => {
-            this.mapIntersections();
-        }, 2000);
     }
 
     private renderCells() {
         const cells = Array.from(cellStore);
+        const actors = Array.from(actorStore);
 
-        cells.forEach(({ end, start }: Cell) => {
+        cells.forEach((cell: Cell) => {
+            actors.forEach(actor => {
+                if (this.mapIntersections(cell, actor)) {
+                    cell.actor = actor;
+                    console.log(cell);
+                }
+            });
+
             this.ctx.strokeRect(
-                start,
-                end,
+                cell.x,
+                cell.y,
                 this.grid.cellSize,
                 this.grid.cellSize
             );
+
         });
 
         this.ctx.strokeStyle = Colors.grass;
+
     }
 
     private renderActors() {
@@ -81,25 +88,16 @@ export abstract class Engine extends AnimationLoop {
             .clearRect(0, 0, currentResolution.x, currentResolution.y);
     }
 
-    private mapIntersections() {
-        const actors = Array.from(actorStore);
-        const cells = Array.from(cellStore);
-
-        actors.forEach((actor: Actor) =>
-            cells.find((cell: Cell) => {
-                if (
-                    actor.coordinates.y <= cell.start && actor.coordinates.y >= cell.start &&
-                    actor.coordinates.x <= cell.end && actor.coordinates.x <= cell.end
-                ) {
-                    Object.assign(cell, actor);
-                }
-            })
+    private mapIntersections(targetA: Cell, targetB: any) {
+        return !(
+            targetB.coordinates.x > targetA.x + this.grid.cellSize ||
+            targetB.coordinates.x + targetB.width < targetA.x ||
+            targetB.coordinates.y > targetA.x + this.grid.cellSize ||
+            targetB.coordinates.y + targetB.height < targetA.y
         );
-
-        console.log(cells);
     }
 
-    public update(): void {
+    public update() {
         if (!this.grid) return;
         this.clearCanvas();
         this.renderCells();
