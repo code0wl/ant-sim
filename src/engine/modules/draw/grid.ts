@@ -1,6 +1,7 @@
 import { Canvas } from "./canvas";
 import { Cell } from "./cell";
 import { Point } from "./point";
+import { Colors } from "common/model";
 
 export class Grid {
     public cells: any = [];
@@ -15,8 +16,10 @@ export class Grid {
         const ctx = this.canvas.getContext();
 
         this.cells.forEach(({ end, start }: Cell) => {
-            ctx.fillRect(start, end, this.cellSize, this.cellSize);
+            ctx.strokeRect(start, end, this.cellSize, this.cellSize);
         });
+
+        ctx.strokeStyle = Colors.grass
     }
 
     public createGrid({ x, y }: Point) {

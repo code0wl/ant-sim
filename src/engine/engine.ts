@@ -59,8 +59,14 @@ export abstract class Engine extends AnimationLoop {
         this.canvas.getContext().fillStyle = Colors.grass
     }
 
+    private clearCanvas() {
+        // TODO: optmise
+        this.canvas.getContext().clearRect(0,0, currentResolution.x, currentResolution.y)
+    }
+
     public update(): void {
         if (!this.grid) return;
+        this.clearCanvas();
         this.grid.drawGrid();
         this.renderActors();
 

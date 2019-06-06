@@ -23,7 +23,7 @@ export class Game extends Engine {
             }
         );
 
-        new Food({ x: 500, y: 500 });
+        new Food({ x: 50, y: 50 });
 
         new Ant(
             antType.red,
