@@ -2,11 +2,12 @@ import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
 import { currentResolution } from "common/util/center";
-import { actorStore, cellStore } from "./modules/actor/store";
+import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
 import { Colors } from "common/model";
 import { Cell } from "./modules/draw/cell";
+import { Actor } from "./modules/actor/actor";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -30,6 +31,9 @@ export abstract class Engine extends AnimationLoop {
             actors.forEach(actor => {
                 if (this.mapIntersections(cell, actor)) {
                     cell.actor = actor;
+                    if (controls.debug) {
+                        this.ctx.strokeStyle = Colors.debug;
+                    }
                 }
             });
 
@@ -40,10 +44,10 @@ export abstract class Engine extends AnimationLoop {
                 this.grid.cellSize
             );
 
+            this.ctx.strokeStyle = Colors.grass;
         });
 
         this.ctx.strokeStyle = Colors.grass;
-
     }
 
     private renderActors() {
@@ -86,12 +90,16 @@ export abstract class Engine extends AnimationLoop {
             .clearRect(0, 0, currentResolution.x, currentResolution.y);
     }
 
-    private mapIntersections(targetA: Cell, targetB: any) {
+    private mapIntersections(cell: Cell, actor: Actor) {
+        const width = actor.numberOfFrames
+            ? actor.width / actor.numberOfFrames
+            : actor.width;
+
         return !(
-            targetB.coordinates.x > targetA.x + this.grid.cellSize ||
-            targetB.coordinates.x + targetB.width < targetA.x ||
-            targetB.coordinates.y > targetA.x + this.grid.cellSize ||
-            targetB.coordinates.y + targetB.height < targetA.y
+            actor.coordinates.x > cell.x + this.grid.cellSize ||
+            actor.coordinates.x + width < cell.x ||
+            actor.coordinates.y > cell.y + this.grid.cellSize ||
+            actor.coordinates.y + actor.height < cell.y
         );
     }
 

@@ -23,9 +23,9 @@ export class Game extends Engine {
             }
         );
 
-        new Food({ x: 7, y: 7 });
+        new Food({ x: 7, y: 900 });
 
-        new Food({ x: 14, y: 7 });
+        new Food({ x: 14, y: 100 });
 
         new Ant(
             antType.red,
@@ -51,7 +51,7 @@ export class Game extends Engine {
 
         new Spider(
             spiderType.small,
-            { x: 400, y: 100 },
+            { x: 700, y: 600 },
             {
                 walk:
                     "spiders/spider2/spritesheets/sheet_spider_walk-small.png",

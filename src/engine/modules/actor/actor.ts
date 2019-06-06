@@ -5,13 +5,14 @@ import { Point } from "../draw/point";
 
 export class Actor {
     public graphics: any;
-
+    public width: number;
+    public height: number;
+    public numberOfFrames = 5;
     public actorID: number;
 
     private tick = 0;
     private ticksPerFrame = 1;
     private frameIndex = 0;
-    private numberOfFrames = 5;
 
     constructor(
         public type: IActorType,
