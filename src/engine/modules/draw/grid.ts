@@ -12,8 +12,8 @@ export class Grid {
 
     public createGrid({ x, y }: Point) {
         for (let i = 0; i <= x; i += this.cellSize) {
-            for (let j = 0; j <= y; j += this.cellSize) {
-                cellStore.add(new Cell(i, j));
+            for (let j = 0, cellID = 0; j <= y; j += this.cellSize) {
+                cellStore.add(new Cell((cellID += 1), i, j));
             }
         }
     }

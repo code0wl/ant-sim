@@ -6,7 +6,7 @@ import { Point } from "../draw/point";
 export class Actor {
     public graphics: any;
 
-    public id: number;
+    public actorID: number;
 
     private tick = 0;
     private ticksPerFrame = 1;
@@ -60,7 +60,7 @@ export class Actor {
     }
 
     private addToStore() {
-        this.id = actorStore.size;
+        this.actorID = actorStore.size;
         actorStore.add(this);
     }
 }

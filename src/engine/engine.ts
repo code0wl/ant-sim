@@ -7,6 +7,7 @@ import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
 import { Colors } from "common/model";
 import { Cell } from "./modules/draw/cell";
+import { Actor } from "./modules/actor/actor";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -20,6 +21,9 @@ export abstract class Engine extends AnimationLoop {
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();
         this.ctx = this.canvas.getContext();
+        setTimeout(() => {
+            this.mapIntersections();
+        }, 2000);
     }
 
     private renderCells() {
@@ -79,10 +83,20 @@ export abstract class Engine extends AnimationLoop {
 
     private mapIntersections() {
         const actors = Array.from(actorStore);
+        const cells = Array.from(cellStore);
 
-        // actors.map(x => {
-        //     console.log(x);
-        // });
+        actors.forEach((actor: Actor) =>
+            cells.find((cell: Cell) => {
+                if (
+                    actor.coordinates.y <= cell.start && actor.coordinates.y >= cell.start &&
+                    actor.coordinates.x <= cell.end && actor.coordinates.x <= cell.end
+                ) {
+                    Object.assign(cell, actor);
+                }
+            })
+        );
+
+        console.log(cells);
     }
 
     public update(): void {
@@ -90,6 +104,5 @@ export abstract class Engine extends AnimationLoop {
         this.clearCanvas();
         this.renderCells();
         this.renderActors();
-        // this.mapIntersections();
     }
 }
