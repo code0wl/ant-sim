@@ -2,28 +2,43 @@ import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
 import { currentResolution } from "common/util/center";
-import { actorStore } from "./modules/actor/store";
+import { actorStore, cellStore } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
-
+import { Colors } from "common/model";
+import { Cell } from "./modules/draw/cell";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
     public grid: Grid;
     public menu: Menu;
+    private ctx: CanvasRenderingContext2D;
 
     constructor(resolution: Point) {
         super(resolution);
         this.canvas = new Canvas(currentResolution);
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();
+        this.ctx = this.canvas.getContext();
     }
 
-    public renderActors() {
-        if (!this.canvas) return;
-        const actors = Array.from(actorStore);
+    private renderCells() {
+        const cells = Array.from(cellStore);
 
-        const ctx = this.canvas.getContext();
+        cells.forEach(({ end, start }: Cell) => {
+            this.ctx.strokeRect(
+                start,
+                end,
+                this.grid.cellSize,
+                this.grid.cellSize
+            );
+        });
+
+        this.ctx.strokeStyle = Colors.grass;
+    }
+
+    private renderActors() {
+        const actors = Array.from(actorStore);
 
         actors.forEach(actor => {
             const {
@@ -37,7 +52,7 @@ export abstract class Engine extends AnimationLoop {
             } = actor;
 
             if (graphics) {
-                ctx.drawImage(
+                this.ctx.drawImage(
                     graphics[currentState].image,
                     (frameIndex * width) / numberOfFrames,
                     0,
@@ -49,7 +64,7 @@ export abstract class Engine extends AnimationLoop {
                     height
                 );
             } else {
-                actor.draw(ctx)
+                actor.draw(this.ctx);
             }
             actor.update();
         });
@@ -57,13 +72,24 @@ export abstract class Engine extends AnimationLoop {
 
     private clearCanvas() {
         // TODO: optimise
-        this.canvas.getContext().clearRect(0,0, currentResolution.x, currentResolution.y)
+        this.canvas
+            .getContext()
+            .clearRect(0, 0, currentResolution.x, currentResolution.y);
+    }
+
+    private mapIntersections() {
+        const actors = Array.from(actorStore);
+
+        // actors.map(x => {
+        //     console.log(x);
+        // });
     }
 
     public update(): void {
         if (!this.grid) return;
         this.clearCanvas();
-        this.grid.drawGrid();
+        this.renderCells();
         this.renderActors();
+        // this.mapIntersections();
     }
 }
