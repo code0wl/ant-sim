@@ -11,9 +11,8 @@ export class Spider extends Animal implements ISpider {
 
     constructor(type: spiderType, coordinates: Point, images: IAnimationType) {
         super(type, coordinates, images);
-        setInterval(() => this.move(), 5000);
-        setInterval(() => this.idle(), 10000);
+        setInterval(() => this.move(), 500);
+        setInterval(() => this.idle(), 1000);
     }
-
     carry() {}
 }

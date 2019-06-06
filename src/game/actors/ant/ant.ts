@@ -9,7 +9,7 @@ export class Ant extends Animal {
 
     constructor(type: antType, coordinates: Point, images: IAnimationType) {
         super(type, coordinates, images);
-        setInterval(() => this.move(), 5000);
-        setInterval(() => this.idle(), 10000);
+        // setInterval(() => this.move(), 5000);
+        // setInterval(() => this.idle(), 10000);
     }
 }
