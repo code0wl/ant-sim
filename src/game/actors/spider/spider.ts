@@ -10,8 +10,12 @@ export class Spider extends Animal implements ISpider {
     public height = !this.type ? 50 : 150;
     public speed = !this.type ? 5 : 10;
 
-    constructor(type: spiderType, coordinates: Point, images: IAnimationType) {
-        super(type, coordinates, images);
+    constructor(
+        type: spiderType,
+        public coordinates: Point,
+        images: IAnimationType
+    ) {
+        super(type, images);
         setInterval(() => this.move(), 15);
         setInterval(() => this.idle(), 1000);
     }

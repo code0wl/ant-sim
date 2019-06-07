@@ -1,6 +1,5 @@
 import { IAnimationType, currentState, IActorType } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
-import { Point } from "engine/modules/draw/point";
 import { actorStore } from "engine/modules/actor/store";
 
 export class Animal extends Actor {
@@ -11,10 +10,9 @@ export class Animal extends Actor {
 
     constructor(
         type: IActorType,
-        coordinates: Point,
         imageUrls?: IAnimationType
     ) {
-        super(type, coordinates, imageUrls);
+        super(type, imageUrls);
 
         this.actor = Array.from(actorStore).find(
             x => x.actorID === this.actorID
@@ -23,7 +21,7 @@ export class Animal extends Actor {
 
     public move() {
         this.currentState = currentState.walk;
-        this.actor.coordinates.x += 5;
+        this.coordinates.x += 5;
     }
 
     public dead() {

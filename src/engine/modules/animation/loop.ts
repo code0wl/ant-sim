@@ -1,5 +1,5 @@
-import { Point } from "common/model";
 import { Canvas } from "../draw/canvas";
+import { Point } from "../draw/point";
 
 export class AnimationLoop {
     public width: number;

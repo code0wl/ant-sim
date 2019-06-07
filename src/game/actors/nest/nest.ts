@@ -5,8 +5,8 @@ import { Colors } from "common/model";
 export class Nest extends Actor {
     public radius = 15;
 
-    constructor(public coordinates: Point) {
-        super("nest", coordinates);
+    constructor(private coordinates: Point) {
+        super("nest");
         // canvas.getContext draw element
     }
 

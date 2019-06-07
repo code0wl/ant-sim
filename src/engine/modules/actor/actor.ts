@@ -16,7 +16,6 @@ export class Actor {
 
     constructor(
         public type: IActorType,
-        public coordinates: Point,
         animationType?: IAnimationType
     ) {
         if (animationType) {
@@ -54,10 +53,6 @@ export class Actor {
                 actorStore.delete(actor);
             }
         });
-    }
-
-    public getLocation() {
-        return this.coordinates;
     }
 
     private addToStore() {
