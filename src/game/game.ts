@@ -12,22 +12,15 @@ export class Game extends Engine {
     public blackNest: Nest;
     public redNest: Nest;
 
-    constructor(resolution: Point = currentResolution) {
+    constructor(
+        private antsPopulous = 5,
+        resolution: Point = currentResolution
+    ) {
         super(resolution);
         this.createNests();
+        this.createAnts();
 
         // test
-        new Ant(antType.black, {
-            walk: "ants/__black_ant_walk-small.png",
-            idle: "ants/__black_ant_idle-small.png",
-            dead: "ants/__black_ant_dead-small.png",
-        });
-
-        new Ant(antType.red, {
-            walk: "ants/__red_ant_walk-small.png",
-            idle: "ants/__red_ant_idle-small.png",
-            dead: "ants/__red_ant_dead-small.png",
-        });
 
         new Spider(
             spiderType.large,
@@ -42,7 +35,25 @@ export class Game extends Engine {
         );
     }
 
-    createNests() {
+    private createAnts() {
+        let i = 0;
+        while (i < this.antsPopulous) {
+            new Ant(antType.black, {
+                walk: "ants/__black_ant_walk-small.png",
+                idle: "ants/__black_ant_idle-small.png",
+                dead: "ants/__black_ant_dead-small.png",
+            });
+
+            new Ant(antType.red, {
+                walk: "ants/__red_ant_walk-small.png",
+                idle: "ants/__red_ant_idle-small.png",
+                dead: "ants/__red_ant_dead-small.png",
+            });
+            i++;
+        }
+    }
+
+    private createNests() {
         this.blackNest = new Nest(
             new Point(nestCoordinates.black.x, nestCoordinates.black.y)
         );

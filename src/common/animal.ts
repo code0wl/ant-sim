@@ -6,22 +6,19 @@ export class Animal extends Actor {
     public height: number;
     public width: number;
     public currentState: currentState = currentState.idle;
-    public actor: Actor;
+    public actor: any;
 
-    constructor(
-        type: IActorType,
-        imageUrls?: IAnimationType
-    ) {
+    constructor(type: IActorType, imageUrls?: IAnimationType) {
         super(type, imageUrls);
 
         this.actor = Array.from(actorStore).find(
             x => x.actorID === this.actorID
         );
+
     }
 
     public move() {
         this.currentState = currentState.walk;
-        this.coordinates.x += 5;
     }
 
     public dead() {
