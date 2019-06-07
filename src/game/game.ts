@@ -6,6 +6,7 @@ import { spiderType } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
 import { Point } from "engine/modules/draw/point";
+import { Nest } from "./actors/nest/nest";
 
 export class Game extends Engine {
     constructor(resolution: Point = currentResolution) {
@@ -22,9 +23,9 @@ export class Game extends Engine {
             }
         );
 
-        new Food({ x: 7, y: 900 });
+        new Nest({ x: 10, y: 10 });
 
-        new Food({ x: 14, y: 100 });
+        new Nest({ x: currentResolution.x - 50, y: currentResolution.y - 50 });
 
         new Ant(
             antType.red,

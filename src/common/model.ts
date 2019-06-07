@@ -1,7 +1,7 @@
 import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
 
-export type IActorType = antType | spiderType | "food";
+export type IActorType = antType | spiderType | "food" | 'nest';
 
 export enum currentState {
     idle,
@@ -14,6 +14,7 @@ export const Colors = {
     grass: "#228B22",
     food: "#edcf18",
     debug: "#C9B8B1",
+    nest: "#D2691E"
 };
 
 export interface IAnimationType {

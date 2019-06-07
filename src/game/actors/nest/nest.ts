@@ -1,16 +1,27 @@
-import { Point } from "common/model";
+import { Point } from "engine/modules/draw/point";
+import { Actor } from "engine/modules/actor/actor";
+import { Colors } from "common/model";
 
-export class Nest {
-    constructor(public size: Point, public coordinates: Point) {
+export class Nest extends Actor {
+    public radius = 40;
+
+    constructor(public coordinates: Point) {
+        super("nest", coordinates);
         // canvas.getContext draw element
     }
 
+    draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = Colors.nest;
+        ctx.beginPath();
+        ctx.arc(this.coordinates.x, this.coordinates.y, this.radius, 0, 2 * Math.PI);
+        ctx.fill();   
+    }
+
     destroy() {
-        this.size = { x: 0, y: 0 };
     }
 
     getPopulation() {
-        // return ant population
+        // return nest population
     }
 
     getFoodSupply() {
