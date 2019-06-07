@@ -23,7 +23,7 @@ export class Game extends Engine {
             }
         );
 
-        new Nest({ x: 10, y: 10 });
+        new Nest({ x: 50, y: 50 });
 
         new Nest({ x: currentResolution.x - 50, y: currentResolution.y - 50 });
 

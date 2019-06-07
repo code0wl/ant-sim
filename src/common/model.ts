@@ -14,7 +14,7 @@ export const Colors = {
     grass: "#228B22",
     food: "#edcf18",
     debug: "#C9B8B1",
-    nest: "#D2691E"
+    nest: "#000000"
 };
 
 export interface IAnimationType {

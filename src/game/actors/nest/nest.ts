@@ -3,7 +3,7 @@ import { Actor } from "engine/modules/actor/actor";
 import { Colors } from "common/model";
 
 export class Nest extends Actor {
-    public radius = 40;
+    public radius = 15;
 
     constructor(public coordinates: Point) {
         super("nest", coordinates);
@@ -13,12 +13,17 @@ export class Nest extends Actor {
     draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = Colors.nest;
         ctx.beginPath();
-        ctx.arc(this.coordinates.x, this.coordinates.y, this.radius, 0, 2 * Math.PI);
-        ctx.fill();   
+        ctx.arc(
+            this.coordinates.x,
+            this.coordinates.y,
+            this.radius,
+            0,
+            2 * Math.PI
+        );
+        ctx.fill();
     }
 
-    destroy() {
-    }
+    destroy() {}
 
     getPopulation() {
         // return nest population
