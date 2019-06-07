@@ -1,7 +1,6 @@
 import { actorStore } from "engine/modules/actor/store";
 import { spriteSheetLocation } from "common/util/animation-loader";
 import { IAnimationType, IActorType } from "common/model";
-import { Point } from "../draw/point";
 
 export class Actor {
     public graphics: any;

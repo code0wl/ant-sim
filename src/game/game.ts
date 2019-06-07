@@ -5,6 +5,8 @@ import { Engine } from "engine/engine";
 import { Point } from "engine/modules/draw/point";
 import { Nest } from "./actors/nest/nest";
 import { nestCoordinates } from "./actors/nest/model";
+import { Spider } from "./actors/spider/spider";
+import { spiderType } from "./actors/spider/model";
 
 export class Game extends Engine {
     public blackNest: Nest;
@@ -27,17 +29,17 @@ export class Game extends Engine {
             dead: "ants/__red_ant_dead-small.png",
         });
 
-        // new Spider(
-        //     spiderType.large,
-        //     { x: 300, y: 100 },
-        //     {
-        //         idle:
-        //             "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
-        //         walk:
-        //             "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
-        //         dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
-        //     }
-        // );
+        new Spider(
+            spiderType.large,
+            { x: 300, y: 100 },
+            {
+                idle:
+                    "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
+                walk:
+                    "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
+                dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
+            }
+        );
     }
 
     createNests() {

@@ -7,7 +7,6 @@ export class Nest extends Actor {
 
     constructor(private coordinates: Point) {
         super("nest");
-        // canvas.getContext draw element
     }
 
     draw(ctx: CanvasRenderingContext2D) {
