@@ -64,12 +64,6 @@ export abstract class Engine extends AnimationLoop {
             let { currentRotation } = actor;
 
             if (graphics) {
-                this.ctx.save();
-
-                this.ctx.translate(x, y);
-
-                this.ctx.rotate((Math.PI / 180) * (currentRotation += 1));
-
                 this.ctx.drawImage(
                     graphics[currentState].image,
                     (frameIndex * width) / numberOfFrames,
@@ -81,8 +75,6 @@ export abstract class Engine extends AnimationLoop {
                     width / numberOfFrames,
                     height
                 );
-
-                this.ctx.restore();
             } else {
                 actor.draw(this.ctx);
             }
