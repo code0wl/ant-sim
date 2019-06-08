@@ -1,5 +1,7 @@
 import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
+import { Animal } from "./animal";
+import { Actor } from "engine/modules/actor/actor";
 
 export type IActorType = antType | spiderType | actorType.food | actorType.nest;
 
@@ -24,6 +26,27 @@ export const Colors = {
     debug: "#C9B8B1",
     nest: "#000000",
 };
+
+export enum Direction {
+    north,
+    northEast,
+    northWest,
+
+    south,
+    southEast,
+    southWest,
+
+    east,
+    west,
+}
+
+export interface IActor extends Animal, Actor {
+    height: number;
+    currentState: number;
+    width: number;
+    graphics: Sprite[];
+    draw(ctx: CanvasRenderingContext2D): void;
+}
 
 export interface IAnimationType {
     walk?: string;

@@ -10,7 +10,6 @@ export class Actor {
     public coordinates: Point;
     public frameIndex = 0;
     public currentState: number;
-    public graphics: Sprite[];
 
     private tick = 0;
     private ticksPerFrame = 1;
@@ -32,8 +31,6 @@ export class Actor {
             }
         }
     }
-
-    public draw() {}
 
     private addToStore() {
         this.actorID = actorStore.size;

@@ -9,6 +9,7 @@ export class Ant extends Animal {
     public width = 80;
     public height = 27;
     public graphics: Sprite[];
+    public rotation: number;
     public coordinates = new Point(
         nestCoordinates[this.type ? "red" : "black"].x,
         nestCoordinates[this.type ? "red" : "black"].y

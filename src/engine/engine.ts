@@ -5,7 +5,7 @@ import { currentResolution } from "common/util/center";
 import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
-import { Colors } from "common/model";
+import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { Actor } from "./modules/actor/actor";
 
@@ -50,7 +50,7 @@ export abstract class Engine extends AnimationLoop {
     private renderActors() {
         const actors = Array.from(actorStore);
 
-        actors.forEach((actor: Actor) => {
+        actors.forEach((actor: IActor) => {
             const {
                 width,
                 height,
