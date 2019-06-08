@@ -23,18 +23,10 @@ export class Ant extends Animal {
     }
 
     private assignAnimation(type: antType) {
-        if (!type) {
-            return {
-                walk: "ants/__black_ant_walk-small.png",
-                idle: "ants/__black_ant_idle-small.png",
-                dead: "ants/__black_ant_dead-small.png",
-            };
-        } else {
-            return {
-                walk: "ants/__red_ant_walk-small.png",
-                idle: "ants/__red_ant_idle-small.png",
-                dead: "ants/__red_ant_dead-small.png",
-            };
-        }
+        return {
+            walk: `ants/__${antType[type]}_ant_walk-small.png`,
+            idle: `ants/__${antType[type]}_ant_idle-small.png`,
+            dead: `ants/__${antType[type]}_ant_dead-small.png`,
+        };
     }
 }

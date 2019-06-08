@@ -16,26 +16,15 @@ export class Spider extends Animal implements ISpider {
         super(type);
         setInterval(() => this.move(), 15);
         setInterval(() => this.idle(), 1000);
-
         this.graphics = addGraphic(this.assignAnimation(type));
     }
 
     private assignAnimation(type: spiderType) {
-        if (!type) {
-            return {
-                idle:
-                    "spiders/spider2/spritesheets/sheet_spider_idle-small.png",
-                walk:
-                    "spiders/spider2/spritesheets/sheet_spider_walk-small.png",
-            };
-        } else {
-            return {
-                idle:
-                    "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
-                walk:
-                    "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
-            };
-        }
+        const kind = type ? 1 : 2;
+        return {
+            idle: `spiders/spider${kind}/spritesheets/sheet_spider_idle-small.png`,
+            walk: `spiders/spider${kind}/spritesheets/sheet_spider_walk-small.png`,
+        };
     }
     carry() {}
 }
