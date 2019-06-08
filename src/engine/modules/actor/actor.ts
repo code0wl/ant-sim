@@ -1,5 +1,5 @@
 import { actorStore } from "engine/modules/actor/store";
-import { IActorType, Sprite } from "common/model";
+import { IActorType } from "common/model";
 import { Point } from "../draw/point";
 
 export class Actor {
