@@ -1,4 +1,3 @@
-import { Actor } from "../actor/actor";
 import { IActor } from "common/model";
 
 export class Cell {
@@ -9,7 +8,4 @@ export class Cell {
         return false;
     }
 
-    public addItem(actor: Actor) {
-        this.actor = actor;
-    }
 }
