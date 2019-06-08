@@ -96,7 +96,9 @@ export abstract class Engine extends AnimationLoop {
             actor.coordinates.x > cell.x + this.grid.cellSize ||
             actor.coordinates.x + width < cell.x ||
             actor.coordinates.y > cell.y + this.grid.cellSize ||
-            actor.coordinates.y + actor.height < cell.y
+            actor.coordinates.y + actor.height < cell.y || 
+            actor.coordinates.y + actor.radius < cell.y || 
+            actor.coordinates.x + actor.radius < cell.x
         );
     }
 
