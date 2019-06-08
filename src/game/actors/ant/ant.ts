@@ -23,10 +23,12 @@ export class Ant extends Animal {
     }
 
     private assignAnimation(type: antType) {
+        const kind = type ? 1 : 2;
         return {
-            walk: `ants/__${antType[type]}_ant_walk-small.png`,
-            idle: `ants/__${antType[type]}_ant_idle-small.png`,
-            dead: `ants/__${antType[type]}_ant_dead-small.png`,
+            walk: `ants/spritesheets/ant${kind}/_ant_walk-small.png`,
+            idle: `ants/spritesheets/ant${kind}/_ant_idle-small.png`,
+            dead: `ants/spritesheets/ant${kind}/_ant_dead-small.png`,
         };
     }
+    carry() {}
 }

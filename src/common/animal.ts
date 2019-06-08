@@ -6,7 +6,7 @@ export class Animal extends Actor {
     public height: number;
     public width: number;
     public currentState: currentState = currentState.idle;
-    public actor: any;
+    public actor: Actor;
 
     constructor(type: IActorType) {
         super(type);
