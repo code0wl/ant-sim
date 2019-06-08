@@ -18,7 +18,7 @@ export class Game extends Engine {
     ) {
         super(resolution);
         this.createNests();
-        // this.createAnts();
+        this.createAnts();
         this.createSpiders([
             { spider: spiderType.large, coordinates: new Point(100, 200) },
             { spider: spiderType.small, coordinates: new Point(200, 200) },
