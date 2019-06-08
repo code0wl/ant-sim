@@ -50,7 +50,7 @@ export abstract class Engine extends AnimationLoop {
     private renderActors() {
         const actors = Array.from(actorStore);
 
-        actors.forEach(actor => {
+        actors.forEach((actor: Actor) => {
             const {
                 width,
                 height,
@@ -87,7 +87,7 @@ export abstract class Engine extends AnimationLoop {
             .clearRect(0, 0, currentResolution.x, currentResolution.y);
     }
 
-    private mapIntersections(cell: Cell, actor: Actor) {
+    private mapIntersections(cell: Cell, actor: any) {
         const width = actor.numberOfFrames
             ? actor.width / actor.numberOfFrames
             : actor.width;

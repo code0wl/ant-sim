@@ -1,35 +1,22 @@
 import { actorStore } from "engine/modules/actor/store";
 import { spriteSheetLocation } from "common/util/animation-loader";
 import { IAnimationType, IActorType } from "common/model";
+import { Point } from "../draw/point";
 
 export class Actor {
-    public graphics: any;
     public width: number;
     public height: number;
     public numberOfFrames = 5;
     public actorID: number;
+    public coordinates: Point;
+    public frameIndex = 0;
+    public currentState: number;
 
     private tick = 0;
     private ticksPerFrame = 1;
-    private frameIndex = 0;
 
-    constructor(
-        public type: IActorType,
-        animationType?: IAnimationType
-    ) {
-        if (animationType) {
-            this.addGraphic(animationType);
-        }
+    constructor(public type: IActorType) {
         this.addToStore();
-    }
-
-    private addGraphic(animationType: IAnimationType) {
-        this.graphics = Object.values(animationType)
-            .reduce((prev, next) => {
-                prev.push(spriteSheetLocation(next));
-                return prev;
-            }, [])
-            .map((image: HTMLImageElement) => ({ image }));
     }
 
     public update() {

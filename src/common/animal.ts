@@ -1,4 +1,4 @@
-import { IAnimationType, currentState, IActorType } from "common/model";
+import { currentState, IActorType } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
 import { actorStore } from "engine/modules/actor/store";
 
@@ -8,13 +8,12 @@ export class Animal extends Actor {
     public currentState: currentState = currentState.idle;
     public actor: any;
 
-    constructor(type: IActorType, imageUrls?: IAnimationType) {
-        super(type, imageUrls);
+    constructor(type: IActorType) {
+        super(type);
 
         this.actor = Array.from(actorStore).find(
-            x => x.actorID === this.actorID
+            ({ actorID }) => actorID === this.actorID
         );
-
     }
 
     public move() {

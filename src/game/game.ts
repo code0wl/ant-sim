@@ -5,8 +5,8 @@ import { Engine } from "engine/engine";
 import { Point } from "engine/modules/draw/point";
 import { Nest } from "./actors/nest/nest";
 import { nestCoordinates } from "./actors/nest/model";
+import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
-import { spiderType } from "./actors/spider/model";
 
 export class Game extends Engine {
     public blackNest: Nest;
@@ -19,38 +19,25 @@ export class Game extends Engine {
         super(resolution);
         this.createNests();
         this.createAnts();
-
-        // test
-
-        new Spider(
-            spiderType.large,
-            { x: 300, y: 100 },
-            {
-                idle:
-                    "spiders/spider1/spritesheets/sheet_spider_idle-small.png",
-                walk:
-                    "spiders/spider1/spritesheets/sheet_spider_walk-small.png",
-                dead: "spiders/spider1/spritesheets/sheet_spider_die-small.png",
-            }
-        );
+        this.createSpiders([
+            { spider: spiderType.large, coordinates: new Point(100, 200) },
+            { spider: spiderType.small, coordinates: new Point(200, 200) },
+        ]);
     }
 
     private createAnts() {
         let i = 0;
         while (i < this.antsPopulous) {
-            new Ant(antType.black, {
-                walk: "ants/__black_ant_walk-small.png",
-                idle: "ants/__black_ant_idle-small.png",
-                dead: "ants/__black_ant_dead-small.png",
-            });
-
-            new Ant(antType.red, {
-                walk: "ants/__red_ant_walk-small.png",
-                idle: "ants/__red_ant_idle-small.png",
-                dead: "ants/__red_ant_dead-small.png",
-            });
+            new Ant(antType.black);
+            new Ant(antType.red);
             i++;
         }
+    }
+
+    private createSpiders(spiderConfig: ISpiderConfig[]) {
+        spiderConfig.forEach(({ spider, coordinates }) => {
+            new Spider(spider, coordinates);
+        });
     }
 
     private createNests() {

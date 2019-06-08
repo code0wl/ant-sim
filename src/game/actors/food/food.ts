@@ -1,6 +1,6 @@
 import { Actor } from "engine/modules/actor/actor";
 import { Point } from "engine/modules/draw/point";
-import { currentState, Colors } from "common/model";
+import { currentState, Colors, actorType } from "common/model";
 
 export class Food extends Actor {
     public width = 5;
@@ -8,7 +8,7 @@ export class Food extends Actor {
     public currentState: currentState = currentState.idle;
 
     constructor(public coordinates: Point) {
-        super("food", coordinates);
+        super(actorType.food);
     }
 
     draw(ctx: CanvasRenderingContext2D) {

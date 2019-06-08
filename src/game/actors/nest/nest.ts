@@ -1,12 +1,12 @@
 import { Point } from "engine/modules/draw/point";
 import { Actor } from "engine/modules/actor/actor";
-import { Colors } from "common/model";
+import { Colors, actorType } from "common/model";
 
 export class Nest extends Actor {
     public radius = 15;
 
-    constructor(private coordinates: Point) {
-        super("nest");
+    constructor(public coordinates: Point) {
+        super(actorType.nest);
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -21,8 +21,6 @@ export class Nest extends Actor {
         );
         ctx.fill();
     }
-
-    destroy() {}
 
     getPopulation() {
         // return nest population
