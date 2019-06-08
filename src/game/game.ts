@@ -18,11 +18,11 @@ export class Game extends Engine {
     ) {
         super(resolution);
         this.createNests();
-        // this.createAnts();
-        // this.createSpiders([
-        //     { spider: spiderType.large, coordinates: new Point(100, 200) },
-        //     { spider: spiderType.small, coordinates: new Point(200, 200) },
-        // ]);
+        this.createAnts();
+        this.createSpiders([
+            { spider: spiderType.large, coordinates: new Point(100, 200) },
+            { spider: spiderType.small, coordinates: new Point(200, 200) },
+        ]);
     }
 
     private createAnts() {
@@ -44,8 +44,8 @@ export class Game extends Engine {
         this.blackNest = new Nest(
             new Point(nestCoordinates.black.x, nestCoordinates.black.y)
         );
-        // this.redNest = new Nest(
-        //     new Point(nestCoordinates.red.x, nestCoordinates.red.y)
-        // );
+        this.redNest = new Nest(
+            new Point(nestCoordinates.red.x, nestCoordinates.red.y)
+        );
     }
 }

@@ -2,12 +2,12 @@ import { IAnt } from "game/actors/ant/model";
 import { Animal } from "common/animal";
 import { spiderType, ISpider } from "game/actors/spider/model";
 import { Point } from "engine/modules/draw/point";
-import { IAnimationType } from "common/model";
+import { Sprite } from "common/model";
 import { addGraphic } from "common/util/animation-loader";
 
 export class Spider extends Animal implements ISpider {
     public attackers: IAnt[];
-    public graphics: IAnimationType;
+    public graphics: Sprite[];
     public width = !this.type ? 300 : 900;
     public height = !this.type ? 50 : 150;
     public speed = !this.type ? 5 : 10;

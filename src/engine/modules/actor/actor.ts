@@ -33,6 +33,8 @@ export class Actor {
         }
     }
 
+    public draw() {}
+
     private addToStore() {
         this.actorID = actorStore.size;
         actorStore.add(this);
