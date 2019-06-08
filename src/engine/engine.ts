@@ -1,13 +1,13 @@
 import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
-import { currentResolution } from "common/util/center";
+import { currentResolution, x, y } from "common/util/center";
 import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
 import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
-import { Actor } from "./modules/actor/actor";
+import { mapIntersections } from "common/util/intersection";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -26,7 +26,7 @@ export abstract class Engine extends AnimationLoop {
     private renderCells() {
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach(actor => {
-                if (this.mapIntersections(cell, actor)) {
+                if (mapIntersections(cell, actor)) {
                     cell.actor = actor;
                     if (controls.debug) {
                         this.ctx.strokeStyle = Colors.debug;
@@ -61,7 +61,15 @@ export abstract class Engine extends AnimationLoop {
                 currentState,
             } = actor;
 
+            let { currentRotation } = actor;
+
             if (graphics) {
+                this.ctx.save();
+
+                this.ctx.translate(coordinates.x / 2, coordinates.y / 2);
+
+                this.ctx.rotate((Math.PI / 180) * (currentRotation += 1));
+
                 this.ctx.drawImage(
                     graphics[currentState].image,
                     (frameIndex * width) / numberOfFrames,
@@ -73,6 +81,8 @@ export abstract class Engine extends AnimationLoop {
                     width / numberOfFrames,
                     height
                 );
+
+                this.ctx.restore();
             } else {
                 actor.draw(this.ctx);
             }
@@ -85,21 +95,6 @@ export abstract class Engine extends AnimationLoop {
         this.canvas
             .getContext()
             .clearRect(0, 0, currentResolution.x, currentResolution.y);
-    }
-
-    private mapIntersections(cell: Cell, actor: any) {
-        const width = actor.numberOfFrames
-            ? actor.width / actor.numberOfFrames
-            : actor.width;
-
-        return !(
-            actor.coordinates.x > cell.x + this.grid.cellSize ||
-            actor.coordinates.x + width < cell.x ||
-            actor.coordinates.y > cell.y + this.grid.cellSize ||
-            actor.coordinates.y + actor.height < cell.y || 
-            actor.coordinates.y + actor.radius < cell.y || 
-            actor.coordinates.x + actor.radius < cell.x
-        );
     }
 
     public update() {

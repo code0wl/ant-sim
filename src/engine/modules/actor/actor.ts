@@ -8,6 +8,7 @@ export class Actor {
     public numberOfFrames = 5;
     public actorID: number;
     public coordinates: Point;
+    public currentRotation: number = 0;
     public frameIndex = 0;
     public currentState: number;
 
@@ -30,6 +31,8 @@ export class Actor {
                 this.frameIndex = 0;
             }
         }
+
+        this.currentRotation += 1;
     }
 
     private addToStore() {

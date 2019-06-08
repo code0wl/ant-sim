@@ -3,7 +3,6 @@ import { Actor } from "engine/modules/actor/actor";
 import { actorStore } from "engine/modules/actor/store";
 
 export class Animal extends Actor {
-    public currentRotation: number;
     public currentState: currentState = currentState.idle;
     public actor: IActor;
 
@@ -13,10 +12,6 @@ export class Animal extends Actor {
         this.actor = Array.from(actorStore).find(
             ({ actorID }) => actorID === this.actorID
         );
-    }
-
-    public rotate(direction: Direction) {
-        this.currentRotation += 1;
     }
 
     public move() {
