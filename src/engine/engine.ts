@@ -26,7 +26,7 @@ export abstract class Engine extends AnimationLoop {
     private renderCells() {
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach(actor => {
-                if (mapIntersections(cell, actor)) {
+                if (mapIntersections(cell, actor, this.grid.cellSize)) {
                     cell.actor = actor;
                     if (controls.debug) {
                         this.ctx.strokeStyle = Colors.debug;
@@ -66,7 +66,7 @@ export abstract class Engine extends AnimationLoop {
             if (graphics) {
                 this.ctx.save();
 
-                this.ctx.translate(coordinates.x / 2, coordinates.y / 2);
+                this.ctx.translate(x, y);
 
                 this.ctx.rotate((Math.PI / 180) * (currentRotation += 1));
 
