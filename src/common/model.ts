@@ -14,8 +14,8 @@ export enum actorType {
 }
 
 export enum currentState {
-    idle,
     walk,
+    idle,
     dead,
     attack,
 }

@@ -61,8 +61,6 @@ export abstract class Engine extends AnimationLoop {
                 currentState,
             } = actor;
 
-            let { currentRotation } = actor;
-
             if (graphics) {
                 this.ctx.drawImage(
                     graphics[currentState].image,
@@ -89,6 +87,9 @@ export abstract class Engine extends AnimationLoop {
             .clearRect(0, 0, currentResolution.x, currentResolution.y);
     }
 
+        //     new Ant(antType.red);
+        //     new Ant(antType.red);
+        //     new Ant(antType.red);
     public update() {
         if (!this.grid) return;
         this.clearCanvas();

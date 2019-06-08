@@ -1,6 +1,7 @@
 import { actorStore } from "engine/modules/actor/store";
 import { IActorType } from "common/model";
 import { Point } from "../draw/point";
+import { Animal } from "common/animal";
 
 export class Actor {
     public width: number;
@@ -20,19 +21,23 @@ export class Actor {
     }
 
     public update() {
-        this.tick += 1;
+        if (this instanceof Animal) {
+            this.tick += 1;
 
-        if (this.tick > this.ticksPerFrame) {
-            this.tick = 0;
+            if (this.tick > this.ticksPerFrame) {
+                this.tick = 0;
 
-            if (this.frameIndex < this.numberOfFrames - 1) {
-                this.frameIndex += 1;
-            } else {
-                this.frameIndex = 0;
+                if (this.frameIndex < this.numberOfFrames - 1) {
+                    this.frameIndex += 1;
+                } else {
+                    this.frameIndex = 0;
+                }
             }
-        }
 
-        this.currentRotation += 1;
+            this.currentRotation += 1;
+
+            this.hunt();
+        }
     }
 
     private addToStore() {

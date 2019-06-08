@@ -16,9 +16,6 @@ export class Ant extends Animal {
 
     constructor(type: antType) {
         super(type);
-        setInterval(() => this.move(), 5000);
-        setInterval(() => this.idle(), 10000);
-
         this.graphics = addGraphic(this.assignAnimation(type));
     }
 
