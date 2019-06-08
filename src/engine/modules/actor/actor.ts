@@ -1,6 +1,5 @@
 import { actorStore } from "engine/modules/actor/store";
-import { spriteSheetLocation } from "common/util/animation-loader";
-import { IAnimationType, IActorType } from "common/model";
+import { IActorType, Sprite } from "common/model";
 import { Point } from "../draw/point";
 
 export class Actor {
@@ -11,6 +10,7 @@ export class Actor {
     public coordinates: Point;
     public frameIndex = 0;
     public currentState: number;
+    public graphics: Sprite[];
 
     private tick = 0;
     private ticksPerFrame = 1;
@@ -31,14 +31,6 @@ export class Actor {
                 this.frameIndex = 0;
             }
         }
-    }
-
-    public destroy(id: number) {
-        actorStore.forEach(actor => {
-            if (actor.id === id) {
-                actorStore.delete(actor);
-            }
-        });
     }
 
     private addToStore() {

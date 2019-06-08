@@ -1,7 +1,7 @@
 import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
 
-export type IActorType = antType | spiderType | "food" | "nest";
+export type IActorType = antType | spiderType | actorType.food | actorType.nest;
 
 export enum actorType {
     ant = "ant",
