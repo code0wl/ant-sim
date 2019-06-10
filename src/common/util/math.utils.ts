@@ -7,9 +7,9 @@ export const generateRandomInteger = (min: number, max: number) =>
 export const generateRandomCoordinates = (coordinates: Point) =>
     new Point(
         boundedCell(
-            generateRandomInteger(coordinates.x - 1, coordinates.x + 1)
+            generateRandomInteger(coordinates.x - 2, coordinates.x + 2)
         ),
-        boundedCell(generateRandomInteger(coordinates.y - 1, coordinates.y + 1))
+        boundedCell(generateRandomInteger(coordinates.y - 2, coordinates.y + 2))
     );
 
 const boundedCell = (index: number) => {

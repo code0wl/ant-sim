@@ -30,15 +30,29 @@ export abstract class Engine extends AnimationLoop {
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach(actor => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
-                    if (actor instanceof Ant) {
+                    const isAnt = actor instanceof Ant;
+                    const isSpider = actor instanceof Spider;
+                    const isFood = actor instanceof Food;
+
+                    if (isAnt && cell.hasFood) {
+                        const ant = actor as Ant;
+                        ant.gather();
+                    }
+
+                    if (isAnt && cell.hasSpider) {
+                        const ant = actor as Ant;
+                        ant.die();
+                    }
+
+                    if (isAnt) {
                         cell.hasAnt = true;
                     }
 
-                    if (actor instanceof Food) {
+                    if (isFood) {
                         cell.hasFood = true;
                     }
 
-                    if (actor instanceof Spider) {
+                    if (isSpider) {
                         cell.hasSpider = true;
                     }
 

@@ -34,9 +34,8 @@ export class Ant extends Animal {
 
     public fight() {}
 
-    private gather() {
-        // drop phermones
-        //return home
+    public gather() {
+        console.log(this, "is gathering food");
     }
 
     private assignAnimation(type: antType) {
@@ -48,5 +47,7 @@ export class Ant extends Animal {
         };
     }
 
-    carry() {}
+    public die() {
+        console.log(this, "should diea");
+    }
 }
