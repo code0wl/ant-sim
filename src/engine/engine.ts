@@ -8,6 +8,9 @@ import { Point } from "./modules/draw/point";
 import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { mapIntersections } from "common/util/intersection";
+import { Ant } from "game/actors/ant/ant";
+import { Food } from "game/actors/food/food";
+import { Spider } from "game/actors/spider/spider";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -27,7 +30,13 @@ export abstract class Engine extends AnimationLoop {
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach(actor => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
-                    cell.actor = actor as IActor;
+                    cell.hasAnt = actor instanceof Ant;
+                    cell.hasFood = actor instanceof Food;
+                    cell.hasSpider = actor instanceof Spider;
+
+                    if (cell.hasFood && cell.hasSpider) {
+                        console.log(cell);
+                    }
                     if (controls.debug) {
                         this.ctx.strokeStyle = Colors.debug;
                     }
