@@ -10,6 +10,7 @@ export class Ant extends Animal {
     public width = 80;
     public height = 27;
     public graphics: Sprite[];
+    public hasFood = false;
     public distanceFromNest = 0;
     public coordinates = new Point(
         nestCoordinates[this.type ? "red" : "black"].x,
@@ -30,6 +31,8 @@ export class Ant extends Animal {
             );
         }
     }
+
+    public fight() {}
 
     private gather() {
         // drop phermones
