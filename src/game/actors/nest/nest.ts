@@ -7,6 +7,7 @@ import { Colony, antType } from "../ant/model";
 
 export class Nest extends Actor {
     public radius = 15;
+    public foodStores = 0;
 
     constructor(private nestType: Colony) {
         super(actorType.nest);

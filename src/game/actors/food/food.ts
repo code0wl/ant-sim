@@ -3,8 +3,7 @@ import { Point } from "engine/modules/draw/point";
 import { currentState, Colors, actorType } from "common/model";
 
 export class Food extends Actor {
-    public width = 5;
-    public height = 5;
+    public amount = 30;
     public currentState: currentState = currentState.idle;
 
     constructor(public coordinates: Point) {
@@ -13,11 +12,15 @@ export class Food extends Actor {
 
     draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = Colors.food;
-        ctx.fillRect(
-            this.coordinates.x,
-            this.coordinates.y,
-            this.width,
-            this.height
-        );
+        for (let x = 0; x < this.amount; x++) {
+            for (let y = 0; y < this.amount; y++) {
+                ctx.fillRect(
+                    this.coordinates.x + y,
+                    this.coordinates.y + x,
+                    1,
+                    1
+                );
+            }
+        }
     }
 }

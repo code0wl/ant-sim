@@ -6,6 +6,7 @@ import { Point } from "engine/modules/draw/point";
 import { Nest } from "./actors/nest/nest";
 import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
+import { Food } from "./actors/food/food";
 
 export class Game extends Engine {
     constructor(
@@ -15,10 +16,15 @@ export class Game extends Engine {
         super(resolution);
         this.createNests();
         this.createAnts();
-        this.createSpiders([
-            { spider: spiderType.large, coordinates: new Point(100, 200) },
-            { spider: spiderType.small, coordinates: new Point(200, 200) },
-        ]);
+        this.createFood();
+        // this.createSpiders([
+        //     { spider: spiderType.large, coordinates: new Point(100, 200) },
+        //     { spider: spiderType.small, coordinates: new Point(200, 200) },
+        // ]);
+    }
+
+    private createFood() {
+        new Food(new Point(100, 100));
     }
 
     private createAnts() {
@@ -30,7 +36,6 @@ export class Game extends Engine {
         }
 
         new Ant(antType.red);
-            
     }
 
     private createSpiders(spiderConfig: ISpiderConfig[]) {
