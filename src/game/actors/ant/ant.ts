@@ -4,6 +4,7 @@ import { antType } from "./model";
 import { nestCoordinates } from "../nest/model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
+import { generateRandomCoordinates } from "common/util/math.utils";
 
 export class Ant extends Animal {
     public width = 80;
@@ -19,13 +20,20 @@ export class Ant extends Animal {
         this.graphics = addGraphic(this.assignAnimation(type));
     }
 
+    public hunt() {
+        this.coordinates = generateRandomCoordinates(
+            new Point(this.coordinates.x, this.coordinates.y)
+        );
+    }
+
     private assignAnimation(type: antType) {
         const kind = type ? 1 : 2;
         return {
-            walk: `ants/spritesheets/ant${kind}/_ant_walk-small.png`,
             idle: `ants/spritesheets/ant${kind}/_ant_idle-small.png`,
+            walk: `ants/spritesheets/ant${kind}/_ant_walk-small.png`,
             dead: `ants/spritesheets/ant${kind}/_ant_dead-small.png`,
         };
     }
+
     carry() {}
 }

@@ -1,8 +1,6 @@
 import { currentState, IActorType, IActor } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
 import { actorStore } from "engine/modules/actor/store";
-import { generateRandomCoordinates } from "./util/math.utils";
-import { Point } from "engine/modules/draw/point";
 
 export class Animal extends Actor {
     public currentState: currentState = currentState.idle;
@@ -19,9 +17,7 @@ export class Animal extends Actor {
     }
 
     public hunt() {
-        this.coordinates = generateRandomCoordinates(
-            new Point(this.coordinates.x, this.coordinates.y)
-        );
+        this.actor.hunt();
     }
 
     public move() {

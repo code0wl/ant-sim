@@ -1,15 +1,16 @@
-import { cellStore } from "engine/modules/actor/store";
 import { Point } from "engine/modules/draw/point";
 import { currentResolution } from "./center";
 
 export const generateRandomInteger = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
-export const generateRandomCoordinates = (coordinates: Point) => {
-    const x = boundedCell(generateRandomInteger(coordinates.x - 2, coordinates.x + 2));
-    const y = boundedCell(generateRandomInteger(coordinates.y - 2, coordinates.y + 2));
-    return new Point(x, y);
-};
+export const generateRandomCoordinates = (coordinates: Point) =>
+    new Point(
+        boundedCell(
+            generateRandomInteger(coordinates.x - 1, coordinates.x + 1)
+        ),
+        boundedCell(generateRandomInteger(coordinates.y - 1, coordinates.y + 1))
+    );
 
 const boundedCell = (index: number) => {
     let boundedIndex = index;
@@ -17,7 +18,8 @@ const boundedCell = (index: number) => {
     if (index < 0) {
         boundedIndex = 0;
     }
-    if (index >= currentResolution.x) {
+
+    if (index > currentResolution.x) {
         boundedIndex = currentResolution.x - 1;
     }
 

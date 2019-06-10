@@ -14,10 +14,12 @@ export class Spider extends Animal implements ISpider {
 
     constructor(type: spiderType, public coordinates: Point) {
         super(type);
-        setInterval(() => this.move(), 15);
-        setInterval(() => this.idle(), 1000);
+        setInterval(() => this.move(), 2000);
+        setInterval(() => this.idle(), 4000);
         this.graphics = addGraphic(this.assignAnimation(type));
     }
+
+    public hunt() {}
 
     private assignAnimation(type: spiderType) {
         const kind = type ? 1 : 2;
