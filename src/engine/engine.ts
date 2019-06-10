@@ -8,6 +8,7 @@ import { Point } from "./modules/draw/point";
 import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { mapIntersections } from "common/util/intersection";
+import { Actor } from "./modules/actor/actor";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -27,7 +28,7 @@ export abstract class Engine extends AnimationLoop {
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach(actor => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
-                    cell.actor = actor;
+                    cell.actor = actor as IActor;
                     if (controls.debug) {
                         this.ctx.strokeStyle = Colors.debug;
                     }
@@ -81,15 +82,11 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private clearCanvas() {
-        // TODO: optimise
         this.canvas
             .getContext()
             .clearRect(0, 0, currentResolution.x, currentResolution.y);
     }
 
-        //     new Ant(antType.red);
-        //     new Ant(antType.red);
-        //     new Ant(antType.red);
     public update() {
         if (!this.grid) return;
         this.clearCanvas();
