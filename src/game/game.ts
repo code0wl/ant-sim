@@ -4,14 +4,10 @@ import { antType } from "game/actors/ant/model";
 import { Engine } from "engine/engine";
 import { Point } from "engine/modules/draw/point";
 import { Nest } from "./actors/nest/nest";
-import { nestCoordinates } from "./actors/nest/model";
 import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 
 export class Game extends Engine {
-    public blackNest: Nest;
-    public redNest: Nest;
-
     constructor(
         private antsPopulous = 5,
         resolution: Point = currentResolution
@@ -32,6 +28,9 @@ export class Game extends Engine {
             new Ant(antType.red);
             i++;
         }
+
+        new Ant(antType.red);
+            
     }
 
     private createSpiders(spiderConfig: ISpiderConfig[]) {
@@ -41,11 +40,7 @@ export class Game extends Engine {
     }
 
     private createNests() {
-        this.blackNest = new Nest(
-            new Point(nestCoordinates.black.x, nestCoordinates.black.y)
-        );
-        this.redNest = new Nest(
-            new Point(nestCoordinates.red.x, nestCoordinates.red.y)
-        );
+        new Nest("black");
+        new Nest("red");
     }
 }

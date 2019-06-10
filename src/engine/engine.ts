@@ -1,14 +1,13 @@
 import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
-import { currentResolution, x, y } from "common/util/center";
+import { currentResolution } from "common/util/center";
 import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
 import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { mapIntersections } from "common/util/intersection";
-import { Actor } from "./modules/actor/actor";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;

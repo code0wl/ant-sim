@@ -2,6 +2,10 @@ import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
 import { Animal } from "./animal";
 import { Actor } from "engine/modules/actor/actor";
+import { Ant } from "game/actors/ant/ant";
+import { Spider } from "game/actors/spider/spider";
+
+export type classTypes = Ant | Spider;
 
 export type IActorType = antType | spiderType | actorType.food | actorType.nest;
 
@@ -15,7 +19,7 @@ export enum actorType {
 
 export enum currentState {
     idle,
-    walk,    
+    walk,
     dead,
     attack,
 }

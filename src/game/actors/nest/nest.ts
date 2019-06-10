@@ -1,12 +1,19 @@
 import { Point } from "engine/modules/draw/point";
 import { Actor } from "engine/modules/actor/actor";
 import { Colors, actorType } from "common/model";
+import { getActorsOfKind } from "common/util/aggregator";
+import { nestCoordinates } from "./model";
+import { Colony, antType } from "../ant/model";
 
 export class Nest extends Actor {
     public radius = 15;
 
-    constructor(public coordinates: Point) {
+    constructor(private nestType: Colony) {
         super(actorType.nest);
+        this.coordinates = new Point(
+            nestCoordinates[this.nestType].x,
+            nestCoordinates[this.nestType].y
+        );
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -20,10 +27,21 @@ export class Nest extends Actor {
             2 * Math.PI
         );
         ctx.fill();
+
+        this.displayPopulationCount(ctx);
     }
 
-    getPopulation() {
-        // return nest population
+    private displayPopulationCount(ctx: CanvasRenderingContext2D) {
+        const totalPopulation = getActorsOfKind(
+            actorType.ant,
+            antType[this.nestType]
+        );
+
+        ctx.fillText(
+            `Population: ${totalPopulation.length}`,
+            this.coordinates.x - 30,
+            this.coordinates.y - 30
+        );
     }
 
     getFoodSupply() {
