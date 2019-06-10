@@ -30,13 +30,18 @@ export abstract class Engine extends AnimationLoop {
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach(actor => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
-                    cell.hasAnt = actor instanceof Ant;
-                    cell.hasFood = actor instanceof Food;
-                    cell.hasSpider = actor instanceof Spider;
-
-                    if (cell.hasFood && cell.hasSpider) {
-                        console.log(cell);
+                    if (actor instanceof Ant) {
+                        cell.hasAnt = true;
                     }
+
+                    if (actor instanceof Food) {
+                        cell.hasFood = true;
+                    }
+
+                    if (actor instanceof Spider) {
+                        cell.hasSpider = true;
+                    }
+
                     if (controls.debug) {
                         this.ctx.strokeStyle = Colors.debug;
                     }
