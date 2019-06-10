@@ -1,10 +1,9 @@
 import { Actor } from "engine/modules/actor/actor";
 import { Point } from "engine/modules/draw/point";
-import { currentState, Colors, actorType } from "common/model";
+import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
     public amount = 30;
-    public currentState: currentState = currentState.idle;
 
     constructor(public coordinates: Point) {
         super(actorType.food);
