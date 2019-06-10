@@ -14,13 +14,13 @@ export class Game extends Engine {
         resolution: Point = currentResolution
     ) {
         super(resolution);
-        // this.createNests();
-        // this.createAnts();
+        this.createNests();
+        this.createAnts();
         this.createFood();
-        // this.createSpiders([
-        //     { spider: spiderType.large, coordinates: new Point(100, 200) },
-        //     { spider: spiderType.small, coordinates: new Point(200, 200) },
-        // ]);
+        this.createSpiders([
+            { spider: spiderType.large, coordinates: new Point(100, 200) },
+            { spider: spiderType.small, coordinates: new Point(200, 200) },
+        ]);
     }
 
     private createFood() {
