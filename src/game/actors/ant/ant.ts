@@ -22,9 +22,18 @@ export class Ant extends Animal {
     }
 
     public hunt() {
-        this.coordinates = generateRandomCoordinates(
-            new Point(this.coordinates.x, this.coordinates.y)
-        );
+        if (this.hasFood) {
+            this.gather();
+        } else {
+            this.coordinates = generateRandomCoordinates(
+                new Point(this.coordinates.x, this.coordinates.y)
+            );
+        }
+    }
+
+    private gather() {
+        // drop phermones
+        //return home
     }
 
     private assignAnimation(type: antType) {

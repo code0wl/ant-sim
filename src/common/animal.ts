@@ -1,8 +1,10 @@
-import { currentState, IActorType, IActor } from "common/model";
+import { currentState, IActorType } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
 
 export class Animal extends Actor {
     public currentState: currentState = currentState.idle;
+
+    public hasFood = false;
 
     constructor(type: IActorType) {
         super(type);
@@ -29,6 +31,4 @@ export class Animal extends Actor {
     public attack() {
         this.currentState = currentState.attack;
     }
-
-    public hasFood() {}
 }

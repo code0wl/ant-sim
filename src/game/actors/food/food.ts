@@ -10,16 +10,13 @@ export class Food extends Actor {
     }
 
     draw(ctx: CanvasRenderingContext2D) {
+        if (!this.amount) return;
         ctx.fillStyle = Colors.food;
-        for (let x = 0; x < this.amount; x++) {
-            for (let y = 0; y < this.amount; y++) {
-                ctx.fillRect(
-                    this.coordinates.x + y,
-                    this.coordinates.y + x,
-                    1,
-                    1
-                );
-            }
-        }
+        ctx.fillRect(
+            this.coordinates.x,
+            this.coordinates.y,
+            this.amount,
+            this.amount
+        );
     }
 }
