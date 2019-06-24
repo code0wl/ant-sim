@@ -1,7 +1,7 @@
 import { Point } from "engine/modules/draw/point";
 import { Actor } from "engine/modules/actor/actor";
 import { Colors, actorType } from "common/model";
-import { getActorsOfKind } from "common/util/aggregator";
+import { getActor } from "common/util/aggregator";
 import { nestCoordinates } from "./model";
 import { Colony, antType } from "../ant/model";
 
@@ -33,7 +33,7 @@ export class Nest extends Actor {
     }
 
     private displayPopulationCount(ctx: CanvasRenderingContext2D) {
-        const totalPopulation = getActorsOfKind(
+        const totalPopulation = getActor(
             actorType.ant,
             antType[this.nestType]
         );

@@ -34,6 +34,7 @@ export abstract class Engine extends AnimationLoop {
                     const isSpider = actor instanceof Spider;
                     const isFood = actor instanceof Food;
 
+                    // emit actors
                     if (isAnt && cell.hasFood) {
                         const ant = actor as Ant;
                         ant.gather();
