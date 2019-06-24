@@ -6,7 +6,6 @@ import { Point } from "engine/modules/draw/point";
 export class Animal extends Actor {
     public currentState: currentState = currentState.idle;
     public hasFood = false;
-    public isAlive = true;
 
     constructor(type: IActorType) {
         super(type);

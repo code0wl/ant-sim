@@ -45,7 +45,7 @@ export class Nest extends Actor {
         );
     }
 
-    getFoodSupply() {
+    private getFoodSupplyAmount() {
         // return ant foodsupply
     }
 }

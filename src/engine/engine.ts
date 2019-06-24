@@ -77,7 +77,7 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private renderActors() {
-        const actors = Array.from(actorStore);
+        const actors = Array.from(actorStore);        
 
         actors.forEach((actor: IActor) => {
             const {
@@ -85,9 +85,11 @@ export abstract class Engine extends AnimationLoop {
                 height,
                 graphics,
                 frameIndex,
+                removeFromStore,
                 numberOfFrames,
                 coordinates,
                 currentState,
+                isAlive,
             } = actor;
 
             if (graphics) {
@@ -105,7 +107,13 @@ export abstract class Engine extends AnimationLoop {
             } else {
                 actor.draw(this.ctx);
             }
+            
+            if(!isAlive) {
+                removeFromStore(actor);
+            } 
+
             actor.update();
+            
         });
     }
 

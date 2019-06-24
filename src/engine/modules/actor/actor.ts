@@ -8,6 +8,7 @@ export class Actor {
     public height: number;
     public numberOfFrames = 5;
     public actorID: number;
+    public isAlive = true;
     public coordinates: Point;
     public currentRotation: number = 0;
     public frameIndex = 0;
@@ -38,6 +39,10 @@ export class Actor {
 
             this.hunt();
         }
+    }
+
+    public removeFromStore(actor: Actor): void {
+        actorStore.delete(actor);
     }
 
     private addToStore() {
