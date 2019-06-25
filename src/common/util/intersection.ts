@@ -1,6 +1,7 @@
 import { Cell } from "engine/modules/draw/cell";
+import { IActor } from "common/model";
 
-export function mapIntersections(cell: Cell, actor: any, cellSize: number) {
+export function mapIntersections(cell: Cell, actor: IActor, cellSize: number) {
     const width = actor.numberOfFrames
         ? actor.width / actor.numberOfFrames
         : actor.width;

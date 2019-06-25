@@ -48,6 +48,7 @@ export interface IActor extends Animal, Actor {
     height: number;
     currentState: number;
     width: number;
+    radius?: number;
     currentRotation: number;
     graphics: Sprite[];
     draw(ctx: CanvasRenderingContext2D): void;

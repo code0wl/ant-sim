@@ -8,9 +8,7 @@ import { Point } from "./modules/draw/point";
 import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { mapIntersections } from "common/util/intersection";
-import { Ant } from "game/actors/ant/ant";
-import { Food } from "game/actors/food/food";
-import { Spider } from "game/actors/spider/spider";
+import { Director } from "./modules/director/director";
 
 export abstract class Engine extends AnimationLoop {
     public canvas: Canvas;
@@ -18,46 +16,24 @@ export abstract class Engine extends AnimationLoop {
     public menu: Menu;
     private ctx: CanvasRenderingContext2D;
     private spawnTime = 5000;
+    private director: Director;
 
     constructor(resolution: Point) {
         super(resolution);
         this.canvas = new Canvas(currentResolution);
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();
+        this.director = new Director();
         this.ctx = this.canvas.getContext();
     }
 
     private renderCells() {
+
+
         cellStore.forEach((cell: Cell) => {
-            actorStore.forEach(actor => {
+            actorStore.forEach((actor: IActor) => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
-                    const isAnt = actor instanceof Ant;
-                    const isSpider = actor instanceof Spider;
-                    const isFood = actor instanceof Food;
-
-                    // emit actors
-                    if (isAnt && cell.hasFood) {
-                        const ant = actor as Ant;
-                        ant.gather();
-                    }
-
-                    if (isAnt && cell.hasSpider) {
-                        const ant = actor as Ant;
-                        ant.die();
-                    }
-
-                    if (isAnt) {
-                        cell.hasAnt = true;
-                    }
-
-                    if (isFood) {
-                        cell.hasFood = true;
-                    }
-
-                    if (isSpider) {
-                        cell.hasSpider = true;
-                    }
-
+                    this.director.handleEvent(cell, actor);
                     if (controls.debug) {
                         this.ctx.strokeStyle = Colors.debug;
                     }
