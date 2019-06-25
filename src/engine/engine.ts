@@ -17,6 +17,7 @@ export abstract class Engine extends AnimationLoop {
     public grid: Grid;
     public menu: Menu;
     private ctx: CanvasRenderingContext2D;
+    private spawnTime = 5000;
 
     constructor(resolution: Point) {
         super(resolution);
@@ -77,44 +78,44 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private renderActors() {
-        const actors = Array.from(actorStore);        
+        const actors = Array.from(actorStore);
 
         actors.forEach((actor: IActor) => {
-            const {
-                width,
-                height,
-                graphics,
-                frameIndex,
-                removeFromStore,
-                numberOfFrames,
-                coordinates,
-                currentState,
-                isAlive,
-            } = actor;
-
-            if (graphics) {
-                this.ctx.drawImage(
-                    graphics[currentState].image,
-                    (frameIndex * width) / numberOfFrames,
-                    0,
-                    width / numberOfFrames,
-                    height,
-                    coordinates.x,
-                    coordinates.y,
-                    width / numberOfFrames,
-                    height
-                );
+            if (actor.isAlive) {
+                this.animateActor(actor);
             } else {
-                actor.draw(this.ctx);
+                setTimeout(() => actor.removeFromStore(actor), this.spawnTime);
             }
-            
-            if(!isAlive) {
-                removeFromStore(actor);
-            } 
-
             actor.update();
-            
         });
+    }
+
+    private animateActor(actor: IActor) {
+        const {
+            width,
+            height,
+            graphics,
+            frameIndex,
+            numberOfFrames,
+            coordinates,
+            currentState,
+        } = actor;
+
+        if (graphics) {
+            this.ctx.drawImage(
+                graphics[currentState].image,
+                (frameIndex * width) / numberOfFrames,
+                0,
+                width / numberOfFrames,
+                height,
+                coordinates.x,
+                coordinates.y,
+                width / numberOfFrames,
+                height
+            );
+        } else {
+            actor.draw(this.ctx);
+        }
     }
 
     private clearCanvas() {
