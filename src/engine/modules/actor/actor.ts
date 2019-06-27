@@ -41,6 +41,8 @@ export class Actor {
         }
     }
 
+    
+
     public removeFromStore(actor: Actor): void {
         actorStore.delete(actor);
     }

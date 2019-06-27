@@ -24,7 +24,7 @@ export class Animal extends Actor {
 
     public die() {
         this.isAlive = false;
-        this.currentState = currentState.dead
+        this.currentState = currentState.dead;
     }
 
     public fight() {}
@@ -32,7 +32,7 @@ export class Animal extends Actor {
     public gather() {
         console.log(this, "is gathering food");
     }
-
+    
     public move() {
         this.currentState = currentState.walk;
     }

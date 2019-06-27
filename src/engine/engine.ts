@@ -1,7 +1,7 @@
 import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
-import { currentResolution } from "common/util/center";
+import { currentResolution, x } from "common/util/center";
 import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
 import { Point } from "./modules/draw/point";
@@ -87,6 +87,16 @@ export abstract class Engine extends AnimationLoop {
                 width / numberOfFrames,
                 height
             );
+
+            this.ctx.save();
+
+            this.ctx.translate(width / 2, width / 2);
+
+            this.ctx.rotate(Math.PI / 10);
+
+            this.ctx.translate(-width / 2, -width / 2);
+
+            this.ctx.restore();
         } else {
             actor.draw(this.ctx);
         }
