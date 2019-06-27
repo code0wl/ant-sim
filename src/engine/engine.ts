@@ -65,18 +65,27 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private animateActor(actor: IActor) {
+        const ctx = this.ctx;
         const {
             width,
             height,
             graphics,
             frameIndex,
             numberOfFrames,
+            currentRotation,
             coordinates,
             currentState,
         } = actor;
 
         if (graphics) {
-            this.ctx.drawImage(
+
+            ctx.save();
+
+            ctx.translate(coordinates.x, coordinates.y);
+            ctx.rotate(currentRotation);
+            ctx.translate(-coordinates.x, -coordinates.y);
+
+            ctx.drawImage(
                 graphics[currentState].image,
                 (frameIndex * width) / numberOfFrames,
                 0,
@@ -88,17 +97,9 @@ export abstract class Engine extends AnimationLoop {
                 height
             );
 
-            this.ctx.save();
-
-            this.ctx.translate(width / 2, width / 2);
-
-            this.ctx.rotate(Math.PI / 10);
-
-            this.ctx.translate(-width / 2, -width / 2);
-
-            this.ctx.restore();
+            ctx.restore();
         } else {
-            actor.draw(this.ctx);
+            actor.draw(ctx);
         }
     }
 
