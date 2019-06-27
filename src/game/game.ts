@@ -19,6 +19,7 @@ export class Game extends Engine {
         this.createFood();
         this.createSpiders([
             { spider: spiderType.large, coordinates: new Point(100, 200) },
+            { spider: spiderType.small, coordinates: new Point(100, 200) }
         ]);
     }
 
