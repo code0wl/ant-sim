@@ -33,19 +33,12 @@ export class Nest extends Actor {
     }
 
     private displayPopulationCount(ctx: CanvasRenderingContext2D) {
-        const totalPopulation = getActor(
-            actorType.ant,
-            antType[this.nestType]
-        );
+        const totalPopulation = getActor(actorType.ant, antType[this.nestType]);
 
         ctx.fillText(
             `Population: ${totalPopulation.length}`,
             this.coordinates.x - 30,
             this.coordinates.y - 30
         );
-    }
-
-    private getFoodSupplyAmount() {
-        // return ant foodsupply
     }
 }

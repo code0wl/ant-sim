@@ -44,7 +44,7 @@ export class Game extends Engine {
     }
 
     private createNests() {
-        new Nest("black");
         new Nest("red");
+        new Nest("black");
     }
 }

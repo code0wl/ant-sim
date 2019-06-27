@@ -28,8 +28,6 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private renderCells() {
-
-
         cellStore.forEach((cell: Cell) => {
             actorStore.forEach((actor: IActor) => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {

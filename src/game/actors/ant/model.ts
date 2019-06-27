@@ -1,6 +1,6 @@
 export enum antType {
-    red,
     black,
+    red
 }
 
 export type Colony = "red" | "black";
