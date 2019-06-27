@@ -22,7 +22,7 @@ export class Ant extends Animal {
     }
 
     private assignAnimation(type: antType) {
-        const kind = type ? 1 : 2;
+        const kind = !type ? 1 : 2;
         return {
             idle: `ants/spritesheets/ant${kind}/_ant_idle-small.png`,
             walk: `ants/spritesheets/ant${kind}/_ant_walk-small.png`,

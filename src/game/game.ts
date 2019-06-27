@@ -33,8 +33,6 @@ export class Game extends Engine {
             new Ant(antType.red);
             i++;
         }
-
-        new Ant(antType.red);
     }
 
     private createSpiders(spiderConfig: ISpiderConfig[]) {
