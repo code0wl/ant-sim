@@ -19,8 +19,6 @@ export class Spider extends Animal implements ISpider {
         this.graphics = addGraphic(this.assignAnimation(type));
     }
 
-    public hunt() {}
-
     private assignAnimation(type: spiderType) {
         const kind = type ? 1 : 2;
         return {
@@ -28,5 +26,4 @@ export class Spider extends Animal implements ISpider {
             walk: `spiders/spider${kind}/spritesheets/sheet_spider_walk-small.png`,
         };
     }
-    carry() {}
 }

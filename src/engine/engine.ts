@@ -79,12 +79,6 @@ export abstract class Engine extends AnimationLoop {
 
         if (graphics) {
 
-            ctx.save();
-
-            ctx.translate(coordinates.x, coordinates.y);
-            ctx.rotate(currentRotation);
-            ctx.translate(-coordinates.x, -coordinates.y);
-
             ctx.drawImage(
                 graphics[currentState].image,
                 (frameIndex * width) / numberOfFrames,
@@ -96,8 +90,6 @@ export abstract class Engine extends AnimationLoop {
                 width / numberOfFrames,
                 height
             );
-
-            ctx.restore();
         } else {
             actor.draw(ctx);
         }
