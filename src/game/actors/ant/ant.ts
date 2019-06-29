@@ -26,7 +26,6 @@ export class Ant extends Animal {
     public gather(food: Food) {
         this.hasFood = true;
         this.food = food;
-        console.log(this);
     }
 
     private assignAnimation(type: antType) {
