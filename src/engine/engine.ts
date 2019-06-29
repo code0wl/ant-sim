@@ -15,7 +15,6 @@ export abstract class Engine extends AnimationLoop {
     public grid: Grid;
     public menu: Menu;
     private ctx: CanvasRenderingContext2D;
-    private spawnTime = 3000;
     private director: Director;
 
     constructor(resolution: Point) {
@@ -58,7 +57,7 @@ export abstract class Engine extends AnimationLoop {
             if (actor.isActive) {
                 this.animateActor(actor);
             } else {
-                setTimeout(() => actor.removeFromStore(actor), this.spawnTime);
+                actor.removeFromStore(actor);
             }
             actor.update();
         });
@@ -72,13 +71,11 @@ export abstract class Engine extends AnimationLoop {
             graphics,
             frameIndex,
             numberOfFrames,
-            currentRotation,
             coordinates,
             currentState,
         } = actor;
 
         if (graphics) {
-
             ctx.drawImage(
                 graphics[currentState].image,
                 (frameIndex * width) / numberOfFrames,

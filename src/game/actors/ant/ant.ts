@@ -1,36 +1,30 @@
 import { Animal } from "common/animal";
 import { Sprite } from "common/model";
 import { antType } from "./model";
-import { nestCoordinates } from "../nest/model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
 import { Food } from "../food/food";
 import { generateRandomCoordinates } from "common/util/math.utils";
+import { Nest } from "../nest/nest";
 
 export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
-    public food: Food;
 
-    // TODO: simplify
-    public coordinates = new Point(
-        nestCoordinates[this.type ? "red" : "black"].x,
-        nestCoordinates[this.type ? "red" : "black"].y
-    );
-
-    constructor(type: antType) {
+    constructor(type: antType, private nest: Nest) {
         super(type);
         this.graphics = addGraphic(this.assignAnimation(type));
+        this.coordinates = this.nest.coordinates;
     }
 
-    public gather(food: Food) {
+    public gather() {
         this.hasFood = true;
-        this.food = food;
+        this.nest.foodStores++;
     }
 
     public updateActor() {
-        if (this.isMoving) {
+        if (this.isMoving && !this.hasFood) {
             this.coordinates = generateRandomCoordinates(
                 new Point(this.coordinates.x, this.coordinates.y)
             );
@@ -38,10 +32,7 @@ export class Ant extends Animal {
 
         if (this.hasFood) {
             this.hasFood = false;
-            this.coordinates = new Point(
-                nestCoordinates[this.type ? "red" : "black"].x,
-                nestCoordinates[this.type ? "red" : "black"].y
-            );
+            this.coordinates = this.nest.coordinates;
         }
     }
 

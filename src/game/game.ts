@@ -9,17 +9,19 @@ import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
 
 export class Game extends Engine {
+    private blackNest: Nest;
+    private redNest: Nest;
     constructor(
         private antsPopulous = 1,
         resolution: Point = currentResolution
     ) {
         super(resolution);
+        this.createFood();
         this.createNests();
         this.createAnts();
-        this.createFood();
         this.createSpiders([
             { spider: spiderType.large, coordinates: new Point(100, 600) },
-            { spider: spiderType.small, coordinates: new Point(500, 300) }
+            { spider: spiderType.small, coordinates: new Point(500, 300) },
         ]);
     }
 
@@ -40,8 +42,8 @@ export class Game extends Engine {
     private createAnts() {
         let i = 0;
         while (i < this.antsPopulous) {
-            new Ant(antType.black);
-            new Ant(antType.red);
+            new Ant(antType.black, this.blackNest);
+            new Ant(antType.red, this.redNest);
             i++;
         }
     }
@@ -53,7 +55,7 @@ export class Game extends Engine {
     }
 
     private createNests() {
-        new Nest("red");
-        new Nest("black");
+        this.blackNest = new Nest("red");
+        this.redNest = new Nest("black");
     }
 }
