@@ -1,6 +1,12 @@
+import { Food } from "game/actors/food/food";
+
 export class Cell {
     public hasSpider: Boolean;
     public hasAnt: Boolean;
     public hasFood: boolean;
-    constructor(public x: number, public y: number) {}
+    public food: Food
+    
+    constructor(public x: number, public y: number) {
+
+    }
 }

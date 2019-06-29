@@ -15,7 +15,7 @@ export abstract class Engine extends AnimationLoop {
     public grid: Grid;
     public menu: Menu;
     private ctx: CanvasRenderingContext2D;
-    private spawnTime = 5000;
+    private spawnTime = 3000;
     private director: Director;
 
     constructor(resolution: Point) {
@@ -55,7 +55,7 @@ export abstract class Engine extends AnimationLoop {
         const actors = Array.from(actorStore);
 
         actors.forEach((actor: IActor) => {
-            if (actor.isAlive) {
+            if (actor.isActive) {
                 this.animateActor(actor);
             } else {
                 setTimeout(() => actor.removeFromStore(actor), this.spawnTime);

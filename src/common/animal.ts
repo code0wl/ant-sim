@@ -14,9 +14,6 @@ export class Animal extends Actor {
     }
 
     public hunt() {
-        if (this.hasFood) {
-            this.gather();
-        }
         if (this.isMoving) {
             this.coordinates = generateRandomCoordinates(
                 new Point(this.coordinates.x, this.coordinates.y)
@@ -25,13 +22,9 @@ export class Animal extends Actor {
     }
 
     public die() {
-        this.isAlive = false;
+        this.isActive = false;
         this.isMoving = false;
         this.currentState = currentState.dead;
-    }
-
-    public gather() {
-        console.log(this, "is gathering food");
     }
 
     public move() {

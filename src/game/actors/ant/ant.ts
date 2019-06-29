@@ -4,13 +4,15 @@ import { antType } from "./model";
 import { nestCoordinates } from "../nest/model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
+import { Food } from "../food/food";
 
 export class Ant extends Animal {
-    public width = 80;
-    public height = 27;
-    public graphics: Sprite[];
-    public hasFood = false;
-    public distanceFromNest = 0;
+    public readonly width = 80;
+    public readonly height = 27;
+    public readonly graphics: Sprite[];
+    public food: Food;
+
+    // TODO: simplify
     public coordinates = new Point(
         nestCoordinates[this.type ? "red" : "black"].x,
         nestCoordinates[this.type ? "red" : "black"].y
@@ -19,6 +21,12 @@ export class Ant extends Animal {
     constructor(type: antType) {
         super(type);
         this.graphics = addGraphic(this.assignAnimation(type));
+    }
+
+    public gather(food: Food) {
+        this.hasFood = true;
+        this.food = food;
+        console.log(this);
     }
 
     private assignAnimation(type: antType) {

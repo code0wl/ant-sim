@@ -4,7 +4,7 @@ import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { Actor } from "../actor/actor";
 
-// gives the actions required for actors to act accordingly to their scripts ;) 
+// gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
     handleEvent(cell: Cell, actor: Actor) {
         const isAnt = actor instanceof Ant;
@@ -13,7 +13,12 @@ export class Director {
 
         if (isAnt && cell.hasFood) {
             const ant = actor as Ant;
-            ant.gather();
+            ant.gather(cell.food);
+        }
+
+        if (isFood && cell.hasAnt) {
+            const food = actor as Food;
+            food.remove();
         }
 
         if (isAnt && cell.hasSpider) {
@@ -27,6 +32,7 @@ export class Director {
 
         if (isFood) {
             cell.hasFood = true;
+            cell.food = actor as Food;
         }
 
         if (isSpider) {
