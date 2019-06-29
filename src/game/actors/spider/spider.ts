@@ -20,7 +20,7 @@ export class Spider extends Animal {
         this.graphics = addGraphic(this.assignAnimation(type));
     }
 
-    public hunt() {
+    public updateActor() {
         if (this.isMoving) {
             this.coordinates = generateRandomCoordinates(
                 new Point(this.coordinates.x, this.coordinates.y)

@@ -29,7 +29,7 @@ export class Ant extends Animal {
         this.food = food;
     }
 
-    public hunt() {
+    public updateActor() {
         if (this.isMoving) {
             this.coordinates = generateRandomCoordinates(
                 new Point(this.coordinates.x, this.coordinates.y)

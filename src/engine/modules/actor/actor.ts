@@ -37,7 +37,7 @@ export class Actor {
 
             this.currentRotation += 1;
 
-            this.hunt();
+            this.updateActor();
         }
     }
 

@@ -1,12 +1,11 @@
 import { currentState, IActorType } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
-import { generateRandomCoordinates } from "./util/math.utils";
-import { Point } from "engine/modules/draw/point";
 
 export class Animal extends Actor {
     public currentState: currentState = currentState.idle;
     public hasFood = false;
     public isMoving = false;
+    public updateActor: Function;
 
     constructor(type: IActorType) {
         super(type);
