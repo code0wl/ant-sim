@@ -1,11 +1,12 @@
 import { Animal } from "common/animal";
-import { spiderType, ISpider } from "game/actors/spider/model";
+import { spiderType } from "game/actors/spider/model";
 import { Point } from "engine/modules/draw/point";
 import { Sprite } from "common/model";
 import { addGraphic } from "common/util/animation-loader";
 import { Ant } from "../ant/ant";
+import { generateRandomCoordinates } from "common/util/math.utils";
 
-export class Spider extends Animal implements ISpider {
+export class Spider extends Animal {
     public attackers: Ant[];
     public graphics: Sprite[];
     public width = !this.type ? 300 : 900;
@@ -17,6 +18,14 @@ export class Spider extends Animal implements ISpider {
         setInterval(() => this.move(), 2000);
         setInterval(() => this.idle(), 4000);
         this.graphics = addGraphic(this.assignAnimation(type));
+    }
+
+    public hunt() {
+        if (this.isMoving) {
+            this.coordinates = generateRandomCoordinates(
+                new Point(this.coordinates.x, this.coordinates.y)
+            );
+        }
     }
 
     private assignAnimation(type: spiderType) {

@@ -10,7 +10,7 @@ import { Food } from "./actors/food/food";
 
 export class Game extends Engine {
     constructor(
-        private antsPopulous = 5,
+        private antsPopulous = 1,
         resolution: Point = currentResolution
     ) {
         super(resolution);
@@ -29,7 +29,9 @@ export class Game extends Engine {
         new Food(new Point(400, 30));
         new Food(new Point(500, 30));
 
+        new Food(new Point(350, 100));
         new Food(new Point(150, 100));
+        new Food(new Point(100, 100));
         new Food(new Point(100, 100));
         new Food(new Point(400, 100));
         new Food(new Point(500, 100));

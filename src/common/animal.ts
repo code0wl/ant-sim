@@ -13,14 +13,6 @@ export class Animal extends Actor {
         this.move();
     }
 
-    public hunt() {
-        if (this.isMoving) {
-            this.coordinates = generateRandomCoordinates(
-                new Point(this.coordinates.x, this.coordinates.y)
-            );
-        }
-    }
-
     public die() {
         this.isActive = false;
         this.isMoving = false;

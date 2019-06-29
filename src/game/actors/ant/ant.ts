@@ -5,6 +5,7 @@ import { nestCoordinates } from "../nest/model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
 import { Food } from "../food/food";
+import { generateRandomCoordinates } from "common/util/math.utils";
 
 export class Ant extends Animal {
     public readonly width = 80;
@@ -26,6 +27,22 @@ export class Ant extends Animal {
     public gather(food: Food) {
         this.hasFood = true;
         this.food = food;
+    }
+
+    public hunt() {
+        if (this.isMoving) {
+            this.coordinates = generateRandomCoordinates(
+                new Point(this.coordinates.x, this.coordinates.y)
+            );
+        }
+
+        if (this.hasFood) {
+            this.hasFood = false;
+            this.coordinates = new Point(
+                nestCoordinates[this.type ? "red" : "black"].x,
+                nestCoordinates[this.type ? "red" : "black"].y
+            );
+        }
     }
 
     private assignAnimation(type: antType) {
