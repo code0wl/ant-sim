@@ -30,6 +30,7 @@ export class Nest extends Actor {
         ctx.fill();
 
         this.displayPopulationCount(ctx);
+        this.displayFoodCount(ctx);
     }
 
     private displayPopulationCount(ctx: CanvasRenderingContext2D) {
@@ -39,6 +40,14 @@ export class Nest extends Actor {
             `Population: ${totalPopulation.length}`,
             this.coordinates.x - 30,
             this.coordinates.y - 30
+        );
+    }
+
+    private displayFoodCount(ctx: CanvasRenderingContext2D) {
+        ctx.fillText(
+            `Population: ${this.foodStores}`,
+            this.coordinates.x - 30,
+            this.coordinates.y - 10
         );
     }
 }
