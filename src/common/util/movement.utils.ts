@@ -36,10 +36,10 @@ const boundedCell = (coordinates: Point, coordinate: number) => {
     }
 
     if (
-        coordinates.x >= currentResolution.x ||
-        coordinates.y >= currentResolution.y
+        coordinates.x + 5 >= currentResolution.x ||
+        coordinates.y + 5 >= currentResolution.y
     ) {
-        coordinate - 15;
+        return coordinate - 15;
     }
 
     return coordinate;
