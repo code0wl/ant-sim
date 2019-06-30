@@ -14,10 +14,10 @@ export const generateRandomCoordinates = (coordinates: Point) =>
 export const travelToNest = (currentLocation: Point, nestLocation: Point) => {
     const newLocation = currentLocation;
 
-    currentLocation.x - nestLocation.x > 0
+    currentLocation.x - nestLocation.x >= 0
         ? (newLocation.x -= 1)
         : (newLocation.x += 1);
-    currentLocation.y - nestLocation.y > 0
+    currentLocation.y - nestLocation.y >= 0
         ? (newLocation.y -= 1)
         : (newLocation.y += 1);
 
