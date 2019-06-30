@@ -5,11 +5,10 @@ import { Nest } from "./actors/nest/nest";
 import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
+import { IGameConfig } from "index";
 
 export class Game extends Engine {
-    public startPopulation = 4;
-
-    constructor() {
+    constructor(private gameConfig: IGameConfig) {
         super();
         this.createFood();
         this.createNests(["black", "red"]);
@@ -31,6 +30,6 @@ export class Game extends Engine {
     }
 
     private createNests(nests: Colony[]) {
-        nests.forEach(nest => new Nest(nest, this.startPopulation));
+        nests.forEach(nest => new Nest(nest, this.gameConfig.startPopulation));
     }
 }

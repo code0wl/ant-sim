@@ -1,3 +1,12 @@
 import { Game } from "game/game";
 
-export const game = new Game();
+export interface IGameConfig {
+    startPopulation: number;
+}
+
+const gameConfig = {
+    resolution: {},
+    startPopulation: 4,
+};
+
+export const game = new Game(gameConfig);
