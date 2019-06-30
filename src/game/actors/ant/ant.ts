@@ -22,7 +22,6 @@ export class Ant extends Animal {
 
     public gather() {
         this.hasFood = true;
-        this.nest.foodStores++;
     }
 
     public updateActor() {
@@ -34,14 +33,22 @@ export class Ant extends Animal {
 
         if (this.hasFood) {
             const currentCoordinates = this.coordinates;
-            const { x, y } = this.coordinates;
 
             this.coordinates = travelToNest(
                 currentCoordinates,
-                new Point(x, y)
+                this.nest.coordinates
             );
+            this.deliverFood();
+        }
+    }
 
-            this.hasFood = this.coordinates.x === x && this.coordinates.y === y;
+    private deliverFood() {
+        if (
+            this.coordinates.x === this.nest.coordinates.x &&
+            this.coordinates.y === this.nest.coordinates.y
+        ) {
+            this.hasFood = false;
+            this.nest.foodStores++;
         }
     }
 
