@@ -27,7 +27,8 @@ export class Ant extends Animal {
     public updateActor() {
         if (this.isMoving && !this.hasFood) {
             this.coordinates = generateRandomCoordinates(
-                new Point(this.coordinates.x, this.coordinates.y)
+                new Point(this.coordinates.x, this.coordinates.y),
+                this.type
             );
         }
 
