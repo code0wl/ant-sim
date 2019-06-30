@@ -13,7 +13,6 @@ export class Director {
 
         if (isAnt && cell.hasFood) {
             const ant = actor as Ant;
-            cell.hasFood = false;
             ant.gather();
         }
 

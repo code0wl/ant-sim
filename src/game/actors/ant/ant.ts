@@ -3,7 +3,6 @@ import { Sprite } from "common/model";
 import { antType } from "./model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
-import { Food } from "../food/food";
 import { generateRandomCoordinates } from "common/util/math.utils";
 import { Nest } from "../nest/nest";
 

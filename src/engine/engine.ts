@@ -46,19 +46,15 @@ export abstract class Engine extends AnimationLoop {
 
             this.ctx.strokeStyle = Colors.grass;
         });
-
-        this.ctx.strokeStyle = Colors.grass;
     }
 
     private renderActors() {
         const actors = Array.from(actorStore);
 
         actors.forEach((actor: IActor) => {
-            if (actor.isActive) {
-                this.animateActor(actor);
-            } else {
-                actor.removeFromStore(actor);
-            }
+            actor.isActive
+                ? this.animateActor(actor)
+                : actor.removeFromStore(actor);
             actor.update();
         });
     }
