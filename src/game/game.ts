@@ -26,17 +26,7 @@ export class Game extends Engine {
     }
 
     private createFood() {
-        new Food(new Point(150, 30));
-        new Food(new Point(300, 30));
-        new Food(new Point(400, 30));
-        new Food(new Point(500, 30));
-
-        new Food(new Point(350, 100));
-        new Food(new Point(150, 100));
-        new Food(new Point(100, 100));
-        new Food(new Point(100, 100));
-        new Food(new Point(400, 100));
-        new Food(new Point(500, 100));
+        new Food(new Point(50, 100));
     }
 
     private createAnts() {

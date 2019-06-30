@@ -23,7 +23,7 @@ export class Director {
 
         if (isAnt && cell.hasSpider) {
             const ant = actor as Ant;
-            ant.die();
+            ant.remove();
         }
 
         if (isAnt) {

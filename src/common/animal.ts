@@ -12,8 +12,6 @@ export class Animal extends Actor {
     }
 
     public die() {
-        this.isActive = false;
-        this.isMoving = false;
         this.currentState = currentState.dead;
     }
 

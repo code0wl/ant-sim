@@ -42,6 +42,10 @@ export class Actor {
         }
     }
 
+    public remove() {
+        this.isActive = false;
+    }
+
     public removeFromStore(actor: Actor): void {
         actorStore.delete(actor);
     }

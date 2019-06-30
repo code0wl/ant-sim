@@ -10,10 +10,6 @@ export class Food extends Actor {
         super(actorType.food);
     }
 
-    remove() {
-        this.isActive = false;
-    }
-
     public draw(ctx: CanvasRenderingContext2D) {
         if (!this.width) return;
         ctx.fillStyle = Colors.food;

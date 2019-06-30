@@ -28,6 +28,9 @@ export abstract class Engine extends AnimationLoop {
 
     private renderCells() {
         cellStore.forEach((cell: Cell) => {
+            if(cell.hasFood) {
+                this.ctx.strokeStyle = Colors.debug;
+            }
             actorStore.forEach((actor: IActor) => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
                     this.director.handleEvent(cell, actor);
