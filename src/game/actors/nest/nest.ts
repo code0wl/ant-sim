@@ -19,6 +19,7 @@ export class Nest extends Actor {
         );
 
         this.foodStores = startingPopulation;
+
     }
 
     public draw(ctx: CanvasRenderingContext2D) {

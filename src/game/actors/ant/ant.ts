@@ -3,7 +3,10 @@ import { Sprite } from "common/model";
 import { antType } from "./model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
-import { generateRandomCoordinates } from "common/util/math.utils";
+import {
+    generateRandomCoordinates,
+    travelToNest,
+} from "common/util/movement.utils";
 import { Nest } from "../nest/nest";
 
 export class Ant extends Animal {
@@ -30,8 +33,15 @@ export class Ant extends Animal {
         }
 
         if (this.hasFood) {
-            this.hasFood = false;
-            this.coordinates = this.nest.coordinates;
+            const currentCoordinates = this.coordinates;
+            const { x, y } = this.coordinates;
+
+            this.coordinates = travelToNest(
+                currentCoordinates,
+                new Point(x, y)
+            );
+
+            this.hasFood = this.coordinates.x === x && this.coordinates.y === y;
         }
     }
 

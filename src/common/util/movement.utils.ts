@@ -1,5 +1,4 @@
 import { Point } from "engine/modules/draw/point";
-import { currentResolution } from "./center";
 
 export const generateRandomInteger = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
@@ -12,16 +11,17 @@ export const generateRandomCoordinates = (coordinates: Point) =>
         boundedCell(generateRandomInteger(coordinates.y - 2, coordinates.y + 2))
     );
 
-const boundedCell = (index: number) => {
-    let boundedIndex = index;
+export const travelToNest = (currentLocation: Point, nestLocation: Point) => {
+    const newLocation = currentLocation;
 
-    if (index < 0) {
-        boundedIndex = 0;
-    }
+    currentLocation.x - nestLocation.x > 0
+        ? (newLocation.x -= 1)
+        : (newLocation.x += 1);
+    currentLocation.y - nestLocation.y > 0
+        ? (newLocation.y -= 1)
+        : (newLocation.y += 1);
 
-    if (index > currentResolution.x) {
-        boundedIndex = currentResolution.x - 1;
-    }
-
-    return boundedIndex;
+    return newLocation;
 };
+
+const boundedCell = (index: number) => (index <= 0 ? 0 : index);
