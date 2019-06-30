@@ -1,5 +1,5 @@
 import { Ant } from "game/actors/ant/ant";
-import { antType } from "game/actors/ant/model";
+import { antType, Colony } from "game/actors/ant/model";
 import { Engine } from "engine/engine";
 import { Point } from "engine/modules/draw/point";
 import { Nest } from "./actors/nest/nest";
@@ -8,12 +8,10 @@ import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
 
 export class Game extends Engine {
-    private blackNest: Nest;
-    private redNest: Nest;
     constructor() {
         super();
         this.createFood();
-        this.createNests(2);
+        this.createNests(["black", "red"], 2);
         this.createSpiders([
             { spider: spiderType.large, coordinates: new Point(100, 600) },
             { spider: spiderType.small, coordinates: new Point(500, 300) },
@@ -22,17 +20,12 @@ export class Game extends Engine {
 
     private createFood() {
         new Food(new Point(50, 90));
-    }
+        new Food(new Point(100, 100));
+        new Food(new Point(400, 400));
 
-    public updateWorld() {
-        if (!this.blackNest || !this.redNest) return;
-        while (this.blackNest.totalPopulation < this.blackNest.foodStores) {
-            new Ant(antType.black, this.blackNest);
-        }
+        new Food(new Point(1400, 800));
+        new Food(new Point(1400, 600));
 
-        while (this.redNest.totalPopulation < this.redNest.foodStores) {
-            new Ant(antType.red, this.redNest);
-        }
     }
 
     private createSpiders(spiderConfig: ISpiderConfig[]) {
@@ -41,8 +34,9 @@ export class Game extends Engine {
         });
     }
 
-    private createNests(startPopulation: number) {
-        this.blackNest = new Nest("red", startPopulation);
-        this.redNest = new Nest("black", startPopulation);
+    private createNests(nests: Colony[], startPopulation: number) {
+        nests.forEach(nest => {
+            new Nest(nest, startPopulation);
+        });
     }
 }

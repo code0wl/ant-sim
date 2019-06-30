@@ -4,6 +4,7 @@ import { Colors, actorType } from "common/model";
 import { getActor } from "common/util/aggregator";
 import { nestCoordinates } from "./model";
 import { Colony, antType } from "../ant/model";
+import { Ant } from "../ant/ant";
 
 export class Nest extends Actor {
     public radius = 15;
@@ -18,7 +19,6 @@ export class Nest extends Actor {
         );
 
         this.foodStores = startingPopulation;
-        this.totalPopulation = this.foodStores;
     }
 
     public draw(ctx: CanvasRenderingContext2D) {
@@ -35,6 +35,14 @@ export class Nest extends Actor {
 
         this.displayPopulationCount(ctx);
         this.displayFoodCount(ctx);
+        this.spawnAnt();
+    }
+
+    private spawnAnt() {
+        if (this.foodStores > 0) {
+            new Ant(antType[this.nestType], this);
+            this.foodStores--
+        }
     }
 
     private displayPopulationCount(ctx: CanvasRenderingContext2D) {
