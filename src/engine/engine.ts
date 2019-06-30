@@ -1,10 +1,9 @@
 import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
 import { Canvas } from "./modules/draw/canvas";
-import { currentResolution, x } from "common/util/center";
+import { currentResolution } from "common/util/center";
 import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
-import { Point } from "./modules/draw/point";
 import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { mapIntersections } from "common/util/intersection";
@@ -17,8 +16,8 @@ export abstract class Engine extends AnimationLoop {
     private ctx: CanvasRenderingContext2D;
     private director: Director;
 
-    constructor(resolution: Point) {
-        super(resolution);
+    constructor() {
+        super();
         this.canvas = new Canvas(currentResolution);
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();
@@ -28,7 +27,7 @@ export abstract class Engine extends AnimationLoop {
 
     private renderCells() {
         cellStore.forEach((cell: Cell) => {
-            if(cell.hasFood) {
+            if (cell.hasFood) {
                 this.ctx.strokeStyle = Colors.debug;
             }
             actorStore.forEach((actor: IActor) => {
@@ -56,39 +55,10 @@ export abstract class Engine extends AnimationLoop {
 
         actors.forEach((actor: IActor) => {
             actor.isActive
-                ? this.animateActor(actor)
+                ? actor.animate(this.ctx)
                 : actor.removeFromStore(actor);
             actor.update();
         });
-    }
-
-    private animateActor(actor: IActor) {
-        const ctx = this.ctx;
-        const {
-            width,
-            height,
-            graphics,
-            frameIndex,
-            numberOfFrames,
-            coordinates,
-            currentState,
-        } = actor;
-
-        if (graphics) {
-            ctx.drawImage(
-                graphics[currentState].image,
-                (frameIndex * width) / numberOfFrames,
-                0,
-                width / numberOfFrames,
-                height,
-                coordinates.x,
-                coordinates.y,
-                width / numberOfFrames,
-                height
-            );
-        } else {
-            actor.draw(ctx);
-        }
     }
 
     private clearCanvas() {

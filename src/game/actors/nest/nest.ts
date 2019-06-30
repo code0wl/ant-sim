@@ -7,17 +7,21 @@ import { Colony, antType } from "../ant/model";
 
 export class Nest extends Actor {
     public radius = 15;
-    public foodStores = 0;
+    public foodStores: number;
+    public totalPopulation: number;
 
-    constructor(private nestType: Colony) {
+    constructor(private nestType: Colony, startingPopulation: number) {
         super(actorType.nest);
         this.coordinates = new Point(
             nestCoordinates[this.nestType].x,
             nestCoordinates[this.nestType].y
         );
+
+        this.foodStores = startingPopulation;
+        this.totalPopulation = this.foodStores;
     }
 
-    draw(ctx: CanvasRenderingContext2D) {
+    public draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = Colors.nest;
         ctx.beginPath();
         ctx.arc(
@@ -34,10 +38,13 @@ export class Nest extends Actor {
     }
 
     private displayPopulationCount(ctx: CanvasRenderingContext2D) {
-        const totalPopulation = getActor(actorType.ant, antType[this.nestType]);
+        this.totalPopulation = getActor(
+            actorType.ant,
+            antType[this.nestType]
+        ).length;
 
         ctx.fillText(
-            `Population: ${totalPopulation.length}`,
+            `Population: ${this.totalPopulation}`,
             this.coordinates.x - 30,
             this.coordinates.y - 30
         );

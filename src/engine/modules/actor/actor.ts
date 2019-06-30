@@ -1,5 +1,5 @@
 import { actorStore } from "engine/modules/actor/store";
-import { IActorType } from "common/model";
+import { IActorType, Sprite } from "common/model";
 import { Point } from "../draw/point";
 import { Animal } from "common/animal";
 
@@ -10,6 +10,7 @@ export class Actor {
     public actorID: number;
     public isActive = true;
     public coordinates: Point;
+    public graphics: Sprite[] | undefined;
     public currentRotation: number = 0;
     public frameIndex = 0;
     public currentState: number;
@@ -39,6 +40,28 @@ export class Actor {
 
             // @ts-ignore
             this.updateActor();
+        }
+    }
+
+    public draw(ctx: CanvasRenderingContext2D) {
+        // implemented by children instances (Food, Nest)
+    }
+
+    public animate(ctx: CanvasRenderingContext2D) {
+        if (this.graphics) {
+            ctx.drawImage(
+                this.graphics[this.currentState].image,
+                (this.frameIndex * this.width) / this.numberOfFrames,
+                0,
+                this.width / this.numberOfFrames,
+                this.height,
+                this.coordinates.x,
+                this.coordinates.y,
+                this.width / this.numberOfFrames,
+                this.height
+            );
+        } else {
+            this.draw(ctx);
         }
     }
 

@@ -11,21 +11,6 @@ export class Director {
         const isSpider = actor instanceof Spider;
         const isFood = actor instanceof Food;
 
-        if (isAnt && cell.hasFood) {
-            const ant = actor as Ant;
-            ant.gather();
-        }
-
-        if (isFood && cell.hasAnt) {
-            const food = actor as Food;
-            food.remove();
-        }
-
-        if (isAnt && cell.hasSpider) {
-            const ant = actor as Ant;
-            ant.remove();
-        }
-
         if (isAnt) {
             cell.hasAnt = true;
         }
@@ -37,5 +22,21 @@ export class Director {
         if (isSpider) {
             cell.hasSpider = true;
         }
+
+        if (isAnt && cell.hasFood) {
+            const ant = actor as Ant;
+            ant.gather();
+        }
+
+        if (isFood && cell.hasAnt) {
+            cell.hasFood = false;
+            actor.remove();
+        }
+
+        if (isAnt && cell.hasSpider) {
+            cell.hasAnt = false;
+            actor.remove();
+        }
     }
+
 }
