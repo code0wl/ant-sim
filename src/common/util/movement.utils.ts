@@ -1,18 +1,20 @@
 import { Point } from "engine/modules/draw/point";
 import { currentResolution } from "./center";
 
+const padding = 20;
+
 export const generateRandomInteger = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
 export const generateRandomCoordinates = (coordinates: Point) =>
     new Point(
         boundedCell(
-            coordinates,
-            generateRandomInteger(coordinates.x - 2, coordinates.x + 2)
+            generateRandomInteger(coordinates.x - 2, coordinates.x + 2),
+            coordinates
         ),
         boundedCell(
-            coordinates,
-            generateRandomInteger(coordinates.y - 2, coordinates.y + 2)
+            generateRandomInteger(coordinates.y - 2, coordinates.y + 2),
+            coordinates
         )
     );
 
@@ -30,16 +32,16 @@ export const travelToNest = (currentLocation: Point, nestLocation: Point) => {
 };
 
 // TODO fix this
-const boundedCell = (coordinates: Point, coordinate: number) => {
+export const boundedCell = (coordinate: number, coordinates: Point) => {
     if (coordinate < 0) {
-        return coordinate + 15;
+        return coordinate + padding;
     }
 
     if (
-        coordinates.x + 5 >= currentResolution.x ||
-        coordinates.y + 5 >= currentResolution.y
+        coordinates.x + padding >= currentResolution.x ||
+        coordinates.y + padding >= currentResolution.y
     ) {
-        return coordinate - 15;
+        return coordinate - padding;
     }
 
     return coordinate;

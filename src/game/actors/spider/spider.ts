@@ -4,7 +4,11 @@ import { Point } from "engine/modules/draw/point";
 import { Sprite } from "common/model";
 import { addGraphic } from "common/util/animation-loader";
 import { Ant } from "../ant/ant";
-import { generateRandomCoordinates } from "common/util/movement.utils";
+import {
+    generateRandomCoordinates,
+    generateRandomInteger,
+    boundedCell,
+} from "common/util/movement.utils";
 
 export class Spider extends Animal {
     public attackers: Ant[];
@@ -13,17 +17,43 @@ export class Spider extends Animal {
     public height = !this.type ? 50 : 150;
     public speed = !this.type ? 5 : 10;
 
+    private randomDictionary: number[] = [1, 2, 3, -1, -2, -3];
+    private randomX: number;
+    private randomY: number;
+
     constructor(type: spiderType, public coordinates: Point) {
         super(type);
         setInterval(() => this.move(), 2000);
         setInterval(() => this.idle(), 4000);
         this.graphics = addGraphic(this.assignAnimation(type));
+
+        this.randomX = this.randomDictionary[
+            Math.floor(Math.random() * this.randomDictionary.length)
+        ];
+
+        this.randomY = this.randomDictionary[
+            Math.floor(Math.random() * this.randomDictionary.length)
+        ];
     }
 
     public updateActor() {
+        if (!this.isMoving) {
+            this.randomX = this.randomDictionary[
+                Math.floor(Math.random() * this.randomDictionary.length)
+            ];
+
+            this.randomY = this.randomDictionary[
+                Math.floor(Math.random() * this.randomDictionary.length)
+            ];
+        }
+
         if (this.isMoving) {
-            this.coordinates = generateRandomCoordinates(
-                new Point(this.coordinates.x, this.coordinates.y)
+            this.coordinates = new Point(
+                boundedCell(
+                    this.coordinates.x + this.randomX,
+                    this.coordinates
+                ),
+                boundedCell(this.coordinates.y + this.randomY, this.coordinates)
             );
         }
     }
