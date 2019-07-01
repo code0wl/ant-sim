@@ -6,6 +6,8 @@ import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
 import { IGameConfig } from "index";
+import { getRandomInt } from "common/util/movement.utils";
+import { currentResolution } from "common/util/center";
 
 export class Game extends Engine {
     constructor(private gameConfig: IGameConfig) {
@@ -19,8 +21,15 @@ export class Game extends Engine {
     }
 
     private createFood() {
-        new Food(new Point(110, 110));
-        new Food(new Point(1400, 600));
+        while (this.gameConfig.foodAmount > 0) {
+            this.gameConfig.foodAmount--;
+            new Food(
+                new Point(
+                    getRandomInt(currentResolution.x),
+                    getRandomInt(currentResolution.y)
+                )
+            );
+        }
     }
 
     private createSpiders(spiderConfig: ISpiderConfig[]) {

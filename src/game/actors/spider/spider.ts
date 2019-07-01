@@ -17,7 +17,7 @@ export class Spider extends Animal {
     public height = !this.type ? 50 : 150;
     public speed = !this.type ? 5 : 10;
 
-    private randomDictionary: number[] = [1, 2, 3, -1, -2, -3];
+    private randomDictionary: number[] = [1, 2, -1, -2];
     private randomX: number;
     private randomY: number;
 
