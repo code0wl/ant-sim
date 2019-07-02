@@ -16,8 +16,8 @@ export abstract class Engine extends AnimationLoop {
     private ctx: CanvasRenderingContext2D;
     private director: Director;
 
-    constructor() {
-        super();
+    constructor(fps: number) {
+        super(fps);
         this.canvas = new Canvas(currentResolution);
         this.grid = new Grid(this.canvas, currentResolution);
         this.menu = new Menu();

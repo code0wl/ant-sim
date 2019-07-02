@@ -1,7 +1,7 @@
 import { Point } from "engine/modules/draw/point";
 import { currentResolution } from "./center";
 
-const padding = 20;
+const padding = 15;
 
 export const generateRandomInteger = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;

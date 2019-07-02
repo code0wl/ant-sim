@@ -11,13 +11,13 @@ import { currentResolution } from "common/util/center";
 
 export class Game extends Engine {
     constructor(private gameConfig: IGameConfig) {
-        super();
+        super(gameConfig.fps);
         this.createFood();
         this.createNests(["black", "red"]);
-        // this.createSpiders([
-        //     { spider: spiderType.large, coordinates: new Point(100, 600) },
-        //     { spider: spiderType.small, coordinates: new Point(500, 300) },
-        // ]);
+        this.createSpiders([
+            { spider: spiderType.large, coordinates: new Point(100, 600) },
+            { spider: spiderType.small, coordinates: new Point(500, 300) },
+        ]);
     }
 
     private createFood() {

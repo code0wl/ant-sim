@@ -5,14 +5,20 @@ export class AnimationLoop {
     public height: number;
     public canvas: Canvas;
 
-    constructor() {
-        this.animationLoop();
+    private previousTimestamp = 0;
+    private timestep = 1000 / this.fps;
+
+    constructor(private fps: number) {
+        this.startAnimation();
     }
 
     public update() {}
 
-    private animationLoop() {
-        requestAnimationFrame(() => this.animationLoop());
+    public startAnimation(timestamp?: number) {
+        console.log(this.timestep)
+        requestAnimationFrame(timestamp => this.startAnimation(timestamp));
+        if (timestamp - this.previousTimestamp < this.timestep) return;
+        this.previousTimestamp = timestamp;
         this.update();
     }
 }
