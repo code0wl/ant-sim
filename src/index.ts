@@ -9,7 +9,7 @@ export interface IGameConfig {
 const gameConfig = {
     startPopulation: 4,
     foodAmount: 20,
-    fps: 30,
+    fps: 100,
 };
 
 export const game = new Game(gameConfig);

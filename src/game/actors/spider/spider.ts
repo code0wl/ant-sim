@@ -4,11 +4,7 @@ import { Point } from "engine/modules/draw/point";
 import { Sprite } from "common/model";
 import { addGraphic } from "common/util/animation-loader";
 import { Ant } from "../ant/ant";
-import {
-    generateRandomCoordinates,
-    generateRandomInteger,
-    boundedCell,
-} from "common/util/movement.utils";
+import { boundedCell } from "common/util/movement.utils";
 
 export class Spider extends Animal {
     public attackers: Ant[];
@@ -21,11 +17,11 @@ export class Spider extends Animal {
     private randomX: number;
     private randomY: number;
 
-    constructor(type: spiderType, public coordinates: Point) {
+    constructor(public type: spiderType, public coordinates: Point) {
         super(type);
         setInterval(() => this.move(), 2000);
         setInterval(() => this.idle(), 4000);
-        this.graphics = addGraphic(this.assignAnimation(type));
+        this.graphics = addGraphic(this.assignAnimation(this.type));
 
         this.randomX = this.randomDictionary[
             Math.floor(Math.random() * this.randomDictionary.length)
