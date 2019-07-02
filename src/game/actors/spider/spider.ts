@@ -45,11 +45,8 @@ export class Spider extends Animal {
 
         if (this.isMoving) {
             this.coordinates = new Point(
-                boundedCell(
-                    this.coordinates.x + this.randomX,
-                    this.coordinates
-                ),
-                boundedCell(this.coordinates.y + this.randomY, this.coordinates)
+                this.coordinates.x + this.randomX,
+                this.coordinates.y + this.randomY
             );
         }
     }
