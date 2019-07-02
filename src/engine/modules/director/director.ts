@@ -37,19 +37,14 @@ export class Director {
         }
 
         if (isAnt && cell.hasFood) {
-            const ant = actor as Ant;
-            ant.gather();
+            (actor as Ant).gather();
         }
 
-        if (isFood && cell.hasAnt) {
-            actor.remove();
-        }
-
-        if (isAnt && cell.hasSpider) {
-            actor.remove();
-        }
-
-        if (isSmallSpider && cell.hasBigSpider) {
+        if (
+            (isFood && cell.hasAnt) ||
+            (isAnt && cell.hasSpider) ||
+            (isSmallSpider && cell.hasBigSpider)
+        ) {
             actor.remove();
         }
     }
