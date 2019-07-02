@@ -8,7 +8,7 @@ export interface IGameConfig {
 const gameConfig = {
     resolution: {},
     startPopulation: 4,
-    foodAmount: 30,
+    foodAmount: 400,
 };
 
 export const game = new Game(gameConfig);
