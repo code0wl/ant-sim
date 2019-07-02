@@ -15,7 +15,6 @@ export class AnimationLoop {
     public update() {}
 
     public startAnimation(timestamp?: number) {
-        console.log(this.timestep)
         requestAnimationFrame(timestamp => this.startAnimation(timestamp));
         if (timestamp - this.previousTimestamp < this.timestep) return;
         this.previousTimestamp = timestamp;

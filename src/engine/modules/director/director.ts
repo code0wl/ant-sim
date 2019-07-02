@@ -50,7 +50,6 @@ export class Director {
         }
 
         if (isSmallSpider && cell.hasBigSpider) {
-            console.log(actor)
             actor.remove();
         }
     }
