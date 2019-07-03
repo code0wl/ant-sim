@@ -48,7 +48,7 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private cellColor(cell: Cell) {
-        this.ctx.strokeStyle = cell.hasFoodPheromone
+        this.ctx.strokeStyle = cell.hasFoodScent
             ? Colors.foodPheromone
             : Colors.grass;
     }

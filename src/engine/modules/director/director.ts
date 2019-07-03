@@ -21,7 +21,7 @@ export class Director {
         }
 
         if (isAnt && actor.hasFood) {
-            cell.hasFoodPheromone = true;
+            cell.hasFoodScent = true;
         }
 
         if (isFood) {
@@ -44,12 +44,18 @@ export class Director {
             actor.gather();
         }
 
-        if (
-            (isFood && cell.hasAnt) ||
-            (isAnt && cell.hasSpider) ||
-            (isSmallSpider && cell.hasBigSpider)
-        ) {
+        if (isAnt && cell.hasSpider) {
+            actor.fight();
+            actor.alert();
+            cell.hasAlertScent = true;
+        }
+
+        if (isFood && cell.hasAnt) {
             actor.remove();
+        }
+
+        if (isSmallSpider && cell.hasBigSpider) {
+            actor.fight();
         }
     }
 }

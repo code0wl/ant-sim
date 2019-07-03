@@ -65,6 +65,10 @@ export class Actor {
         }
     }
 
+    public fight() {
+        // actors battling
+    }
+
     public remove() {
         this.isActive = false;
     }

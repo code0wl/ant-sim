@@ -3,8 +3,8 @@ import { Point } from "engine/modules/draw/point";
 import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
-    public readonly width = 5;
-    public readonly height = 5;
+    public readonly width = 40;
+    public readonly height = 40;
 
     constructor(public coordinates: Point) {
         super(actorType.food);

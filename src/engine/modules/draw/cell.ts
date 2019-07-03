@@ -4,8 +4,9 @@ export class Cell {
     public hasSpider: Boolean;
     public hasAnt: Boolean;
     public hasFood: boolean;
-    public hasFoodPheromone: boolean;
+    public hasFoodScent: boolean;
     public hasBigSpider: boolean;
+    public hasAlertScent: boolean;
     public hasSmallSpider: boolean;
     public food: Food;
 

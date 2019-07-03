@@ -11,6 +11,7 @@ export class Ant extends Animal {
     public readonly height = 27;
     public readonly graphics: Sprite[];
     public foodPheromone = false;
+    public alertPhermone = false;
 
     constructor(type: antType, private nest: Nest) {
         super(type);
@@ -52,6 +53,10 @@ export class Ant extends Animal {
             : (newLocation.y += 0.5);
 
         return newLocation;
+    }
+
+    public alert() {
+        this.alertPhermone = true;
     }
 
     private deliverFood() {

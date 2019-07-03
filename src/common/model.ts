@@ -54,7 +54,9 @@ export interface IActor extends Animal, Actor {
     graphics: Sprite[];
     draw(ctx: CanvasRenderingContext2D): void;
     foodPheromone: boolean;
+    alertPhermone: boolean;
     gather(): void;
+    alert(): void;
 }
 
 export interface IAnimationType {
