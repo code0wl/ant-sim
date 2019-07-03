@@ -10,6 +10,7 @@ export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
+    public foodPheromone = false;
 
     constructor(type: antType, private nest: Nest) {
         super(type);
@@ -19,6 +20,7 @@ export class Ant extends Animal {
 
     public gather() {
         this.hasFood = true;
+        this.foodPheromone = true;
     }
 
     public updateActor() {
@@ -43,11 +45,11 @@ export class Ant extends Animal {
         const newLocation = currentLocation;
 
         currentLocation.x - nestLocation.x > 0
-            ? (newLocation.x -= .5)
-            : (newLocation.x += .5);
+            ? (newLocation.x -= 0.5)
+            : (newLocation.x += 0.5);
         currentLocation.y - nestLocation.y > 0
-            ? (newLocation.y -= .5)
-            : (newLocation.y += .5);
+            ? (newLocation.y -= 0.5)
+            : (newLocation.y += 0.5);
 
         return newLocation;
     }

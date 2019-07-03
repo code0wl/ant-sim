@@ -29,6 +29,7 @@ export const Colors = {
     food: "#edcf18",
     debug: "#C9B8B1",
     nest: "#000000",
+    foodPheromone: "#edcf183d",
 };
 
 export enum Direction {
@@ -52,6 +53,8 @@ export interface IActor extends Animal, Actor {
     currentRotation: number;
     graphics: Sprite[];
     draw(ctx: CanvasRenderingContext2D): void;
+    foodPheromone: boolean;
+    gather(): void;
 }
 
 export interface IAnimationType {
