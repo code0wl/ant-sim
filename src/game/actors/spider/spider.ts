@@ -4,7 +4,6 @@ import { Point } from "engine/modules/draw/point";
 import { Sprite } from "common/model";
 import { addGraphic } from "common/util/animation-loader";
 import { Ant } from "../ant/ant";
-import { boundedCell } from "common/util/movement.utils";
 
 export class Spider extends Animal {
     public attackers: Ant[];

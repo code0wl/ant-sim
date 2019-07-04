@@ -56,7 +56,6 @@ export class Ant extends Animal {
     }
 
     public alert() {
-        console.log('I come here')
         this.releaseIntruderPhermone = true;
     }
 
