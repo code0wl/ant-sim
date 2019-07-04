@@ -10,8 +10,8 @@ export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
-    public foodPheromone = false;
-    public alertPhermone = false;
+    public releaseFoodPheromone = false;
+    public releaseIntruderPhermone = false;
 
     constructor(type: antType, private nest: Nest) {
         super(type);
@@ -21,7 +21,7 @@ export class Ant extends Animal {
 
     public gather() {
         this.hasFood = true;
-        this.foodPheromone = true;
+        this.releaseFoodPheromone = true;
     }
 
     public updateActor() {
@@ -56,7 +56,8 @@ export class Ant extends Animal {
     }
 
     public alert() {
-        this.alertPhermone = true;
+        console.log('I come here')
+        this.releaseIntruderPhermone = true;
     }
 
     private deliverFood() {

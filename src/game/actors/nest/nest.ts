@@ -19,7 +19,6 @@ export class Nest extends Actor {
         );
 
         this.foodStores = startingPopulation;
-
     }
 
     public draw(ctx: CanvasRenderingContext2D) {
@@ -42,7 +41,7 @@ export class Nest extends Actor {
     private spawnAnt() {
         if (this.foodStores > 0) {
             new Ant(antType[this.nestType], this);
-            this.foodStores--
+            this.foodStores--;
         }
     }
 

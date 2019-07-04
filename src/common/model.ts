@@ -53,8 +53,8 @@ export interface IActor extends Animal, Actor {
     currentRotation: number;
     graphics: Sprite[];
     draw(ctx: CanvasRenderingContext2D): void;
-    foodPheromone: boolean;
-    alertPhermone: boolean;
+    releaseFoodPheromone: boolean;
+    releaseIntruderPhermone: boolean;
     gather(): void;
     alert(): void;
 }

@@ -45,8 +45,8 @@ export class Director {
         }
 
         if (isAnt && cell.hasSpider) {
-            actor.fight();
             actor.alert();
+            actor.remove();
             cell.hasAlertScent = true;
         }
 
@@ -55,7 +55,7 @@ export class Director {
         }
 
         if (isSmallSpider && cell.hasBigSpider) {
-            actor.fight();
+            actor.remove();
         }
     }
 }
