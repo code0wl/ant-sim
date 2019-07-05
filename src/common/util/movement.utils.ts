@@ -23,16 +23,18 @@ export const generateRandomCoordinates = (coordinates: Point) =>
     );
 
 // TODO fix this
-export const boundedCell = (coordinate: number, coordinates: Point) => {
+export const boundedCell = (coordinate: number, coordinates?: Point) => {
     if (coordinate < 0) {
         return coordinate + padding;
     }
 
-    if (
-        coordinates.x + padding >= currentResolution.x ||
-        coordinates.y + padding >= currentResolution.y
-    ) {
-        return coordinate - padding;
+    if (coordinates) {
+        if (
+            coordinates.x + padding >= currentResolution.x ||
+            coordinates.y + padding >= currentResolution.y
+        ) {
+            return coordinate - padding;
+        }
     }
 
     return coordinate;

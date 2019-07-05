@@ -60,13 +60,8 @@ export class Ant extends Animal {
     }
 
     private deliverFood() {
-        if (
-            this.coordinates.x === this.nest.coordinates.x &&
-            this.coordinates.y === this.nest.coordinates.y
-        ) {
-            this.hasFood = false;
-            this.nest.foodStores++;
-        }
+        this.hasFood = false;
+        this.nest.foodStores++;
     }
 
     private assignAnimation(type: antType) {

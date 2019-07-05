@@ -4,6 +4,7 @@ import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { spiderType } from "game/actors/spider/model";
 import { IActor } from "common/model";
+import { Nest } from "game/actors/nest/nest";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
@@ -12,6 +13,7 @@ export class Director {
         const isAnt = actor instanceof Ant;
         const isSpider = actor instanceof Spider;
         const isFood = actor instanceof Food;
+        const isNest = actor instanceof Nest;
 
         const isSmallSpider = isSpider && actor.type === spiderType.small;
         const isBigSpider = isSpider && actor.type === spiderType.large;
@@ -20,8 +22,16 @@ export class Director {
             cell.hasAnt = true;
         }
 
+        if (isNest) {
+            cell.hasNest = true;
+        }
+
         if (isAnt && actor.hasFood) {
             cell.hasFoodScent = true;
+        }
+
+        if (actor.hasFood && cell.hasNest) {
+            actor.deliverFood();
         }
 
         if (isFood) {
@@ -51,7 +61,7 @@ export class Director {
         }
 
         if (isFood && cell.hasAnt) {
-            actor.remove();
+            actor.removeFood();
         }
 
         if (isSmallSpider && cell.hasBigSpider) {

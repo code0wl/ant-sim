@@ -57,6 +57,8 @@ export interface IActor extends Animal, Actor {
     releaseIntruderPhermone: boolean;
     gather(): void;
     alert(): void;
+    removeFood(): void;
+    deliverFood(): void;
 }
 
 export interface IAnimationType {

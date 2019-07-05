@@ -12,12 +12,19 @@ export class Menu {
 
     private init() {
         // fix type
-        this.viewPaths.addEventListener("change", (e: any) => {
-            controls.debug = e.currentTarget.checked;
-            controls.debug
-                ? document.body.classList.add("debug-mode")
-                : document.body.classList.remove("debug-mode");
-        });
+        this.isDebugMode(controls.debug);
+
+        this.viewPaths.addEventListener("change", (e: any) =>
+            this.isDebugMode(e.currentTarget.checked)
+        );
+    }
+
+    isDebugMode(isChecked: boolean) {
+        this.viewPaths.checked = isChecked;
+        controls.debug = isChecked;
+        controls.debug
+            ? document.body.classList.add("debug-mode")
+            : document.body.classList.remove("debug-mode");
     }
 
     render() {

@@ -6,7 +6,7 @@ import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
 import { IGameConfig } from "index";
-import { getRandomInt } from "common/util/movement.utils";
+import { getRandomInt, boundedCell } from "common/util/movement.utils";
 import { currentResolution } from "common/util/center";
 
 export class Game extends Engine {
@@ -25,8 +25,8 @@ export class Game extends Engine {
             this.gameConfig.foodAmount--;
             new Food(
                 new Point(
-                    getRandomInt(currentResolution.x),
-                    getRandomInt(currentResolution.y)
+                    boundedCell(getRandomInt(currentResolution.x)),
+                    boundedCell(getRandomInt(currentResolution.y))
                 )
             );
         }

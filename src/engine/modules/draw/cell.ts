@@ -7,6 +7,7 @@ export class Cell {
     public hasFoodScent: boolean;
     public hasBigSpider: boolean;
     public hasAlertScent: boolean;
+    public hasNest: boolean;
     public hasSmallSpider: boolean;
     public food: Food;
 

@@ -3,21 +3,29 @@ import { Point } from "engine/modules/draw/point";
 import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
-    public readonly width = 3;
-    public readonly height = 3;
+    private radius = 20;
 
     constructor(public coordinates: Point) {
         super(actorType.food);
     }
 
     public draw(ctx: CanvasRenderingContext2D) {
-        if (!this.width) return;
         ctx.fillStyle = Colors.food;
-        ctx.fillRect(
+        ctx.beginPath();
+        ctx.arc(
             this.coordinates.x,
             this.coordinates.y,
-            this.width,
-            this.height
+            this.radius,
+            0,
+            2 * Math.PI
         );
+        ctx.fill();
+    }
+
+    public removeFood() {
+        if (!this.radius) {
+            this.remove();
+        }
+        this.radius--;
     }
 }
