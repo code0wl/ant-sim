@@ -3,10 +3,11 @@ import { Point } from "engine/modules/draw/point";
 import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
-    private radius = 40;
+    private radius = 20;
 
-    constructor(public coordinates: Point) {
+    constructor() {
         super(actorType.food);
+        this.coordinates = new Point(120, 120);
     }
 
     public draw(ctx: CanvasRenderingContext2D) {
@@ -26,6 +27,6 @@ export class Food extends Actor {
         if (!this.radius) {
             this.remove();
         }
-        this.radius -= 1;
+        this.radius--;
     }
 }

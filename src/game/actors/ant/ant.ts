@@ -20,8 +20,10 @@ export class Ant extends Animal {
     }
 
     public gather() {
-        this.hasFood = true;
-        this.releaseFoodPheromone = true;
+        if (!this.hasFood) {
+            this.hasFood = true;
+            this.releaseFoodPheromone = true;
+        }
     }
 
     public updateActor() {
