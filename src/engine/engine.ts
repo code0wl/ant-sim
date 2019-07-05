@@ -43,15 +43,16 @@ export abstract class Engine extends AnimationLoop {
                 this.grid.cellSize
             );
 
-            this.cellColor(cell);
+            // this.cellColor(cell);
+            this.ctx.strokeStyle = Colors.foodPheromone
         });
     }
 
-    private cellColor(cell: Cell) {
-        this.ctx.strokeStyle = cell.hasFoodScent
-            ? Colors.foodPheromone
-            : Colors.grass;
-    }
+    // private cellColor(cell: Cell) {
+    //     this.ctx.strokeStyle = cell.hasFoodScent
+    //         ? Colors.foodPheromone
+    //         : Colors.grass;
+    // }
 
     private renderActors() {
         const actors = Array.from(actorStore);

@@ -20,10 +20,8 @@ export class Ant extends Animal {
     }
 
     public gather() {
-        if (!this.hasFood) {
-            this.hasFood = true;
-            this.releaseFoodPheromone = true;
-        }
+        this.hasFood = true;
+        this.releaseFoodPheromone = true;
     }
 
     public updateActor() {
@@ -47,11 +45,11 @@ export class Ant extends Animal {
         const newLocation = currentLocation;
 
         currentLocation.x - nestLocation.x > 0
-            ? (newLocation.x -= 0.5)
-            : (newLocation.x += 0.5);
+            ? (newLocation.x -= 0.3)
+            : (newLocation.x += 0.3);
         currentLocation.y - nestLocation.y > 0
-            ? (newLocation.y -= 0.5)
-            : (newLocation.y += 0.5);
+            ? (newLocation.y -= 0.3)
+            : (newLocation.y += 0.3);
 
         return newLocation;
     }

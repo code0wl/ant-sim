@@ -7,7 +7,7 @@ export class Food extends Actor {
 
     constructor() {
         super(actorType.food);
-        this.coordinates = new Point(120, 120);
+        this.coordinates = new Point(60, 100);
     }
 
     public draw(ctx: CanvasRenderingContext2D) {

@@ -13,11 +13,11 @@ export const getRandomInt = (max: number) => {
 export const generateRandomCoordinates = (coordinates: Point) =>
     new Point(
         boundedCell(
-            generateRandomInteger(coordinates.x - 2.5, coordinates.x + 2.5),
+            generateRandomInteger(coordinates.x - .5, coordinates.x + .5),
             coordinates
         ),
         boundedCell(
-            generateRandomInteger(coordinates.y - 2.5, coordinates.y + 2.5),
+            generateRandomInteger(coordinates.y - .5, coordinates.y + .5),
             coordinates
         )
     );
