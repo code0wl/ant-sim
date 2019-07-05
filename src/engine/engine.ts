@@ -44,7 +44,7 @@ export abstract class Engine extends AnimationLoop {
             );
 
             // this.cellColor(cell);
-            this.ctx.strokeStyle = Colors.foodPheromone
+            this.ctx.strokeStyle = Colors.grass
         });
     }
 
