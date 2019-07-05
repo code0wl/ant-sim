@@ -38,7 +38,6 @@ export class Ant extends Animal {
                 currentCoordinates,
                 this.nest.coordinates
             );
-            this.deliverFood();
         }
     }
 
@@ -59,7 +58,7 @@ export class Ant extends Animal {
         this.releaseIntruderPhermone = true;
     }
 
-    private deliverFood() {
+    public deliverFood() {
         this.hasFood = false;
         this.nest.foodStores++;
     }

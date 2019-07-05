@@ -16,14 +16,30 @@ export class Director {
         const isFood = actor instanceof Food;
         const isNest = actor instanceof Nest;
 
-        const isBlackAnt = actor.type === antType.black;
-        const isRedAnt = actor.type === antType.red;
+        const isBlackAnt = isAnt && actor.type === antType.black;
+        const isRedAnt = isAnt && actor.type === antType.red;
 
         const isSmallSpider = actor.type === spiderType.small;
         const isBigSpider = actor.type === spiderType.large;
 
+        if (isAnt) {
+            cell.hasAnt = true;
+        }
+
+        if (isRedAnt) {
+            cell.hasRedAnt = true;
+        }
+
+        if (isBlackAnt) {
+            cell.hasBlackAnt = true;
+        }
+
         if (isNest) {
             cell.hasNest = true;
+        }
+
+        if (actor.hasFood && cell.hasNest) {
+            actor.deliverFood();
         }
 
         if (isFood) {
@@ -32,52 +48,32 @@ export class Director {
 
         if (isSpider) {
             cell.hasSpider = true;
-
-            if (isSmallSpider) {
-                cell.hasSmallSpider = true;
-            }
-
-            if (isBigSpider) {
-                cell.hasBigSpider = true;
-            }
-
-            if (isSmallSpider && cell.hasBigSpider) {
-                actor.remove();
-            }
         }
 
-        if (isAnt) {
-            cell.hasAnt = true;
+        if (isSmallSpider) {
+            cell.hasSmallSpider = true;
+        }
 
-            if (isRedAnt) {
-                cell.hasRedAnt = true;
-            }
+        if (isBigSpider) {
+            cell.hasBigSpider = true;
+        }
 
-            if (isBlackAnt) {
-                cell.hasBlackAnt = true;
-            }
+        if (isAnt && cell.hasFood) {
+            actor.gather();
+        }
 
-            if (actor.hasFood) {
-                cell.hasFoodScent = true;
-            }
-
-            if (actor.hasFood && cell.hasNest) {
-                actor.deliverFood();
-            }
-
-            if (cell.hasFood) {
-                actor.gather();
-            }
-
-            if (cell.hasSpider) {
-                actor.alert();
-                actor.remove();
-                cell.hasAlertScent = true;
-            }
+        if (isAnt && cell.hasSpider) {
+            actor.alert();
+            actor.remove();
+            cell.hasAlertScent = true;
         }
 
         if (isFood && cell.hasAnt) {
             actor.removeFood();
+        }
+
+        if (isSmallSpider && cell.hasBigSpider) {
+            actor.remove();
         }
     }
 }
