@@ -1,3 +1,5 @@
+import { Food } from "game/actors/food/food";
+
 // TODO refactor
 export class Cell {
     public hasSpider = false;
@@ -10,6 +12,8 @@ export class Cell {
     public hasSmallSpider = false;
     public hasBlackAnt = false;
     public hasFoodPhermone = false;
+
+    public food: Food;
 
     constructor(public x: number, public y: number) {}
 }
