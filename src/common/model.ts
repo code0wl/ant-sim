@@ -25,6 +25,9 @@ export const Colors = {
     food: "#edcf18",
     debug: "#C9B8B1",
     nest: "#000000",
+    spider: "#8a0707",
+    redAnt: "#ff2200",
+    blackAnt: "#000",
     foodPheromone: "#edcf183d",
 };
 
@@ -42,7 +45,6 @@ export enum Direction {
 }
 
 export type IActor = Actor;
-
 
 export interface IAnimationType {
     walk?: string;
