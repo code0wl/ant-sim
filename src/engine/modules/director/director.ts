@@ -42,11 +42,13 @@ export class Director {
         }
 
         if (isFood) {
-            cell.hasFood = true;
             cell.food = <Food>actor;
         }
 
-        if (isAnt && !(<Ant>actor).hasFood && cell.hasFood) {
+        if (isAnt && !(<Ant>actor).hasFood && cell.food) {
+            cell.hasAnt = false;
+            cell.hasBlackAnt = false;
+            cell.hasBlackAnt = false;
             (<Ant>actor).gather();
             cell.food.removeFood();
         }
