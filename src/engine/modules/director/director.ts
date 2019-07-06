@@ -23,10 +23,6 @@ export class Director {
         const isBigSpider = isSpider && actor.type === spiderType.large;
 
         if (isAnt) {
-            this.antDirections();
-        }
-
-        if (isAnt) {
             cell.hasAnt = true;
         }
 
@@ -80,6 +76,4 @@ export class Director {
             actor.remove();
         }
     }
-
-    antDirections() {}
 }
