@@ -43,6 +43,7 @@ export enum Direction {
 
 export type IActor = Actor;
 
+
 export interface IAnimationType {
     walk?: string;
     idle: string;

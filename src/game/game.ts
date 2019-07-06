@@ -23,7 +23,12 @@ export class Game extends Engine {
     private createFood() {
         while (this.gameConfig.foodAmount > 0) {
             this.gameConfig.foodAmount--;
-            new Food();
+            new Food(
+                new Point(
+                    boundedCell(getRandomInt(currentResolution.x)),
+                    boundedCell(getRandomInt(currentResolution.y))
+                )
+            );
         }
     }
 

@@ -23,7 +23,7 @@ export class Director {
         const isBigSpider = isSpider && actor.type === spiderType.large;
 
         if (isAnt) {
-            this.antDirections()
+            this.antDirections();
         }
 
         if (isAnt) {
@@ -81,8 +81,5 @@ export class Director {
         }
     }
 
-    antDirections() {
-
-    }
-
+    antDirections() {}
 }

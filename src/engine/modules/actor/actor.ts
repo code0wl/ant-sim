@@ -4,10 +4,11 @@ import { Point } from "../draw/point";
 import { Animal } from "common/animal";
 
 export class Actor {
-    public width: number;
-    public height: number;
+    public width?: number;
+    public height?: number;
     public numberOfFrames = 5;
     public actorID: number;
+    public radius?: number;
     public isActive = true;
     public coordinates: Point;
     public graphics: Sprite[] | undefined;
