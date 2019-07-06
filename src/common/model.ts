@@ -2,10 +2,6 @@ import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
 import { Animal } from "./animal";
 import { Actor } from "engine/modules/actor/actor";
-import { Ant } from "game/actors/ant/ant";
-import { Spider } from "game/actors/spider/spider";
-
-export type classTypes = Ant | Spider;
 
 export type IActorType = antType | spiderType | actorType.food | actorType.nest;
 
@@ -45,21 +41,7 @@ export enum Direction {
     west,
 }
 
-export interface IActor extends Animal, Actor {
-    height: number;
-    currentState: number;
-    width: number;
-    radius?: number;
-    currentRotation: number;
-    graphics: Sprite[];
-    draw(ctx: CanvasRenderingContext2D): void;
-    releaseFoodPheromone: boolean;
-    releaseIntruderPhermone: boolean;
-    gather(): void;
-    alert(): void;
-    removeFood(): void;
-    deliverFood(): void;
-}
+export type IActor = Actor;
 
 export interface IAnimationType {
     walk?: string;

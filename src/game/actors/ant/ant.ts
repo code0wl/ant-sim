@@ -32,10 +32,8 @@ export class Ant extends Animal {
         }
 
         if (this.hasFood) {
-            const currentCoordinates = this.coordinates;
-
             this.coordinates = this.travelToNest(
-                currentCoordinates,
+                this.coordinates,
                 this.nest.coordinates
             );
         }

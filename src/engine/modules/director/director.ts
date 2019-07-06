@@ -3,9 +3,9 @@ import { Spider } from "game/actors/spider/spider";
 import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { spiderType } from "game/actors/spider/model";
-import { IActor } from "common/model";
 import { Nest } from "game/actors/nest/nest";
 import { antType } from "game/actors/ant/model";
+import { IActor } from "common/model";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
@@ -19,8 +19,12 @@ export class Director {
         const isBlackAnt = isAnt && actor.type === antType.black;
         const isRedAnt = isAnt && actor.type === antType.red;
 
-        const isSmallSpider = actor.type === spiderType.small;
-        const isBigSpider = actor.type === spiderType.large;
+        const isSmallSpider = isSpider && actor.type === spiderType.small;
+        const isBigSpider = isSpider && actor.type === spiderType.large;
+
+        if (isAnt) {
+            this.antDirections()
+        }
 
         if (isAnt) {
             cell.hasAnt = true;
@@ -38,8 +42,8 @@ export class Director {
             cell.hasNest = true;
         }
 
-        if (actor.hasFood && cell.hasNest) {
-            actor.deliverFood();
+        if ((<Ant>actor).hasFood && cell.hasNest) {
+            (<Ant>actor).deliverFood();
         }
 
         if (isFood) {
@@ -58,22 +62,27 @@ export class Director {
             cell.hasBigSpider = true;
         }
 
-        if (isAnt && !actor.hasFood && cell.hasFood) {
-            actor.gather();
+        if (isAnt && cell.hasFood) {
+            (<Ant>actor).gather();
         }
 
         if (isAnt && cell.hasSpider) {
-            actor.alert();
+            (<Ant>actor).alert();
             actor.remove();
             cell.hasAlertScent = true;
         }
 
         if (isFood && cell.hasAnt) {
-            actor.removeFood();
+            (<Food>actor).removeFood();
         }
 
         if (isSmallSpider && cell.hasBigSpider) {
             actor.remove();
         }
     }
+
+    antDirections() {
+
+    }
+
 }

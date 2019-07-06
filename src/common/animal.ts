@@ -33,4 +33,6 @@ export class Animal extends Actor {
     public attack() {
         this.currentState = currentState.attack;
     }
+
+    public updateActor() {}
 }

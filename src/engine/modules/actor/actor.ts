@@ -38,7 +38,6 @@ export class Actor {
 
             this.currentRotation += 1;
 
-            // @ts-ignore
             this.updateActor();
         }
     }

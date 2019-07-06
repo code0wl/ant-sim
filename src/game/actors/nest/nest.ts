@@ -39,7 +39,7 @@ export class Nest extends Actor {
     }
 
     private spawnAnt() {
-        if (this.foodStores > 0) {
+        if (this.foodStores % 3 === 1) {
             new Ant(antType[this.nestType], this);
             this.foodStores--;
         }

@@ -1,4 +1,3 @@
-import { IActorType } from "common/model";
 import { Point } from "engine/modules/draw/point";
 
 export interface ISpiderConfig {
@@ -10,5 +9,3 @@ export enum spiderType {
     small,
     large,
 }
-
-export type Item = IActorType;

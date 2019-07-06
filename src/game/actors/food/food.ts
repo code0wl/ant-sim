@@ -7,10 +7,12 @@ export class Food extends Actor {
 
     constructor() {
         super(actorType.food);
-        this.coordinates = new Point(50, 90);
+        this.coordinates = new Point(100, 90);
     }
 
     public draw(ctx: CanvasRenderingContext2D) {
+        if (!this.radius) this.remove();
+
         ctx.fillStyle = Colors.food;
         ctx.beginPath();
         ctx.arc(
@@ -24,9 +26,6 @@ export class Food extends Actor {
     }
 
     public removeFood() {
-        if (!this.radius) {
-            this.remove();
-        }
         this.radius--;
     }
 }
