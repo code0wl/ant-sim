@@ -2,6 +2,7 @@ import { Point } from "engine/modules/draw/point";
 import { currentResolution } from "./center";
 
 const padding = 15;
+const speed = 3;
 
 export const generateRandomInteger = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
@@ -13,11 +14,11 @@ export const getRandomInt = (max: number) => {
 export const generateRandomCoordinates = (coordinates: Point) =>
     new Point(
         boundedCell(
-            generateRandomInteger(coordinates.x - .5, coordinates.x + .5),
+            generateRandomInteger(coordinates.x - speed, coordinates.x + speed),
             coordinates
         ),
         boundedCell(
-            generateRandomInteger(coordinates.y - .5, coordinates.y + .5),
+            generateRandomInteger(coordinates.y - speed, coordinates.y + speed),
             coordinates
         )
     );
@@ -36,7 +37,6 @@ export const boundedCell = (coordinate: number, coordinates?: Point) => {
             return coordinate - padding;
         }
     }
-    
 
     return coordinate;
 };
