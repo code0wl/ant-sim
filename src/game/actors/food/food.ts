@@ -5,7 +5,7 @@ import { Colors, actorType } from "common/model";
 export class Food extends Actor {
     public radius = 20;
 
-    constructor(private coordinates: Point) {
+    constructor(public coordinates: Point) {
         super(actorType.food);
     }
 
