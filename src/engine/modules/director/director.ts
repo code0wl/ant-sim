@@ -4,6 +4,7 @@ import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { Nest } from "game/actors/nest/nest";
 import { IActor } from "common/model";
+import { antType } from "game/actors/ant/model";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
@@ -13,9 +14,19 @@ export class Director {
         const isSpider = actor instanceof Spider;
         const isFood = actor instanceof Food;
         const isNest = actor instanceof Nest;
+        const isBlackAnt = isAnt && actor.type === antType.black;
+        const isRedAnt = isAnt && actor.type === antType.red;
 
         if (isAnt) {
             cell.hasAnt = true;
+        }
+
+        if (isBlackAnt) {
+            cell.hasBlackAnt = true;
+        }
+
+        if (isRedAnt) {
+            cell.hasRedAnt = true;
         }
 
         if (isNest) {
@@ -42,12 +53,10 @@ export class Director {
             (<Ant>actor).alert();
             actor.remove();
             cell.hasAlertScent = true;
-            cell.hasAnt = false;
         }
 
         if (isFood && cell.hasAnt) {
             (<Food>actor).removeFood();
-            cell.hasAnt = false;
         }
     }
 }
