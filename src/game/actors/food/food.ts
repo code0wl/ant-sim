@@ -25,6 +25,6 @@ export class Food extends Actor {
     }
 
     public removeFood() {
-        this.radius--;
+        this.radius -= 3;
     }
 }

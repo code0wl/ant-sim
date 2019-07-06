@@ -22,15 +22,13 @@ export class Director {
         const isSmallSpider = isSpider && actor.type === spiderType.small;
         const isBigSpider = isSpider && actor.type === spiderType.large;
 
-        if (isAnt) {
-            cell.hasAnt = true;
-        }
-
         if (isRedAnt) {
+            cell.hasAnt = true;
             cell.hasRedAnt = true;
         }
 
         if (isBlackAnt) {
+            cell.hasAnt = true;
             cell.hasBlackAnt = true;
         }
 
