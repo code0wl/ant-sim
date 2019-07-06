@@ -5,6 +5,7 @@ export class Animal extends Actor {
     public currentState: currentState = currentState.idle;
     public hasFood = false;
     public isMoving = false;
+    public speed: number;
 
     constructor(public type: IActorType) {
         super(type);

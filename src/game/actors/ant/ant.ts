@@ -3,13 +3,18 @@ import { Sprite } from "common/model";
 import { antType } from "./model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
-import { generateRandomCoordinates } from "common/util/movement.utils";
+import {
+    generateRandomCoordinates,
+    generateRandomInteger,
+    boundedCell,
+} from "common/util/movement.utils";
 import { Nest } from "../nest/nest";
 
 export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
+    public speed = 3.5;
     public releaseFoodPheromone = false;
     public releaseIntruderPhermone = false;
 
@@ -22,12 +27,14 @@ export class Ant extends Animal {
     public gather() {
         this.hasFood = true;
         this.releaseFoodPheromone = true;
+        this.speed = 0.3;
     }
 
     public updateActor() {
         if (this.isMoving && !this.hasFood) {
-            this.coordinates = generateRandomCoordinates(
-                new Point(this.coordinates.x, this.coordinates.y)
+            this.coordinates = this.generateRandomCoordinates(
+                new Point(this.coordinates.x, this.coordinates.y),
+                this.speed
             );
         }
 
@@ -39,15 +46,34 @@ export class Ant extends Animal {
         }
     }
 
+    private generateRandomCoordinates(coordinates: Point, speed: number) {
+        return new Point(
+            boundedCell(
+                generateRandomInteger(
+                    coordinates.x - speed,
+                    coordinates.x + speed
+                ),
+                coordinates
+            ),
+            boundedCell(
+                generateRandomInteger(
+                    coordinates.y - speed,
+                    coordinates.y + speed
+                ),
+                coordinates
+            )
+        );
+    }
+
     private travelToNest(currentLocation: Point, nestLocation: Point) {
         const newLocation = currentLocation;
 
         currentLocation.x - nestLocation.x > 0
-            ? (newLocation.x -= 0.3)
-            : (newLocation.x += 0.3);
+            ? (newLocation.x -= this.speed)
+            : (newLocation.x += this.speed);
         currentLocation.y - nestLocation.y > 0
-            ? (newLocation.y -= 0.3)
-            : (newLocation.y += 0.3);
+            ? (newLocation.y -= this.speed)
+            : (newLocation.y += this.speed);
 
         return newLocation;
     }
