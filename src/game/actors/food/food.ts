@@ -4,6 +4,7 @@ import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
     public radius = 20;
+    public consumeAmount = 2;
 
     constructor(public coordinates: Point) {
         super(actorType.food);
@@ -25,8 +26,8 @@ export class Food extends Actor {
     }
 
     public removeFood() {
-        if (this.radius - 3 >= 0) {
-            this.radius -= 3;
+        if (this.radius - this.consumeAmount >= 0) {
+            this.radius -= this.consumeAmount;
         } else {
             this.radius = 0;
         }
