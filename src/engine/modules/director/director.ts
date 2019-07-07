@@ -51,7 +51,7 @@ export class Director {
             cell.hasBigSpider = true;
         }
 
-        if (isAnt && !(<Ant>actor).hasFood && cell.hasFood) {
+        if (isAnt && cell.hasFood) {
             (<Ant>actor).gather();
         }
 
