@@ -8,6 +8,7 @@ export class Cell {
     public food: Food;
     public ant: Ant;
     public spider: Spider;
+    public hasPhermones: boolean = false;
 
     constructor(public x: number, public y: number) {}
 

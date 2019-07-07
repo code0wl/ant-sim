@@ -1,6 +1,5 @@
 import { antType } from "game/actors/ant/model";
 import { spiderType } from "game/actors/spider/model";
-import { Animal } from "./animal";
 import { Actor } from "engine/modules/actor/actor";
 
 export type IActorType = antType | spiderType | actorType.food | actorType.nest;
@@ -28,7 +27,7 @@ export const Colors = {
     spider: "#8a0707",
     redAnt: "#ff2200",
     blackAnt: "#000",
-    foodPheromone: "#edcf183d",
+    foodPheromone: "#551a8b",
 };
 
 export enum Direction {

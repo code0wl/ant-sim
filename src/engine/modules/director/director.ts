@@ -14,9 +14,6 @@ export class Director {
         const isFood = actor instanceof Food;
         const isNest = actor instanceof Nest;
 
-        const isSmallSpider = isSpider && actor.type === spiderType.small;
-        const isBigSpider = isSpider && actor.type === spiderType.large;
-
         if (isFood) {
             cell.food = <Food>actor;
         }
@@ -41,6 +38,10 @@ export class Director {
         if (isAnt && cell.spider) {
             (<Ant>actor).alert();
             actor.remove();
+        }
+
+        if ((<Ant>actor).hasFood) {
+            cell.hasPhermones = true;
         }
 
         if ((<Ant>actor).hasFood && cell.nest) {
