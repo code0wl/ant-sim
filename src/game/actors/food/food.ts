@@ -3,8 +3,8 @@ import { Point } from "engine/modules/draw/point";
 import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
-    public radius = 20;
-    public consumeAmount = .1;
+    public radius = 40; 
+    // 40 - .1 = 39.9
 
     constructor(public coordinates: Point) {
         super(actorType.food);
@@ -26,9 +26,8 @@ export class Food extends Actor {
     }
 
     public removeFood() {
-        console.log('called')
-        if (this.radius - this.consumeAmount >= 0) {
-            this.radius -= this.consumeAmount;
+        if (this.radius - 0.1 >= 0) {
+            this.radius -= 0.1;
         } else {
             this.radius = 0;
         }

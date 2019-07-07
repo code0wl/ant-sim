@@ -10,7 +10,7 @@ export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
-    public speed = 15;
+    public speed = 1;
     public releaseFoodPheromone = false;
     public releaseIntruderPhermone = false;
 

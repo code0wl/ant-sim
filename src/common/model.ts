@@ -57,3 +57,8 @@ export interface Sprite {
     type?: IActorType;
     image: HTMLImageElement;
 }
+
+// tensorflow part
+export interface IUpdateActor {
+    updateActor(): void;
+}

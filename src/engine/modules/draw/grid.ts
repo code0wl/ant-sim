@@ -4,7 +4,7 @@ import { Point } from "./point";
 import { cellStore } from "../actor/store";
 
 export class Grid {
-    public cellSize: number = 30;
+    public cellSize: number = 20;
 
     constructor(public canvas: Canvas, public dimensions: Point) {
         this.createGrid(this.dimensions);

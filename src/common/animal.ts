@@ -35,5 +35,7 @@ export class Animal extends Actor {
         this.currentState = currentState.attack;
     }
 
+    // SOLID I
+    // @ override
     public updateActor() {}
 }

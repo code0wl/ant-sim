@@ -30,10 +30,8 @@ export abstract class Engine extends AnimationLoop {
             actorStore.forEach((actor: IActor) => {
                 if (mapIntersections(cell, actor, this.grid.cellSize)) {
                     this.director.handleEvent(cell, actor);
-                    if (controls.debug) {
-                        this.ctx.strokeStyle = Colors.debug;
-                    }
                 }
+                this.isDebugEnabled(cell);
             });
 
             this.ctx.strokeRect(
@@ -44,8 +42,21 @@ export abstract class Engine extends AnimationLoop {
             );
 
             this.cellColor(cell);
-            this.ctx.strokeStyle = Colors.grass;
         });
+    }
+
+    private isDebugEnabled(cell: Cell) {
+        if (controls.debug) {
+            this.ctx.strokeStyle = Colors.debug;
+
+            if (cell.hasSpider) {
+                this.ctx.strokeStyle = Colors.spider;
+            }
+
+            if (cell.hasAnt) {
+                this.ctx.strokeStyle = Colors.blackAnt;
+            }
+        }
     }
 
     private cellColor(cell: Cell) {
