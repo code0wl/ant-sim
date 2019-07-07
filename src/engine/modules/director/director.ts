@@ -2,7 +2,6 @@ import { Ant } from "game/actors/ant/ant";
 import { Spider } from "game/actors/spider/spider";
 import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
-import { spiderType } from "game/actors/spider/model";
 import { Nest } from "game/actors/nest/nest";
 import { IActor } from "common/model";
 
@@ -42,6 +41,11 @@ export class Director {
 
         if ((<Ant>actor).hasFood) {
             cell.hasPhermones = true;
+        }
+
+        if (isAnt && cell.hasPhermones) {
+            const ant = <Ant>actor;
+            ant.hasScent = true;
         }
 
         if ((<Ant>actor).hasFood && cell.nest) {
