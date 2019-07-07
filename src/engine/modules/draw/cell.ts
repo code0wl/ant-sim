@@ -1,26 +1,20 @@
+import { Food } from "game/actors/food/food";
+import { Spider } from "game/actors/spider/spider";
+import { Ant } from "game/actors/ant/ant";
+import { Nest } from "game/actors/nest/nest";
+
 export class Cell {
-    public hasSpider: boolean;
-    public hasAnt: boolean;
-    public hasFood: boolean;
-    public hasBigSpider: boolean;
-    public hasAlertScent: boolean;
-    public hasRedAnt: boolean;
-    public hasNest: boolean;
-    public hasSmallSpider: boolean;
-    public hasBlackAnt: boolean;
-    public hasFoodPhermone: boolean;
+    public nest: Nest;
+    public food: Food;
+    public ant: Ant;
+    public spider: Spider;
 
     constructor(public x: number, public y: number) {}
 
     public emptyCell() {
-        this.hasSpider = false;
-        this.hasAnt = false;
-        this.hasFood = false;
-        this.hasBigSpider = false;
-        this.hasAlertScent = false;
-        this.hasRedAnt = false;
-        this.hasNest = false;
-        this.hasSmallSpider = false;
-        this.hasBlackAnt = false;
+        this.nest = null;
+        this.food = null;
+        this.ant = null;
+        this.spider = null;
     }
 }

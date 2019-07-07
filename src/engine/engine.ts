@@ -51,22 +51,22 @@ export abstract class Engine extends AnimationLoop {
         if (controls.debug) {
             this.ctx.strokeStyle = Colors.debug;
 
-            if (cell.hasSpider) {
+            if (cell.spider) {
                 this.ctx.strokeStyle = Colors.spider;
             }
 
-            if (cell.hasBlackAnt) {
+            if (cell.ant) {
                 this.ctx.strokeStyle = Colors.blackAnt;
             }
 
-            if (cell.hasRedAnt) {
-                this.ctx.strokeStyle = Colors.redAnt;
+            if (cell.food) {
+                this.ctx.strokeStyle = Colors.food;
             }
         }
     }
 
     private cellColor(cell: Cell) {
-        this.ctx.strokeStyle = cell.hasFoodPhermone
+        this.ctx.strokeStyle = cell.hasPhermone
             ? Colors.foodPheromone
             : Colors.grass;
     }

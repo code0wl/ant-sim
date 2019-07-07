@@ -4,72 +4,46 @@ import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { spiderType } from "game/actors/spider/model";
 import { Nest } from "game/actors/nest/nest";
-import { antType } from "game/actors/ant/model";
-import { IActor, actorType } from "common/model";
+import { IActor } from "common/model";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
     handleEvent(cell: Cell, actor: IActor) {
-        // refactor to pubsub
-        // change engine to make big eat small
         const isAnt = actor instanceof Ant;
         const isSpider = actor instanceof Spider;
         const isFood = actor instanceof Food;
         const isNest = actor instanceof Nest;
 
-        const isBlackAnt = isAnt && actor.type === antType.black;
-        const isRedAnt = isAnt && actor.type === antType.red;
-
         const isSmallSpider = isSpider && actor.type === spiderType.small;
         const isBigSpider = isSpider && actor.type === spiderType.large;
 
-        if (isRedAnt) {
-            cell.hasAnt = true;
-            cell.hasRedAnt = true;
+        if (isFood) {
+            cell.food = <Food>actor;
         }
 
-        if (isBlackAnt) {
-            cell.hasAnt = true;
-            cell.hasBlackAnt = true;
+        if (isAnt) {
+            cell.ant = <Ant>actor;
         }
 
         if (isNest) {
-            cell.hasNest = true;
+            cell.nest = <Nest>actor;
         }
 
-        if (isFood) {
-            cell.hasFood = true;
+        if (isSpider) {
+            cell.spider = <Spider>actor;
         }
 
-        if (isSmallSpider) {
-            cell.hasSpider = true;
-            cell.hasSmallSpider = true;
-        }
-
-        if (isBigSpider) {
-            cell.hasSpider = true;
-            cell.hasBigSpider = true;
-        }
-
-        if (isAnt && cell.hasFood) {
+        if (isAnt && cell.food) {
             (<Ant>actor).gather();
+            cell.food.removeFood();
         }
 
-        if (isAnt && cell.hasSpider) {
+        if (isAnt && cell.spider) {
             (<Ant>actor).alert();
             actor.remove();
-            cell.hasAlertScent = true;
         }
 
-        if (isFood && cell.hasAnt) {
-            (<Food>actor).removeFood();
-        }
-
-        if (isSmallSpider && cell.hasBigSpider) {
-            actor.remove();
-        }
-
-        if ((<Ant>actor).hasFood && cell.hasNest) {
+        if ((<Ant>actor).hasFood && cell.nest) {
             (<Ant>actor).deliverFood();
         }
     }
