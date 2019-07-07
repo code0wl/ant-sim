@@ -55,8 +55,12 @@ export abstract class Engine extends AnimationLoop {
                 this.ctx.strokeStyle = Colors.spider;
             }
 
-            if (cell.hasAnt) {
+            if (cell.hasBlackAnt) {
                 this.ctx.strokeStyle = Colors.blackAnt;
+            }
+
+            if (cell.hasRedAnt) {
+                this.ctx.strokeStyle = Colors.redAnt;
             }
         }
     }
