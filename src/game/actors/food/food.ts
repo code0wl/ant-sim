@@ -3,8 +3,7 @@ import { Point } from "engine/modules/draw/point";
 import { Colors, actorType } from "common/model";
 
 export class Food extends Actor {
-    public radius = 40; 
-    // 40 - .1 = 39.9
+    public radius = 20; 
 
     constructor(public coordinates: Point) {
         super(actorType.food);
