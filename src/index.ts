@@ -7,8 +7,8 @@ export interface IGameConfig {
 }
 
 const gameConfig = {
-    startPopulation: 5,
-    foodAmount: 5,
+    startPopulation: 10,
+    foodAmount: 10,
     fps: 60,
 };
 

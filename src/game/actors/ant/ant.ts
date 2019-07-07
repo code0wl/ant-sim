@@ -15,7 +15,7 @@ export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
-    public speed = 30;
+    public speed = 2;
     public hasScent = false;
     public releaseFoodPheromone = false;
     public releaseIntruderPhermone = false;
@@ -36,7 +36,7 @@ export class Ant extends Animal {
         this.food = food;
         this.hasFood = true;
         this.releaseFoodPheromone = true;
-        this.speed = 10;
+        this.speed = 1;
     }
 
     public updateActor() {
