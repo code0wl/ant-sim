@@ -3,11 +3,7 @@ import { Sprite } from "common/model";
 import { antType } from "./model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
-import {
-    generateRandomCoordinates,
-    generateRandomInteger,
-    boundedCell,
-} from "common/util/movement.utils";
+import { generateRandomInteger, boundedCell } from "common/util/movement.utils";
 import { Nest } from "../nest/nest";
 
 export class Ant extends Animal {

@@ -4,7 +4,6 @@ import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { Nest } from "game/actors/nest/nest";
 import { IActor } from "common/model";
-import { antType } from "game/actors/ant/model";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
@@ -14,52 +13,39 @@ export class Director {
         const isSpider = actor instanceof Spider;
         const isFood = actor instanceof Food;
         const isNest = actor instanceof Nest;
-        const isBlackAnt = isAnt && actor.type === antType.black;
-        const isRedAnt = isAnt && actor.type === antType.red;
 
         if (isAnt) {
-            cell.hasAnt = true;
-        }
-
-        if (isBlackAnt) {
-            cell.hasBlackAnt = true;
-        }
-
-        if (isRedAnt) {
-            cell.hasRedAnt = true;
+            cell.ant = <Ant>actor;
         }
 
         if (isNest) {
-            cell.hasNest = true;
-        }
-
-        if ((<Ant>actor).hasFood && cell.hasNest) {
-            (<Ant>actor).deliverFood();
+            cell.nest = <Nest>actor;
         }
 
         if (isSpider) {
-            cell.hasSpider = true;
+            cell.spider = <Spider>actor;
         }
 
         if (isFood) {
             cell.food = <Food>actor;
         }
 
+        if (isAnt && (<Ant>actor).hasFood && cell.nest) {
+            (<Ant>actor).deliverFood();
+        }
+
         if (isAnt && !(<Ant>actor).hasFood && cell.food) {
-            cell.hasAnt = false;
-            cell.hasBlackAnt = false;
-            cell.hasBlackAnt = false;
             (<Ant>actor).gather();
             cell.food.removeFood();
         }
 
-        if (isAnt && cell.hasSpider) {
-            (<Ant>actor).alert();
-            actor.remove();
-            cell.hasAlertScent = true;
+        if (cell.ant && cell.spider) {
+            const ant = cell.ant;
+            ant.alert();
+            ant.remove();
         }
 
-        if (isFood && cell.hasAnt) {
+        if (isFood && cell.ant) {
             (<Food>actor).removeFood();
         }
     }

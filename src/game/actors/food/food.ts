@@ -26,6 +26,7 @@ export class Food extends Actor {
     }
 
     public removeFood() {
+        console.log('called')
         if (this.radius - this.consumeAmount >= 0) {
             this.radius -= this.consumeAmount;
         } else {
