@@ -10,6 +10,23 @@ export const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * Math.floor(max));
 };
 
+export const travelToPoint = (
+    currentLocation: Point,
+    nestLocation: Point,
+    speed: number
+) => {
+    const newLocation = currentLocation;
+
+    currentLocation.x - nestLocation.x > 0
+        ? (newLocation.x -= speed)
+        : (newLocation.x += speed);
+    currentLocation.y - nestLocation.y > 0
+        ? (newLocation.y -= speed)
+        : (newLocation.y += speed);
+
+    return newLocation;
+};
+
 // TODO fix this
 export const boundedCell = (coordinate: number, coordinates?: Point) => {
     if (coordinate < 0) {
