@@ -5,7 +5,7 @@ import { Cell } from "../draw/cell";
 import { spiderType } from "game/actors/spider/model";
 import { Nest } from "game/actors/nest/nest";
 import { antType } from "game/actors/ant/model";
-import { IActor } from "common/model";
+import { IActor, actorType } from "common/model";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
@@ -51,7 +51,7 @@ export class Director {
             cell.hasBigSpider = true;
         }
 
-        if (isAnt && cell.hasFood) {
+        if (isAnt && !(<Ant>actor).hasFood && cell.hasFood) {
             (<Ant>actor).gather();
         }
 
