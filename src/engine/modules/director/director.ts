@@ -30,7 +30,7 @@ export class Director {
         }
 
         if (isAnt && cell.food) {
-            (<Ant>actor).gather();
+            (<Ant>actor).gather(cell.food);
             cell.food.removeFood();
         }
 
@@ -41,6 +41,9 @@ export class Director {
 
         if ((<Ant>actor).hasFood) {
             cell.hasPhermones = true;
+            setTimeout(() => {
+                cell.hasPhermones = false;
+            }, 10000);
         }
 
         if (isAnt && cell.hasPhermones) {

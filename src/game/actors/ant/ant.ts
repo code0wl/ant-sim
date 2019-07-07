@@ -9,14 +9,18 @@ import {
     travelToPoint,
 } from "common/util/movement.utils";
 import { Nest } from "../nest/nest";
+import { Food } from "../food/food";
 
 export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
-    public speed = 20;
+    public speed = 30;
+    public hasScent = false;
     public releaseFoodPheromone = false;
     public releaseIntruderPhermone = false;
+
+    private food: Food;
 
     constructor(type: antType, private nest: Nest) {
         super(type);
@@ -24,21 +28,31 @@ export class Ant extends Animal {
         this.coordinates = this.nest.coordinates;
     }
 
-    public gather() {
+    public gather(food: Food) {
         if (this.hasFood) {
             return;
         }
+        this.hasScent = true;
+        this.food = food;
         this.hasFood = true;
         this.releaseFoodPheromone = true;
-        this.speed = this.speed / 2;
+        this.speed = 10;
     }
 
     public updateActor() {
         if (this.isMoving && !this.hasFood) {
-            this.coordinates = this.generateRandomCoordinates(
-                new Point(this.coordinates.x, this.coordinates.y),
-                this.speed
-            );
+            if (this.hasScent && this.food && this.food.radius) {
+                this.coordinates = travelToPoint(
+                    this.coordinates,
+                    this.food.coordinates,
+                    this.speed
+                );
+            } else {
+                this.coordinates = this.generateRandomCoordinates(
+                    new Point(this.coordinates.x, this.coordinates.y),
+                    this.speed
+                );
+            }
         }
 
         if (this.hasFood) {

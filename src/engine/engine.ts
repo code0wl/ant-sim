@@ -44,7 +44,6 @@ export abstract class Engine extends AnimationLoop {
             );
 
             this.ctx.strokeStyle = Colors.grass;
-
         });
     }
 

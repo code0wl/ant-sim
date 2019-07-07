@@ -12,15 +12,17 @@ export const getRandomInt = (max: number) => {
 
 export const travelToPoint = (
     currentLocation: Point,
-    nestLocation: Point,
+    destination: Point,
     speed: number
 ) => {
     const newLocation = currentLocation;
 
-    currentLocation.x - nestLocation.x > 0
+    if (!destination) return currentLocation;
+
+    currentLocation.x - destination.x > 0
         ? (newLocation.x -= speed)
         : (newLocation.x += speed);
-    currentLocation.y - nestLocation.y > 0
+    currentLocation.y - destination.y > 0
         ? (newLocation.y -= speed)
         : (newLocation.y += speed);
 
