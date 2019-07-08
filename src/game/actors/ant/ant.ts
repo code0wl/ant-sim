@@ -36,11 +36,6 @@ export class Ant extends Animal {
     public updateActor() {
         this.speed = this.hasFood ? 1 : 2;
 
-        if (this.food && !this.food.radius) {
-            this.hasScent = false;
-            this.food = null;
-        }
-
         if (this.isMoving && !this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
                 this.coordinates = travelToPoint(
@@ -49,6 +44,7 @@ export class Ant extends Animal {
                     this.speed
                 );
             } else {
+                this.hasScent = false;
                 this.food = null;
                 this.coordinates = this.generateRandomCoordinates(
                     new Point(this.coordinates.x, this.coordinates.y),
