@@ -52,7 +52,6 @@ export class Director {
         }
 
         if (isAnt && cell.hasPhermones) {
-            ant.hasScent;
             ant.food = cell.foodScent;
         }
 
