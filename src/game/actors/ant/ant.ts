@@ -82,6 +82,7 @@ export class Ant extends Animal {
 
     public deliverFood() {
         this.hasFood = false;
+        this.hasScent = false;
         this.nest.foodStores++;
     }
 
