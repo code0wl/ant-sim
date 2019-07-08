@@ -15,9 +15,9 @@ export class Ant extends Animal {
     public readonly width = 80;
     public readonly height = 27;
     public readonly graphics: Sprite[];
-    public speed = 2;
     public hasScent = false;
 
+    public speed: number;
     private food: Food;
 
     constructor(type: antType, private nest: Nest) {
@@ -33,10 +33,10 @@ export class Ant extends Animal {
         this.hasScent = true;
         this.food = food;
         this.hasFood = true;
-        this.speed = 1;
     }
 
     public updateActor() {
+        this.speed = this.hasFood ? 6 : 12;
         if (this.isMoving && !this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
                 this.coordinates = travelToPoint(

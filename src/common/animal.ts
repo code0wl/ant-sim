@@ -1,7 +1,11 @@
 import { currentState, IActorType } from "common/model";
 import { Actor } from "engine/modules/actor/actor";
 
-export class Animal extends Actor {
+interface IUpdate {
+    updateActor(): void;
+}
+
+export class Animal extends Actor implements IUpdate {
     public currentState: currentState = currentState.idle;
     public hasFood = false;
     public isMoving = false;
@@ -35,7 +39,6 @@ export class Animal extends Actor {
         this.currentState = currentState.attack;
     }
 
-    // SOLID I
     // @ override
     public updateActor() {}
 }
