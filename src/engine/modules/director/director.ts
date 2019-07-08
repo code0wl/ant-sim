@@ -48,10 +48,12 @@ export class Director {
             cell.foodScent = ant.food;
             setTimeout(() => {
                 cell.hasPhermones = false;
+                cell.foodScent = null;
             }, 10000);
         }
 
         if (isAnt && cell.hasPhermones) {
+            ant.hasScent = true;
             ant.food = cell.foodScent;
         }
 

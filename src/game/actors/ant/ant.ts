@@ -29,7 +29,6 @@ export class Ant extends Animal {
         if (this.hasFood) {
             return;
         }
-        this.hasScent = true;
         this.food = food;
         this.hasFood = true;
     }
@@ -38,6 +37,7 @@ export class Ant extends Animal {
         this.speed = this.hasFood ? 1 : 12;
 
         if (this.food && !this.food.radius) {
+            this.hasScent = false;
             this.food = null;
         }
 
@@ -87,7 +87,6 @@ export class Ant extends Animal {
 
     public deliverFood() {
         this.hasFood = false;
-        this.hasScent = false;
         this.nest.foodStores++;
     }
 
