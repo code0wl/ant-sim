@@ -66,6 +66,10 @@ export abstract class Engine extends AnimationLoop {
             if (cell.hasPhermones) {
                 this.ctx.strokeStyle = Colors.foodPheromone;
             }
+
+            if (cell.ant && cell.ant.food) {
+                this.ctx.strokeStyle = Colors.spider;
+            }
         }
     }
 

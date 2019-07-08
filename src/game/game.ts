@@ -14,10 +14,10 @@ export class Game extends Engine {
         super(gameConfig.fps);
         this.createFood();
         this.createNests(["black", "red"]);
-        this.createSpiders([
-            { spider: spiderType.large, coordinates: new Point(100, 600) },
-            { spider: spiderType.small, coordinates: new Point(500, 300) },
-        ]);
+        // this.createSpiders([
+        //     { spider: spiderType.large, coordinates: new Point(100, 600) },
+        //     { spider: spiderType.small, coordinates: new Point(500, 300) },
+        // ]);
     }
 
     private createFood() {

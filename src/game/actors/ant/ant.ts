@@ -16,9 +16,8 @@ export class Ant extends Animal {
     public readonly height = 27;
     public readonly graphics: Sprite[];
     public hasScent = false;
-
     public speed: number;
-    private food: Food;
+    public food: Food;
 
     constructor(type: antType, private nest: Nest) {
         super(type);
@@ -45,6 +44,7 @@ export class Ant extends Animal {
                     this.speed
                 );
             } else {
+                this.food = null;
                 this.coordinates = this.generateRandomCoordinates(
                     new Point(this.coordinates.x, this.coordinates.y),
                     this.speed

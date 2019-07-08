@@ -45,13 +45,15 @@ export class Director {
 
         if (ant.hasFood) {
             cell.hasPhermones = true;
+            cell.foodScent = ant.food;
             setTimeout(() => {
                 cell.hasPhermones = false;
             }, 10000);
         }
 
         if (isAnt && cell.hasPhermones) {
-            ant.hasScent = true;
+            ant.hasScent;
+            ant.food = cell.foodScent;
         }
 
         if (ant.hasFood && cell.nest) {
