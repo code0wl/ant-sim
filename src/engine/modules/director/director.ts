@@ -13,33 +13,37 @@ export class Director {
         const isFood = actor instanceof Food;
         const isNest = actor instanceof Nest;
 
+        const food = <Food>actor;
+        const ant = <Ant>actor;
+        const nest = <Nest>actor;
+        const spider = <Spider>actor;
+
         if (isFood) {
-            cell.food = <Food>actor;
+            cell.food = food;
         }
 
         if (isAnt) {
-            cell.ant = <Ant>actor;
+            cell.ant = ant;
         }
 
         if (isNest) {
-            cell.nest = <Nest>actor;
+            cell.nest = nest;
         }
 
         if (isSpider) {
-            cell.spider = <Spider>actor;
+            cell.spider = spider;
         }
 
         if (isAnt && cell.food) {
-            (<Ant>actor).gather(cell.food);
+            ant.gather(cell.food);
             cell.food.removeFood();
         }
 
         if (isAnt && cell.spider) {
-            (<Ant>actor).alert();
             actor.remove();
         }
 
-        if ((<Ant>actor).hasFood) {
+        if (ant.hasFood) {
             cell.hasPhermones = true;
             setTimeout(() => {
                 cell.hasPhermones = false;
@@ -47,12 +51,11 @@ export class Director {
         }
 
         if (isAnt && cell.hasPhermones) {
-            const ant = <Ant>actor;
             ant.hasScent = true;
         }
 
-        if ((<Ant>actor).hasFood && cell.nest) {
-            (<Ant>actor).deliverFood();
+        if (ant.hasFood && cell.nest) {
+            ant.deliverFood();
         }
     }
 }

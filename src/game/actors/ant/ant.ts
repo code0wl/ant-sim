@@ -17,8 +17,6 @@ export class Ant extends Animal {
     public readonly graphics: Sprite[];
     public speed = 2;
     public hasScent = false;
-    public releaseFoodPheromone = false;
-    public releaseIntruderPhermone = false;
 
     private food: Food;
 
@@ -35,7 +33,6 @@ export class Ant extends Animal {
         this.hasScent = true;
         this.food = food;
         this.hasFood = true;
-        this.releaseFoodPheromone = true;
         this.speed = 1;
     }
 
@@ -81,10 +78,6 @@ export class Ant extends Animal {
                 coordinates
             )
         );
-    }
-
-    public alert() {
-        this.releaseIntruderPhermone = true;
     }
 
     public deliverFood() {
