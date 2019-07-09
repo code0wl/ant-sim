@@ -5,28 +5,29 @@ import { getActor } from "common/util/aggregator";
 import { nestCoordinates } from "./model";
 import { Colony, antType } from "../ant/model";
 import { Ant } from "../ant/ant";
+import { foodStores } from "engine/modules/actor/store";
 
 export class Nest extends Actor {
     public radius = 15;
-    public foodStores: number;
     public totalPopulation: number;
 
     constructor(private nestType: Colony, startingPopulation: number) {
         super(actorType.nest);
+
         this.coordinates = new Point(
             nestCoordinates[this.nestType].x,
             nestCoordinates[this.nestType].y
         );
 
-        this.foodStores = startingPopulation;
+        foodStores[this.nestType] = startingPopulation;
     }
 
     public draw(ctx: CanvasRenderingContext2D) {
         ctx.fillStyle = Colors.nest;
         ctx.beginPath();
         ctx.arc(
-            this.coordinates.x,
-            this.coordinates.y,
+            nestCoordinates[this.nestType].x,
+            nestCoordinates[this.nestType].y,
             this.radius,
             0,
             2 * Math.PI
@@ -39,9 +40,15 @@ export class Nest extends Actor {
     }
 
     private spawnAnt() {
-        if (this.foodStores) {
-            new Ant(antType[this.nestType], this);
-            this.foodStores--;
+        if (foodStores[this.nestType]) {
+            new Ant(
+                antType[this.nestType],
+                new Point(
+                    nestCoordinates[this.nestType].x,
+                    nestCoordinates[this.nestType].y
+                )
+            );
+            foodStores[this.nestType]--;
         }
     }
 
@@ -60,7 +67,7 @@ export class Nest extends Actor {
 
     private displayFoodCount(ctx: CanvasRenderingContext2D) {
         ctx.fillText(
-            `Food supply: ${this.foodStores}`,
+            `Food supply: ${foodStores[this.nestType]}`,
             this.coordinates.x - 30,
             this.coordinates.y - 17
         );

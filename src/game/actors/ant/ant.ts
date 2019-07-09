@@ -8,8 +8,8 @@ import {
     boundedCell,
     travelToPoint,
 } from "common/util/movement.utils";
-import { Nest } from "../nest/nest";
 import { Food } from "../food/food";
+import { foodStores } from "engine/modules/actor/store";
 
 export class Ant extends Animal {
     public readonly width = 80;
@@ -19,10 +19,10 @@ export class Ant extends Animal {
     public speed: number;
     public food: Food;
 
-    constructor(type: antType, private nest: Nest) {
+    constructor(public type: antType, private nestCoordinates: Point) {
         super(type);
         this.graphics = addGraphic(this.assignAnimation(type));
-        this.coordinates = this.nest.coordinates;
+        this.coordinates = this.nestCoordinates;
     }
 
     public gather(food: Food) {
@@ -34,7 +34,7 @@ export class Ant extends Animal {
     }
 
     public updateActor() {
-        this.speed = this.hasFood ? 1 : 2;
+        this.speed = this.hasFood ? 10 : 20;
 
         if (this.isMoving && !this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
@@ -56,7 +56,7 @@ export class Ant extends Animal {
         if (this.hasFood) {
             this.coordinates = travelToPoint(
                 this.coordinates,
-                this.nest.coordinates,
+                this.nestCoordinates,
                 this.speed
             );
         }
@@ -83,7 +83,7 @@ export class Ant extends Animal {
 
     public deliverFood() {
         this.hasFood = false;
-        this.nest.foodStores++;
+        foodStores[antType[this.type]]++;
     }
 
     private assignAnimation(type: antType) {
