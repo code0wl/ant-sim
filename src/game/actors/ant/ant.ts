@@ -7,6 +7,7 @@ import {
     generateRandomInteger,
     boundedCell,
     travelToPoint,
+    generateRandomCoordinates,
 } from "common/util/movement.utils";
 import { Food } from "../food/food";
 import { foodStores } from "engine/modules/actor/store";
@@ -46,7 +47,7 @@ export class Ant extends Animal {
             } else {
                 this.hasScent = false;
                 this.food = null;
-                this.coordinates = this.generateRandomCoordinates(
+                this.coordinates = generateRandomCoordinates(
                     new Point(this.coordinates.x, this.coordinates.y),
                     this.speed
                 );
@@ -58,25 +59,6 @@ export class Ant extends Animal {
                 this.speed
             );
         }
-    }
-
-    private generateRandomCoordinates(coordinates: Point, speed: number) {
-        return new Point(
-            boundedCell(
-                generateRandomInteger(
-                    coordinates.x - speed,
-                    coordinates.x + speed
-                ),
-                coordinates
-            ),
-            boundedCell(
-                generateRandomInteger(
-                    coordinates.y - speed,
-                    coordinates.y + speed
-                ),
-                coordinates
-            )
-        );
     }
 
     public deliverFood() {

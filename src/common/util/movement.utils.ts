@@ -10,6 +10,18 @@ export const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * Math.floor(max));
 };
 
+export const generateRandomCoordinates = (coordinates: Point, speed: number) =>
+    new Point(
+        boundedCell(
+            generateRandomInteger(coordinates.x - speed, coordinates.x + speed),
+            coordinates
+        ),
+        boundedCell(
+            generateRandomInteger(coordinates.y - speed, coordinates.y + speed),
+            coordinates
+        )
+    );
+
 export const travelToPoint = (
     currentLocation: Point,
     destination: Point,
