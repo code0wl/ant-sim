@@ -18,6 +18,12 @@ export class Director {
         const nest = <Nest>actor;
         const spider = <Spider>actor;
 
+        if (ant && cell.ant && ant.type !== cell.ant.type) {
+            const ants = [ant, cell.ant];
+            const loser = ants[Math.floor(Math.random() * ants.length)];
+            loser.die();
+        }
+
         if (isFood) {
             cell.food = food;
         }
@@ -40,7 +46,7 @@ export class Director {
         }
 
         if (isAnt && cell.spider) {
-            actor.remove();
+            ant.die();
         }
 
         if (ant.hasFood) {

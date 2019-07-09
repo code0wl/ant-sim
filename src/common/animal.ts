@@ -18,6 +18,7 @@ export class Animal extends Actor implements IUpdate {
 
     public die() {
         this.currentState = currentState.dead;
+        this.remove();
     }
 
     public move() {
