@@ -30,12 +30,21 @@ export class Director {
             loser.die();
         }
 
-        cell = Object.assign(cell, {
-            food: isFood ? food : undefined,
-            ant: isAnt ? ant : undefined,
-            nest: isNest ? nest : undefined,
-            spider: isSpider ? spider : undefined,
-        });
+        if (isFood) {
+            cell.food = food;
+        }
+
+        if (isAnt) {
+            cell.ant = ant;
+        }
+
+        if (isNest) {
+            cell.nest = nest;
+        }
+
+        if (isSpider) {
+            cell.spider = spider;
+        }
 
         if (isAnt && cell.food) {
             ant.gather(cell.food);
