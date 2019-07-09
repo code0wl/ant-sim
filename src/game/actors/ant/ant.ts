@@ -33,7 +33,7 @@ export class Ant extends Animal {
     }
 
     public updateActor() {
-        this.speed = this.hasFood ? 10 : 20;
+        this.speed = this.hasFood ? 1 : 2;
 
         if (!this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
