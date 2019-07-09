@@ -4,9 +4,15 @@ import { Food } from "game/actors/food/food";
 import { Cell } from "../draw/cell";
 import { Nest } from "game/actors/nest/nest";
 import { IActor } from "common/model";
+import { Scene } from "./scene";
 
 // gives the actions required for actors to act accordingly to their scripts ;)
 export class Director {
+    private scene: Scene;
+
+    constructor() {
+        this.scene = new Scene();
+    }
     handleEvent(cell: Cell, actor: IActor) {
         const isAnt = actor instanceof Ant;
         const isSpider = actor instanceof Spider;
@@ -24,21 +30,12 @@ export class Director {
             loser.die();
         }
 
-        if (isFood) {
-            cell.food = food;
-        }
-
-        if (isAnt) {
-            cell.ant = ant;
-        }
-
-        if (isNest) {
-            cell.nest = nest;
-        }
-
-        if (isSpider) {
-            cell.spider = spider;
-        }
+        cell = Object.assign(cell, {
+            food: isFood ? food : undefined,
+            ant: isAnt ? ant : undefined,
+            nest: isNest ? nest : undefined,
+            spider: isSpider ? spider : undefined,
+        });
 
         if (isAnt && cell.food) {
             ant.gather(cell.food);
@@ -64,7 +61,7 @@ export class Director {
         }
 
         if (ant.hasFood && cell.nest) {
-            ant.deliverFood();
+            this.scene.antDeliversFood(ant);
         }
     }
 }
