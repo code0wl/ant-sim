@@ -36,7 +36,7 @@ export class Ant extends Animal {
     public updateActor() {
         this.speed = this.hasFood ? 10 : 20;
 
-        if (this.isMoving && !this.hasFood) {
+        if (!this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
                 this.coordinates = travelToPoint(
                     this.coordinates,
@@ -51,9 +51,7 @@ export class Ant extends Animal {
                     this.speed
                 );
             }
-        }
-
-        if (this.hasFood) {
+        } else {
             this.coordinates = travelToPoint(
                 this.coordinates,
                 this.nestCoordinates,
