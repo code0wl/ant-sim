@@ -2,6 +2,7 @@ import { actorStore } from "engine/modules/actor/store";
 import { IActorType, Sprite } from "common/model";
 import { Point } from "../draw/point";
 import { Animal } from "common/animal";
+import { CanvasInstance } from "../draw/canvas";
 
 export class Actor {
     public width?: number;
@@ -37,8 +38,6 @@ export class Actor {
                 }
             }
 
-            this.currentRotation += 1;
-
             this.updateActor();
         }
     }
@@ -49,16 +48,26 @@ export class Actor {
 
     public animate(ctx: CanvasRenderingContext2D) {
         if (this.graphics) {
+            const {
+                graphics,
+                frameIndex,
+                width,
+                currentState,
+                height,
+                coordinates,
+                numberOfFrames,
+            } = this;
+
             ctx.drawImage(
-                this.graphics[this.currentState].image,
-                (this.frameIndex * this.width) / this.numberOfFrames,
-                0,
-                this.width / this.numberOfFrames,
-                this.height,
-                this.coordinates.x,
-                this.coordinates.y,
-                this.width / this.numberOfFrames,
-                this.height
+                graphics[currentState].image,
+                (frameIndex * width) / numberOfFrames,
+                height,
+                width / numberOfFrames,
+                height,
+                coordinates.x,
+                coordinates.y,
+                width / numberOfFrames,
+                height
             );
         } else {
             this.draw(ctx);

@@ -52,9 +52,11 @@ export class Spider extends Animal {
 
     private assignAnimation(type: spiderType) {
         const kind = type ? 1 : 2;
+        const baseUrl = `spiders/spider${kind}/spritesheets`;
+
         return {
-            idle: `spiders/spider${kind}/spritesheets/sheet_spider_idle-small.png`,
-            walk: `spiders/spider${kind}/spritesheets/sheet_spider_walk-small.png`,
+            idle: `${baseUrl}/sheet_spider_idle-small.png`,
+            walk: `${baseUrl}/sheet_spider_walk-small.png`,
         };
     }
 }

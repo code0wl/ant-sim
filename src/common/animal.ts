@@ -10,6 +10,7 @@ export class Animal extends Actor implements IUpdate {
     public hasFood = false;
     public isMoving = false;
     public speed: number;
+    public currentRotation: number;
 
     constructor(public type: IActorType) {
         super(type);

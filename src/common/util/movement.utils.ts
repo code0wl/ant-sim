@@ -10,6 +10,8 @@ export const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * Math.floor(max));
 };
 
+export const toRadians = (degrees: number) => degrees * (Math.PI / 180);
+
 export const generateRandomCoordinates = (coordinates: Point, speed: number) =>
     new Point(
         boundedCell(
