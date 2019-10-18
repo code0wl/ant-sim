@@ -1,6 +1,7 @@
-import { Point } from "common/model";
+import { Point } from "./point";
+import { currentResolution } from "common/util/center";
 
-export class Canvas {
+class Canvas {
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
 
@@ -19,3 +20,5 @@ export class Canvas {
         return this.context;
     }
 }
+
+export const CanvasInstance = new Canvas(currentResolution);

@@ -1,5 +1,5 @@
 import { Animal } from "common/animal";
-import { Sprite } from "common/model";
+import { Sprite, IAnimationType } from "common/model";
 import { antType } from "./model";
 import { Point } from "engine/modules/draw/point";
 import { addGraphic } from "common/util/animation-loader";
@@ -33,7 +33,7 @@ export class Ant extends Animal {
     }
 
     public updateActor() {
-        this.speed = this.hasFood ? 10 : 20;
+        this.speed = this.hasFood ? 2 : 1;
 
         if (!this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
@@ -64,12 +64,13 @@ export class Ant extends Animal {
         foodStores[antType[this.type]]++;
     }
 
-    private assignAnimation(type: antType) {
+    private assignAnimation(type: antType): IAnimationType {
         const kind = !type ? 1 : 2;
+        const baseUrl = `ants/spritesheets/ant${kind}`;
         return {
-            idle: `ants/spritesheets/ant${kind}/_ant_idle-small.png`,
-            walk: `ants/spritesheets/ant${kind}/_ant_walk-small.png`,
-            dead: `ants/spritesheets/ant${kind}/_ant_dead-small.png`,
+            idle: `${baseUrl}/_ant_idle-small.png`,
+            walk: `${baseUrl}/_ant_walk-small.png`,
+            dead: `${baseUrl}/_ant_dead-small.png`,
         };
     }
 }

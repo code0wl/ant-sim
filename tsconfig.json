@@ -17,6 +17,7 @@
     "paths": {
         "game/*": ["src/game/*"],
         "actors/*": ["src/game/actors/*"],
+        "modules/*": ["src/game/modules/*"],
         "common/*": ["src/common/*"],
         "index/*": ["./src"],
         "engine": ["./src/engine"]

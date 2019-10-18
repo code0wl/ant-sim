@@ -1,6 +1,5 @@
 import { AnimationLoop } from "engine/modules/animation/loop";
 import { Grid } from "./modules/draw/grid";
-import { Canvas } from "./modules/draw/canvas";
 import { currentResolution } from "common/util/center";
 import { actorStore, cellStore, controls } from "./modules/actor/store";
 import { Menu } from "ui/menu";
@@ -8,9 +7,9 @@ import { Colors, IActor } from "common/model";
 import { Cell } from "./modules/draw/cell";
 import { mapIntersections } from "common/util/intersection";
 import { Director } from "./modules/director/director";
+import { CanvasInstance } from "./modules/draw/canvas";
 
 export abstract class Engine extends AnimationLoop {
-    public canvas: Canvas;
     public grid: Grid;
     public menu: Menu;
     private ctx: CanvasRenderingContext2D;
@@ -18,11 +17,10 @@ export abstract class Engine extends AnimationLoop {
 
     constructor(fps: number) {
         super(fps);
-        this.canvas = new Canvas(currentResolution);
-        this.grid = new Grid(this.canvas, currentResolution);
+        this.grid = new Grid(CanvasInstance, currentResolution);
         this.menu = new Menu();
         this.director = new Director();
-        this.ctx = this.canvas.getContext();
+        this.ctx = CanvasInstance.getContext();
     }
 
     private renderCells() {
@@ -85,9 +83,12 @@ export abstract class Engine extends AnimationLoop {
     }
 
     private clearCanvas() {
-        this.canvas
-            .getContext()
-            .clearRect(0, 0, currentResolution.x, currentResolution.y);
+        CanvasInstance.getContext().clearRect(
+            0,
+            0,
+            currentResolution.x,
+            currentResolution.y
+        );
     }
 
     public update() {

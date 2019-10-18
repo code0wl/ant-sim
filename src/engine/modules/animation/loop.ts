@@ -1,9 +1,6 @@
-import { Canvas } from "../draw/canvas";
-
 export class AnimationLoop {
     public width: number;
     public height: number;
-    public canvas: Canvas;
 
     private previousTimestamp = 0;
     private timestep = 1000 / this.fps;
@@ -11,8 +8,6 @@ export class AnimationLoop {
     constructor(private fps: number) {
         this.startAnimation();
     }
-
-    public update() {}
 
     public startAnimation(timestamp?: number) {
         requestAnimationFrame(timestamp => this.startAnimation(timestamp));

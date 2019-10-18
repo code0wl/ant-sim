@@ -2,7 +2,6 @@ import { Food } from "game/actors/food/food";
 import { Spider } from "game/actors/spider/spider";
 import { Ant } from "game/actors/ant/ant";
 import { Nest } from "game/actors/nest/nest";
-import { Point } from "./point";
 
 export class Cell {
     public nest: Nest;
@@ -12,7 +11,7 @@ export class Cell {
     public hasPhermones: boolean = false;
 
     public foodScent: Food;
-    
+
     constructor(public x: number, public y: number) {}
 
     public emptyCell() {
