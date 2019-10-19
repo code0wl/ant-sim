@@ -2,7 +2,6 @@ import { actorStore } from "engine/modules/actor/store";
 import { IActorType, Sprite } from "common/model";
 import { Point } from "../draw/point";
 import { Animal } from "common/animal";
-import { CanvasInstance } from "../draw/canvas";
 
 export class Actor {
     public width?: number;

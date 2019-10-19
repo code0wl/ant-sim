@@ -6,7 +6,7 @@ export interface IGameConfig {
     fps: number;
 }
 
-const gameConfig = {
+export const gameConfig = {
     startPopulation: 1,
     foodAmount: 10,
     fps: 60,

@@ -6,10 +6,12 @@ class Canvas {
     private context: CanvasRenderingContext2D;
 
     constructor({ x, y }: Point) {
-        this.canvas = document.getElementById("canvas") as HTMLCanvasElement;
-        this.canvas.width = x;
-        this.canvas.height = y;
-        this.context = this.canvas.getContext("2d");
+        const canvas = document.createElement("canvas");
+        canvas.width = x;
+        canvas.height = y;
+        this.canvas = canvas;
+        this.context = canvas.getContext("2d");
+        document.body.appendChild(canvas);
     }
 
     public getCanvas(): HTMLCanvasElement {
