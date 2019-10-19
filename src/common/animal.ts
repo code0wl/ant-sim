@@ -5,7 +5,7 @@ interface IUpdate {
     updateActor(): void;
 }
 
-export abstract class Animal extends Actor implements IUpdate {
+export class Animal extends Actor implements IUpdate {
     public currentState: currentState = currentState.idle;
     public hasFood = false;
     public isMoving = false;

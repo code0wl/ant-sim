@@ -57,17 +57,26 @@ export class Actor {
                 numberOfFrames,
             } = this;
 
+            const correctedWidth = width / numberOfFrames;
+
+            ctx.save();
+            ctx.translate(
+                coordinates.x + correctedWidth / 2,
+                coordinates.y + height / 2
+            );
+            ctx.rotate(this.currentRotation);
             ctx.drawImage(
                 graphics[currentState].image,
                 (frameIndex * width) / numberOfFrames,
                 height,
-                width / numberOfFrames,
+                correctedWidth,
                 height,
-                coordinates.x,
-                coordinates.y,
-                width / numberOfFrames,
+                -width / 2 / numberOfFrames,
+                -height / 2,
+                correctedWidth,
                 height
             );
+            ctx.restore();
         } else {
             this.draw(ctx);
         }

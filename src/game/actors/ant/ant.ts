@@ -6,6 +6,7 @@ import { addGraphic } from "common/util/animation-loader";
 import {
     travelToPoint,
     generateRandomCoordinates,
+    toRadians,
 } from "common/util/movement.utils";
 import { Food } from "../food/food";
 import { foodStores } from "engine/modules/actor/store";
@@ -57,6 +58,7 @@ export class Ant extends Animal {
                 this.speed
             );
         }
+        this.currentRotation += toRadians() * 1;
     }
 
     public deliverFood() {
