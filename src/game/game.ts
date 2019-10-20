@@ -5,19 +5,21 @@ import { Nest } from "./actors/nest/nest";
 import { spiderType, ISpiderConfig } from "./actors/spider/model";
 import { Spider } from "./actors/spider/spider";
 import { Food } from "./actors/food/food";
-import { IGameConfig } from "index";
-import { getRandomInt, boundedCell } from "common/util/movement.utils";
+import { IGameConfig, game, gameConfig } from "index";
+import {
+    getRandomInt,
+    boundedCell,
+    generateRandomCoordinates,
+} from "common/util/movement.utils";
 import { currentResolution } from "common/util/center";
+import { CanvasInstance } from "engine/modules/draw/canvas";
 
 export class Game extends Engine {
     constructor(private gameConfig: IGameConfig) {
         super(gameConfig.fps);
         this.createFood();
         this.createNests(["black", "red"]);
-        this.createSpiders([
-            { spider: spiderType.large, coordinates: new Point(100, 600) },
-            { spider: spiderType.small, coordinates: new Point(500, 300) },
-        ]);
+        this.createSpiders();
     }
 
     private createFood() {
@@ -32,10 +34,11 @@ export class Game extends Engine {
         }
     }
 
-    private createSpiders(spiderConfig: ISpiderConfig[]) {
-        spiderConfig.forEach(
-            ({ spider, coordinates }) => new Spider(spider, coordinates)
-        );
+    private createSpiders() {
+        const { width, height } = CanvasInstance.getCanvas();
+        for (let i = 0; i < gameConfig.bigSpiders; i++) {
+            new Spider(spiderType.large, new Point(width / 2, height / 2));
+        }
     }
 
     private createNests(nests: Colony[]) {

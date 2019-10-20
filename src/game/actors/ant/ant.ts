@@ -35,8 +35,8 @@ export class Ant extends Animal {
     }
 
     public updateActor() {
-        this.speed = this.hasFood ? 2 : 1;
-        const previousCoordinates = this.coordinates
+        this.speed = this.hasFood ? 4 : 2;
+        const previousCoordinates = this.coordinates;
 
         if (!this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {

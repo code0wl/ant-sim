@@ -50,7 +50,7 @@ export const getOrientation = (
     const directionX = previousDestination.x - nextDestination.x;
     const directionY = previousDestination.y - nextDestination.y;
 
-    return toRadians() * directionX - directionY;
+    return toRadians() * directionX - directionY || .9;
 };
 
 // TODO fix this
