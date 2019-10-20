@@ -4,7 +4,7 @@ import { Point } from "engine/modules/draw/point";
 import { Sprite } from "common/model";
 import { addGraphic } from "common/util/animation-loader";
 import { Ant } from "../ant/ant";
-import { toRadians } from "common/util/movement.utils";
+import { toRadians, getOrientation } from "common/util/movement.utils";
 
 export class Spider extends Animal {
     public attackers: Ant[];
@@ -44,13 +44,18 @@ export class Spider extends Animal {
         }
 
         if (this.isMoving) {
-            this.coordinates = new Point(
+            const nextDestination = new Point(
                 this.coordinates.x + this.randomX,
                 this.coordinates.y + this.randomY
             );
-        }
 
-        this.currentRotation += toRadians() * 1;
+            this.currentRotation = getOrientation(
+                this.coordinates,
+                nextDestination
+            );
+            
+            this.coordinates = nextDestination;
+        }
     }
 
     private assignAnimation(type: spiderType) {

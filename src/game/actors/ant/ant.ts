@@ -7,6 +7,7 @@ import {
     travelToPoint,
     generateRandomCoordinates,
     toRadians,
+    getOrientation,
 } from "common/util/movement.utils";
 import { Food } from "../food/food";
 import { foodStores } from "engine/modules/actor/store";
@@ -35,6 +36,7 @@ export class Ant extends Animal {
 
     public updateActor() {
         this.speed = this.hasFood ? 2 : 1;
+        const previousCoordinates = this.coordinates
 
         if (!this.hasFood) {
             if (this.hasScent && this.food && this.food.radius) {
@@ -58,7 +60,11 @@ export class Ant extends Animal {
                 this.speed
             );
         }
-        this.currentRotation += toRadians() * 1;
+
+        this.currentRotation = getOrientation(
+            previousCoordinates,
+            this.coordinates
+        );
     }
 
     public deliverFood() {

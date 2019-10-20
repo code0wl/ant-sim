@@ -10,7 +10,7 @@ export const getRandomInt = (max: number) => {
     return Math.floor(Math.random() * Math.floor(max));
 };
 
-export const toRadians = () => Math.PI / 180;
+const toRadians = () => Math.PI / 180;
 
 export const generateRandomCoordinates = (coordinates: Point, speed: number) =>
     new Point(
@@ -41,6 +41,16 @@ export const travelToPoint = (
         : (newLocation.y += speed);
 
     return newLocation;
+};
+
+export const getOrientation = (
+    previousDestination: Point,
+    nextDestination: Point
+) => {
+    const directionX = previousDestination.x - nextDestination.x;
+    const directionY = previousDestination.y - nextDestination.y;
+
+    return toRadians() * directionX - directionY;
 };
 
 // TODO fix this
