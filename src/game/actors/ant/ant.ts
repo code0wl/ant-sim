@@ -6,7 +6,6 @@ import { addGraphic } from "common/util/animation-loader";
 import {
     travelToPoint,
     generateRandomCoordinates,
-    toRadians,
     getOrientation,
 } from "common/util/movement.utils";
 import { Food } from "../food/food";
